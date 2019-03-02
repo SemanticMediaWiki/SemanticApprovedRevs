@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"MWJames",
+			"Kghbln"
+		]
+	},
+	"semantic-approvedrevs-desc": "Complementary extension to Semantic MediaWiki and Approved Revs to control the storage of approved revision content.",
+	"semantic-approvedrevs-name": "Semantic Approved Revs"
+}

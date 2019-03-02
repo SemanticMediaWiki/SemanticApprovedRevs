@@ -1,0 +1,33 @@
+{
+	"name": "SemanticApprovedRevs",
+	"version": "0.1-alpha",
+	"author": [
+       	"James Hong Kong",
+		"..."
+	],
+	"url": "https://github.com/SemanticMediaWiki/SemanticApprovedRevs/",
+	"descriptionmsg": "semantic-approvedrevs-desc",
+	"namemsg": "semantic-approvedrevs-name",
+	"license-name": "GPL-2.0-or-later",
+	"type": "semantic",
+	"requires": {
+		"MediaWiki": ">= 1.30"
+	},
+	"MessagesDirs": {
+		"SemanticApprovedRevs": [
+			"i18n"
+		]
+	},
+	"callback": "SemanticApprovedRevs::initExtension",
+	"ExtensionFunctions": [
+		"SemanticApprovedRevs::onExtensionFunction"
+	],
+	"AutoloadClasses": {
+		"SemanticApprovedRevs": "SemanticApprovedRevs.php",
+		"SMW\\ApprovedRevs\\Hooks": "src/Hooks.php",
+		"SMW\\ApprovedRevs\\ApprovedRevsHandler": "src/ApprovedRevsHandler.php",
+		"SMW\\ApprovedRevs\\ApprovedRevsFacade": "src/ApprovedRevsFacade.php"
+},
+	"load_composer_autoloader":true,
+	"manifest_version": 1
+}
