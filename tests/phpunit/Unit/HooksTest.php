@@ -32,13 +32,36 @@ class HooksTest extends \PHPUnit_Framework_TestCase {
 		$instance->register();
 
 		$this->callOnSMWLinksUpdateApprovedUpdate( $instance );
+		$this->callOnSMWDataUpdaterSkipUpdate( $instance );
 		$this->callOnSMWParserChangeRevision( $instance );
 		$this->callOnSMWFactboxOverrideRevisionID( $instance );
+		$this->callOnSMWInitProperties( $instance );
+		$this->callOnSMWStoreUpdateDataBefore( $instance );
 	}
 
 	public function callOnSMWLinksUpdateApprovedUpdate( $instance ) {
 
 		$handler = 'SMW::LinksUpdate::ApprovedUpdate';
+
+		$title = $this->getMockBuilder( '\Title' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$this->assertTrue(
+			$instance->isRegistered( $handler )
+		);
+
+		$rev = 0;
+
+		$this->assertThatHookIsExcutable(
+			$instance->getHandlers( $handler ),
+			[ $title, $rev ]
+		);
+	}
+
+	public function callOnSMWDataUpdaterSkipUpdate( $instance ) {
+
+		$handler = 'SMW::DataUpdater::SkipUpdate';
 
 		$title = $this->getMockBuilder( '\Title' )
 			->disableOriginalConstructor()
@@ -93,6 +116,46 @@ class HooksTest extends \PHPUnit_Framework_TestCase {
 		$this->assertThatHookIsExcutable(
 			$instance->getHandlers( $handler ),
 			[ $title, &$latestRevID ]
+		);
+	}
+
+	public function callOnSMWInitProperties( $instance ) {
+
+		$handler = 'SMW::Property::initProperties';
+
+		$propertyRegistry = $this->getMockBuilder( '\SMW\PropertyRegistry' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$this->assertTrue(
+			$instance->isRegistered( $handler )
+		);
+
+		$this->assertThatHookIsExcutable(
+			$instance->getHandlers( $handler ),
+			[ $propertyRegistry ]
+		);
+	}
+
+	public function callOnSMWStoreUpdateDataBefore( $instance ) {
+
+		$handler = 'SMWStore::updateDataBefore';
+
+		$store = $this->getMockBuilder( '\SMW\Store' )
+			->disableOriginalConstructor()
+			->getMockForAbstractClass();
+
+		$semanticData = $this->getMockBuilder( '\SMW\SemanticData' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$this->assertTrue(
+			$instance->isRegistered( $handler )
+		);
+
+		$this->assertThatHookIsExcutable(
+			$instance->getHandlers( $handler ),
+			[ $store, $semanticData ]
 		);
 	}
 

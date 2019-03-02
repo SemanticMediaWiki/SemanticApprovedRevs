@@ -71,4 +71,42 @@ class ApprovedRevsHandlerTest extends \PHPUnit_Framework_TestCase {
 		);
 	}
 
+	public function testDoChangeRevision() {
+
+		$this->approvedRevsFacade->expects( $this->once() )
+			->method( 'getApprovedRevID' )
+			->will( $this->returnValue( 42 ) );
+
+		$title = $this->getMockBuilder( '\Title' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$instance = new ApprovedRevsHandler(
+			$this->approvedRevsFacade
+		);
+
+		$rev = null;
+
+		$instance->doChangeRevision( $title, $rev );
+	}
+
+	public function testDoChangeRevisionID() {
+
+		$this->approvedRevsFacade->expects( $this->once() )
+			->method( 'getApprovedRevID' )
+			->will( $this->returnValue( 42 ) );
+
+		$title = $this->getMockBuilder( '\Title' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$instance = new ApprovedRevsHandler(
+			$this->approvedRevsFacade
+		);
+
+		$rev = null;
+
+		$instance->doChangeRevisionID( $title, $rev );
+	}
+
 }
