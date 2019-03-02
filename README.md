@@ -7,8 +7,10 @@
 
 Semantic Approved Revs (a.k.a. SAR) is an extension to [Semantic MediaWiki][smw] and complements the Approved Revs extension to control the storage of approved revision content. The extension provides:
 
-- Control of Semantic MediaWiki relates updates to match those of the `Approved Revs` hereby ensuring that only data of the approved revision is used for the storage
+- Control of Semantic MediaWiki related updates to match those of the `Approved Revs` hereby ensuring that only data of the approved revision is used for the storage
 - Provides additional properties (`Approved by`, `Approved date`, `Approved revision`, and `Approval status`) to accompany the approval process
+
+This short [video](https://youtu.be/cl9XmzKQ2Ec) demonstrates the interaction between the Semantic MediaWiki, Semantic Approved Revs, and Approved Revs extension.
 
 ## Requirements
 
