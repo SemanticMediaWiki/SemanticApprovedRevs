@@ -19,10 +19,10 @@ function installToMediaWikiRoot {
 
 	if [ "$SAR" != "" ]
 	then
-		composer require 'mediawiki/install-semantic-approved-revs='$SAR --prefer-source --update-with-dependencies
+		composer require 'mediawiki/semantic-approved-revs='$SAR --prefer-source --update-with-dependencies
 	else
 		composer init --stability dev
-		composer require mediawiki/install-semantic-approved-revs "dev-master" --prefer-source --dev --update-with-dependencies
+		composer require mediawiki/semantic-approved-revs "dev-master" --prefer-source --dev --update-with-dependencies
 
 		cd extensions
 		cd SemanticApprovedRevs
@@ -42,6 +42,15 @@ function installToMediaWikiRoot {
 
 		cd ../..
 	fi
+
+	cd $MW_INSTALL_PATH/extensions
+
+	wget https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs/archive/$APPROVED_REVS.tar.gz
+
+	tar -zxf $APPROVED_REVS.tar.gz
+	mv mediawiki-* ApprovedRevs
+
+	cd $MW_INSTALL_PATH
 
 	# Rebuild the class map for added classes during git fetch
 	composer dump-autoload
@@ -64,6 +73,7 @@ function updateConfiguration {
 	echo "putenv( 'MW_INSTALL_PATH=$(pwd)' );" >> LocalSettings.php
 
 	echo 'wfLoadExtension( "SemanticMediaWiki" );' >> LocalSettings.php
+	echo 'wfLoadExtension( "ApprovedRevs" );' >> LocalSettings.php
 	echo 'wfLoadExtension( "SemanticApprovedRevs" );' >> LocalSettings.php
 
 	php maintenance/update.php --quick

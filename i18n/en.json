@@ -6,5 +6,13 @@
 		]
 	},
 	"semantic-approvedrevs-desc": "Complementary extension to Semantic MediaWiki and Approved Revs to control the storage of approved revision content.",
-	"semantic-approvedrevs-name": "Semantic Approved Revs"
+	"semantic-approvedrevs-name": "Semantic Approved Revs",
+	"semantic-approvedrevs-property-approved-rev": "Approved revision",
+	"semantic-approvedrevs-property-approved-rev-desc": "\"$1\" identifies the revision ID of a page that has been approved and is provided by the [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] extension.",
+	"semantic-approvedrevs-property-approved-by": "Approved by",
+	"semantic-approvedrevs-property-approved-by-desc": "\"$1\" identifies the user who set the approval status of the page and is provided by the [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] extension.",
+	"semantic-approvedrevs-property-approved-date": "Approved date",
+	"semantic-approvedrevs-property-approved-date-desc": "\"$1\" identifies the time when the approval status of the page was set and is provided by the [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] extension.",
+	"semantic-approvedrevs-property-approved-status": "Approval status",
+	"semantic-approvedrevs-property-approved-status-desc": "\"$1\" identifies the approval status of a page and is provided by the [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] extension."
 }
