@@ -2,6 +2,8 @@
 
 namespace SMW\ApprovedRevs;
 
+use SMW\ApplicationFactory;
+
 /**
  * @license GNU GPL v2+
  * @since 1.0
@@ -22,6 +24,32 @@ class Hooks {
 	 */
 	public function __construct( $config = [] ) {
 		$this->registerHandlers( $config );
+	}
+
+	/**
+	 * @since  1.0
+	 */
+	public static function hasPropertyCollisions( $var ) {
+
+		if ( !isset( $var['sespgEnabledPropertyList'] ) ) {
+			return false;
+		}
+
+		// SESP properties!
+		$list = [
+			'_APPROVED' => true,
+			'_APPROVEDBY' => true,
+			'_APPROVEDDATE' => true,
+			'_APPROVEDSTATUS' => true
+		];
+
+		foreach ( $var['sespgEnabledPropertyList'] as $key ) {
+			if ( isset( $list[$key] ) ) {
+				return $key;
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -77,7 +105,7 @@ class Hooks {
 	 * @param Title $title
 	 * @param integer $latestRevID
 	 */
-	public function onApprovedUpdate( $title, $latestRevID ) {
+	public function onSkipUpdate( $title, $latestRevID ) {
 
 		$approvedRevsHandler =  new ApprovedRevsHandler(
 			new ApprovedRevsFacade()
@@ -120,12 +148,53 @@ class Hooks {
 		return true;
 	}
 
-	private function registerHandlers( $config ) {
+	/**
+	 * @see https://www.semantic-mediawiki.org/wiki/Hooks#SMW::Property::initProperties
+	 *
+	 * @since 1.0
+	 *
+	 * @param ProertyRegistry $$registry
+	 * @param integer &$latestRevID
+	 */
+	public function onInitProperties( $registry ) {
 
+		$propertyRegistry = new PropertyRegistry();
+		$propertyRegistry->register( $registry );
+
+		return true;
+	}
+
+	/**
+	 * @see https://www.semantic-mediawiki.org/wiki/Hooks#SMWStore::updateDataBefore
+	 *
+	 * @since 1.0
+	 *
+	 * @param ProertyRegistry $$registry
+	 * @param integer &$latestRevID
+	 */
+	public function onUpdateDataBefore( $store, $semanticData ) {
+
+		$propertyAnnotator = new PropertyAnnotator(
+			new ServicesFactory()
+		);
+
+		$propertyAnnotator->setLogger(
+			ApplicationFactory::getInstance()->getMediaWikiLogger( 'smw-approved-revs' )
+		);
+
+		$propertyAnnotator->addAnnotation( $semanticData );
+
+		return true;
+	}
+
+	private function registerHandlers( $config ) {
 		$this->handlers = [
-			'SMW::LinksUpdate::ApprovedUpdate' => [ $this, 'onApprovedUpdate' ],
+			'SMW::LinksUpdate::ApprovedUpdate' => [ $this, 'onSkipUpdate' ],
+			'SMW::DataUpdater::SkipUpdate' => [ $this, 'onSkipUpdate' ],
 			'SMW::Parser::ChangeRevision' => [ $this, 'onChangeRevision' ],
-			'SMW::Factbox::OverrideRevisionID' => [ $this, 'onOverrideRevisionID' ]
+			'SMW::Factbox::OverrideRevisionID' => [ $this, 'onOverrideRevisionID' ],
+			'SMW::Property::initProperties' => [ $this, 'onInitProperties' ],
+			'SMWStore::updateDataBefore' => [ $this, 'onUpdateDataBefore' ]
 		];
 	}
 

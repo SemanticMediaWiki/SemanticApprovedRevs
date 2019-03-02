@@ -71,7 +71,7 @@ class SemanticApprovedRevs {
 			}
 		}
 
-		if ( defined( 'SESP_VERSION' ) && version_compare( SESP_VERSION, '2.1.0', '<' ) && ( $prop = Hooks::hasPropertyDefCollisions( $GLOBALS ) ) !== false ) {
+		if ( defined( 'SESP_VERSION' ) && version_compare( SESP_VERSION, '2.1.0', '<' ) && ( $prop = Hooks::hasPropertyCollisions( $GLOBALS ) ) !== false ) {
 			die(
 				"\nPlease remove the `$prop` property (defined by the SemanticExtraSpecialProperties extension) and switch to the new SESP version 2.1" .
 				" to avoid collision with the 'Semantic Approved Revs' list of properties.\n"

@@ -6,12 +6,12 @@ language: php
 matrix:
   fast_finish: true
   include:
-    - env: DB=mysql; MW=REL1_31; TYPE=coverage; PHPUNIT=4.8.*
+    - env: DB=mysql; MW=REL1_31; TYPE=coverage; PHPUNIT=5.7.*; APPROVED_REVS=1.0
       php: 7.1
-    - env: DB=mysql; MW=master; PHPUNIT=4.8.*
+    - env: DB=mysql; MW=master; PHPUNIT=6.5.*; APPROVED_REVS=1.0
       php: 7.2
-    - env: DB=sqlite; MW=REL1_31; SITELANG=ja; PHPUNIT=4.8.*
-      php: 5.6
+    - env: DB=sqlite; MW=REL1_31; SITELANG=ja; PHPUNIT=6.5.*; APPROVED_REVS=1.0
+      php: 7.1
 
 install:
   - composer self-update
