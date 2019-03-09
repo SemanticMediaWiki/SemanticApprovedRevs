@@ -3,6 +3,7 @@
 namespace SMW\ApprovedRevs;
 
 use SMW\ApplicationFactory;
+use Onoi\Cache\Cache;
 
 /**
  * @license GNU GPL v2+
@@ -18,12 +19,26 @@ class Hooks {
 	private $handlers = [];
 
 	/**
+	 * @var Cache
+	 */
+	private $cache;
+
+	/**
 	 * @since 1.0
 	 *
 	 * @param array $config
 	 */
 	public function __construct( $config = [] ) {
 		$this->registerHandlers( $config );
+	}
+
+	/**
+	 * @since 1.0
+	 *
+	 * @param Cache $cache
+	 */
+	public function setCache( Cache $cache ) {
+		$this->cache = $cache;
 	}
 
 	/**
@@ -187,8 +202,64 @@ class Hooks {
 		return true;
 	}
 
+	/**
+	 * @see ??
+	 *
+	 * @since 1.0
+	 *
+	 * @param ParserOutput $output
+	 * @param Title $title
+	 * @param integer $rev_id
+	 * @param string $content
+	 */
+	public function onApprovedRevsRevisionApproved( $output, $title, $rev_id, $content  ) {
+
+		$ttl = 60 * 60; // 1hr
+
+		if ( $this->cache === null ) {
+			$this->cache = ApplicationFactory::getInstance()->getCache();
+		}
+
+		// Send an event to ParserAfterTidy and allow it to pass the preliminary
+		// test even in cases where the content doesn't contain any SMW related
+		// annotations. It is to ensure that when an agent switches to a blank
+		// version (no SMW related annotations or categories) the update is carried
+		// out and the store is able to remove any remaining annotations.
+		$key = smwfCacheKey( 'smw:parseraftertidy', $title->getPrefixedDBKey() );
+		$this->cache->save( $key, $rev_id, $ttl );
+
+		return true;
+	}
+
+	/**
+	 * @see ??
+	 *
+	 * @since 1.0
+	 *
+	 * @param Parser $parser
+	 * @param Title $title
+	 * @param integer $timestamp
+	 * @param string $sha1
+	 */
+	public function onApprovedRevsFileRevisionApproved( $parser, $title, $timestamp, $sha1  ) {
+
+		$ttl = 60 * 60; // 1hr
+
+		if ( $this->cache === null ) {
+			$this->cache = ApplicationFactory::getInstance()->getCache();
+		}
+
+		// @see onApprovedRevsRevisionApproved for the same reason
+		$key = smwfCacheKey( 'smw:parseraftertidy', $title->getPrefixedDBKey() );
+		$this->cache->save( $key, $sha1, $ttl );
+
+		return true;
+	}
+
 	private function registerHandlers( $config ) {
 		$this->handlers = [
+			'ApprovedRevsRevisionApproved' => [ $this, 'onApprovedRevsRevisionApproved' ],
+			'ApprovedRevsFileRevisionApproved' => [ $this, 'onApprovedRevsFileRevisionApproved' ],
 			'SMW::LinksUpdate::ApprovedUpdate' => [ $this, 'onSkipUpdate' ],
 			'SMW::DataUpdater::SkipUpdate' => [ $this, 'onSkipUpdate' ],
 			'SMW::Parser::ChangeRevision' => [ $this, 'onChangeRevision' ],
