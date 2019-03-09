@@ -256,6 +256,22 @@ class Hooks {
 		return true;
 	}
 
+	/**
+	 * @see https://www.semantic-mediawiki.org/wiki/Hooks#SMW::Config::BeforeCompletion
+	 *
+	 * @since 1.0
+	 *
+	 * @param array &$config
+	 */
+	public function onConfigBeforeCompletion( &$config ) {
+
+		if ( isset( $config['smwgImportFileDirs'] ) ) {
+			$config['smwgImportFileDirs'] += [ 'sar' => __DIR__ . '/../data/import' ];
+		}
+
+		return true;
+	}
+
 	private function registerHandlers( $config ) {
 		$this->handlers = [
 			'ApprovedRevsRevisionApproved' => [ $this, 'onApprovedRevsRevisionApproved' ],
@@ -265,7 +281,8 @@ class Hooks {
 			'SMW::Parser::ChangeRevision' => [ $this, 'onChangeRevision' ],
 			'SMW::Factbox::OverrideRevisionID' => [ $this, 'onOverrideRevisionID' ],
 			'SMW::Property::initProperties' => [ $this, 'onInitProperties' ],
-			'SMWStore::updateDataBefore' => [ $this, 'onUpdateDataBefore' ]
+			'SMWStore::updateDataBefore' => [ $this, 'onUpdateDataBefore' ],
+			'SMW::Config::BeforeCompletion' => [ $this, 'onConfigBeforeCompletion' ]
 		];
 	}
 

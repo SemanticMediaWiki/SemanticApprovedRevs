@@ -40,6 +40,7 @@ class HooksTest extends \PHPUnit_Framework_TestCase {
 		$this->callOnSMWFactboxOverrideRevisionID( $instance );
 		$this->callOnSMWInitProperties( $instance );
 		$this->callOnSMWStoreUpdateDataBefore( $instance );
+		$this->callOnSMWConfigBeforeCompletion( $instance );
 	}
 
 	public function callOnApprovedRevsRevisionApproved( $instance ) {
@@ -223,6 +224,29 @@ class HooksTest extends \PHPUnit_Framework_TestCase {
 		$this->assertThatHookIsExcutable(
 			$instance->getHandlers( $handler ),
 			[ $store, $semanticData ]
+		);
+	}
+
+	public function callOnSMWConfigBeforeCompletion( $instance ) {
+
+		$handler = 'SMW::Config::BeforeCompletion';
+
+		$this->assertTrue(
+			$instance->isRegistered( $handler )
+		);
+
+		$config = [
+			'smwgImportFileDirs' => []
+		];
+
+		$this->assertThatHookIsExcutable(
+			$instance->getHandlers( $handler ),
+			[ &$config ]
+		);
+
+		$this->assertArrayHasKey(
+			'sar',
+			$config['smwgImportFileDirs']
 		);
 	}
 
