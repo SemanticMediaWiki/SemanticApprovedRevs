@@ -36,4 +36,18 @@ class ApprovedRevsFacadeTest extends \PHPUnit_Framework_TestCase {
 		);
 	}
 
+	public function testHasApprovedRevision() {
+
+		$title = $this->getMockBuilder( '\Title' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$instance = new ApprovedRevsFacade();
+
+		$this->assertInternalType(
+			'boolean',
+			$instance->hasApprovedRevision( $title )
+		);
+	}
+
 }

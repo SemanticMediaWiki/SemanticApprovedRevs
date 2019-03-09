@@ -21,9 +21,22 @@ class ApprovedRevsFacade {
 	 * @since  1.0
 	 *
 	 * @param Title $title
+	 *
+	 * @return integer|null
 	 */
 	public function getApprovedRevID( Title $title ) {
 		return ApprovedRevs::getApprovedRevID( $title );
+	}
+
+	/**
+	 * @since  1.0
+	 *
+	 * @param Title $title
+	 *
+	 * @return boolean
+	 */
+	public function hasApprovedRevision( Title $title ) {
+		return ApprovedRevs::hasApprovedRevision( $title );
 	}
 
 }
