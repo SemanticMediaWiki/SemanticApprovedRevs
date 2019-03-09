@@ -37,6 +37,10 @@ class ApprovedRevsHandler {
 	 */
 	public function isApprovedUpdate( Title $title, $latestRevID ) {
 
+		if ( !$this->approvedRevsFacade->hasApprovedRevision( $title ) ) {
+			return true;
+		}
+
 		if ( ( $approvedRevID = $this->approvedRevsFacade->getApprovedRevID( $title ) ) !== null ) {
 			return $approvedRevID == $latestRevID;
 		}
@@ -55,7 +59,11 @@ class ApprovedRevsHandler {
 		// Forcibly change the revision to match what ApprovedRevs sees as
 		// approved
 		if ( ( $approvedRevID = $this->approvedRevsFacade->getApprovedRevID( $title ) ) !== null ) {
-			$revision = Revision::newFromId( $approvedRevID );
+			$approvedRev = Revision::newFromId( $approvedRevID );
+
+			if ( $approvedRev instanceof Revision ) {
+				$revision = $approvedRev;
+			}
 		}
 	}
 

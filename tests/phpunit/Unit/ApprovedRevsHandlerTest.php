@@ -21,7 +21,6 @@ class ApprovedRevsHandlerTest extends \PHPUnit_Framework_TestCase {
 
 		$this->approvedRevsFacade = $this->getMockBuilder( '\SMW\ApprovedRevs\ApprovedRevsFacade' )
 			->disableOriginalConstructor()
-			->setMethods( [ 'getApprovedRevID' ] )
 			->getMock();
 	}
 
@@ -34,6 +33,10 @@ class ApprovedRevsHandlerTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testIsApprovedUpdate_True() {
+
+		$this->approvedRevsFacade->expects( $this->once() )
+			->method( 'hasApprovedRevision' )
+			->will( $this->returnValue( true ) );
 
 		$this->approvedRevsFacade->expects( $this->once() )
 			->method( 'getApprovedRevID' )
@@ -52,7 +55,30 @@ class ApprovedRevsHandlerTest extends \PHPUnit_Framework_TestCase {
 		);
 	}
 
+	public function testIsApprovedUpdate_True_WhenNoApprovedRevIsAvailable() {
+
+		$this->approvedRevsFacade->expects( $this->once() )
+			->method( 'hasApprovedRevision' )
+			->will( $this->returnValue( false ) );
+
+		$title = $this->getMockBuilder( '\Title' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$instance = new ApprovedRevsHandler(
+			$this->approvedRevsFacade
+		);
+
+		$this->assertTrue(
+			$instance->isApprovedUpdate( $title, 42 )
+		);
+	}
+
 	public function testIsApprovedUpdate_False() {
+
+		$this->approvedRevsFacade->expects( $this->once() )
+			->method( 'hasApprovedRevision' )
+			->will( $this->returnValue( true ) );
 
 		$this->approvedRevsFacade->expects( $this->once() )
 			->method( 'getApprovedRevID' )
