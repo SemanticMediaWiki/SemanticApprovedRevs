@@ -1,0 +1,18 @@
+{
+	"description": "Semantic Approved Revs import",
+	"import": [
+		{
+			"page": "Group:Approved revs properties",
+			"namespace": "SMW_NS_SCHEMA",
+			"contents": {
+				"importFrom": "/groups/sar.group.json"
+			},
+			"options": {
+				"replaceable": { "LAST_EDITOR": "IS_IMPORTER" }
+			}
+		}
+	],
+	"meta": {
+		"version": "1"
+	}
+}
