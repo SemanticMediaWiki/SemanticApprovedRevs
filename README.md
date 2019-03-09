@@ -14,9 +14,9 @@ This short [video](https://youtu.be/cl9XmzKQ2Ec) demonstrates the interaction be
 
 ## Requirements
 
-- PHP 5.6 or later
+- PHP 7.0 or later
 - MediaWiki 1.31 or later
-- Semantic MediaWiki 3.0 or later
+- Semantic MediaWiki 3.1 or later
 - ApprovedRevs extension 0.8 or later
 
 ## Installation
@@ -51,7 +51,6 @@ developers mailing list and have a look at the [contribution guildline](/CONTRIB
 * [File an issue](https://github.com/SemanticMediaWiki/SemanticApprovedRevs/issues)
 * [Submit a pull request](https://github.com/SemanticMediaWiki/SemanticApprovedRevs/pulls)
 * Ask a question on [the mailing list](https://semantic-mediawiki.org/wiki/Mailing_list)
-* Ask a question on the #semantic-mediawiki IRC channel on Freenode.
 
 ### Tests
 
