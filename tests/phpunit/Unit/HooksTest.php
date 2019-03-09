@@ -31,12 +31,79 @@ class HooksTest extends \PHPUnit_Framework_TestCase {
 		$instance->deregister();
 		$instance->register();
 
+		$this->callOnApprovedRevsRevisionApproved( $instance );
+		$this->callOnApprovedRevsFileRevisionApproved( $instance );
+
 		$this->callOnSMWLinksUpdateApprovedUpdate( $instance );
 		$this->callOnSMWDataUpdaterSkipUpdate( $instance );
 		$this->callOnSMWParserChangeRevision( $instance );
 		$this->callOnSMWFactboxOverrideRevisionID( $instance );
 		$this->callOnSMWInitProperties( $instance );
 		$this->callOnSMWStoreUpdateDataBefore( $instance );
+	}
+
+	public function callOnApprovedRevsRevisionApproved( $instance ) {
+
+		$handler = 'ApprovedRevsRevisionApproved';
+
+		$title = $this->getMockBuilder( '\Title' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$cache = $this->getMockBuilder( '\Onoi\Cache\Cache' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$cache->expects( $this->once() )
+			->method( 'save' )
+			->with( $this->stringContains( 'smw:parseraftertidy' ) );
+
+		$instance->setCache( $cache );
+
+		$this->assertTrue(
+			$instance->isRegistered( $handler )
+		);
+
+		$output = '';
+		$rev_id = 42;
+		$content = '';
+
+		$this->assertThatHookIsExcutable(
+			$instance->getHandlers( $handler ),
+			[ $output, $title, $rev_id, $content ]
+		);
+	}
+
+	public function callOnApprovedRevsFileRevisionApproved( $instance ) {
+
+		$handler = 'ApprovedRevsFileRevisionApproved';
+
+		$title = $this->getMockBuilder( '\Title' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$cache = $this->getMockBuilder( '\Onoi\Cache\Cache' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$cache->expects( $this->once() )
+			->method( 'save' )
+			->with( $this->stringContains( 'smw:parseraftertidy' ) );
+
+		$instance->setCache( $cache );
+
+		$this->assertTrue(
+			$instance->isRegistered( $handler )
+		);
+
+		$parser = '';
+		$timestamp = 42;
+		$sha1 = '1001';
+
+		$this->assertThatHookIsExcutable(
+			$instance->getHandlers( $handler ),
+			[ $parser, $title, $timestamp, $sha1 ]
+		);
 	}
 
 	public function callOnSMWLinksUpdateApprovedUpdate( $instance ) {
