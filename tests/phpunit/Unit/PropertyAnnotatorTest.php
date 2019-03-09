@@ -72,6 +72,9 @@ class PropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 
 	public function testAddAnnotation() {
 
+		$this->logger->expects( $this->once() )
+			->method( 'info' );
+
 		$semanticData = $this->getMockBuilder( '\SMW\SemanticData' )
 			->disableOriginalConstructor()
 			->getMock();
@@ -79,6 +82,31 @@ class PropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 		$semanticData->expects( $this->once() )
 			->method( 'getSubject' )
 			->will( $this->returnValue( DIWikiPage::newFromText( 'Foo' ) ) );
+
+		$annotator = new PropertyAnnotator(
+			$this->servicesFactory
+		);
+
+		$annotator->setLogger( $this->logger );
+		$annotator->addAnnotation( $semanticData );
+	}
+
+	public function testCanNotAnnotate() {
+
+		$this->logger->expects( $this->never() )
+			->method( 'info' );
+
+		$subject = $this->getMockBuilder( '\SMW\DIWikiPage' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$semanticData = $this->getMockBuilder( '\SMW\SemanticData' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$semanticData->expects( $this->once() )
+			->method( 'getSubject' )
+			->will( $this->returnValue( $subject ) );
 
 		$annotator = new PropertyAnnotator(
 			$this->servicesFactory

@@ -50,4 +50,18 @@ class ApprovedRevsFacadeTest extends \PHPUnit_Framework_TestCase {
 		);
 	}
 
+	public function testGetApprovedFileInfo() {
+
+		$title = $this->getMockBuilder( '\Title' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$instance = new ApprovedRevsFacade();
+
+		$this->assertInternalType(
+			'array',
+			$instance->getApprovedFileInfo( $title )
+		);
+	}
+
 }

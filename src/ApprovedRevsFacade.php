@@ -39,4 +39,15 @@ class ApprovedRevsFacade {
 		return ApprovedRevs::hasApprovedRevision( $title );
 	}
 
+	/**
+	 * @since  1.0
+	 *
+	 * @param Title $title
+	 *
+	 * @return []
+	 */
+	public function getApprovedFileInfo( Title $title ) {
+		return ApprovedRevs::getApprovedFileInfo( $title );
+	}
+
 }
