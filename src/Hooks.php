@@ -272,6 +272,25 @@ class Hooks {
 		return true;
 	}
 
+	/**
+	 * @see https://www.semantic-mediawiki.org/wiki/Hooks#...
+	 *
+	 * @since 1.0
+	 *
+	 * @param Title $title
+	 * @param File &$file
+	 */
+	public function onChangeFileBeforeIngestProcessComplete( $title, &$file ) {
+
+		$approvedRevsHandler =  new ApprovedRevsHandler(
+			new ApprovedRevsFacade()
+		);
+
+		$approvedRevsHandler->doChangeFile( $title, $file );
+
+		return true;
+	}
+
 	private function registerHandlers( $config ) {
 		$this->handlers = [
 			'ApprovedRevsRevisionApproved' => [ $this, 'onApprovedRevsRevisionApproved' ],
@@ -282,7 +301,8 @@ class Hooks {
 			'SMW::Factbox::OverrideRevisionID' => [ $this, 'onOverrideRevisionID' ],
 			'SMW::Property::initProperties' => [ $this, 'onInitProperties' ],
 			'SMWStore::updateDataBefore' => [ $this, 'onUpdateDataBefore' ],
-			'SMW::Config::BeforeCompletion' => [ $this, 'onConfigBeforeCompletion' ]
+			'SMW::Config::BeforeCompletion' => [ $this, 'onConfigBeforeCompletion' ],
+			'SMW::ElasticStore::FileIndexer::ChangeFileBeforeIngestProcessComplete' => [ $this, 'onChangeFileBeforeIngestProcessComplete' ]
 		];
 	}
 

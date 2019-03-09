@@ -41,6 +41,7 @@ class HooksTest extends \PHPUnit_Framework_TestCase {
 		$this->callOnSMWInitProperties( $instance );
 		$this->callOnSMWStoreUpdateDataBefore( $instance );
 		$this->callOnSMWConfigBeforeCompletion( $instance );
+		$this->callOnSMWElasticStoreFileIndexerChangeFileBeforeIngestProcessComplete( $instance );
 	}
 
 	public function callOnApprovedRevsRevisionApproved( $instance ) {
@@ -247,6 +248,26 @@ class HooksTest extends \PHPUnit_Framework_TestCase {
 		$this->assertArrayHasKey(
 			'sar',
 			$config['smwgImportFileDirs']
+		);
+	}
+
+	public function callOnSMWElasticStoreFileIndexerChangeFileBeforeIngestProcessComplete( $instance ) {
+
+		$handler = 'SMW::ElasticStore::FileIndexer::ChangeFileBeforeIngestProcessComplete';
+
+		$this->assertTrue(
+			$instance->isRegistered( $handler )
+		);
+
+		$title = $this->getMockBuilder( '\Title' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$file = null;
+
+		$this->assertThatHookIsExcutable(
+			$instance->getHandlers( $handler ),
+			[ $title, &$file ]
 		);
 	}
 
