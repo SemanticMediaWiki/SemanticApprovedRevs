@@ -3,7 +3,8 @@
 use SMW\ApprovedRevs\Hooks;
 
 /**
- * Extension ...
+ * Complementary extension to Semantic MediaWiki and Approved Revs to
+ * control the storage of approved revision content. 
  *
  * @see https://github.com/SemanticMediaWiki/SemanticApprovedRevs
  *
@@ -34,8 +35,15 @@ class SemanticApprovedRevs {
 	 * @see https://www.mediawiki.org/wiki/Manual:Extension.json/Schema#callback
 	 */
 	public static function initExtension( $credits = [] ) {
+
+		$version = 'UNKNOWN' ;
+
 		// See https://phabricator.wikimedia.org/T151136
-		define( 'SMW_APPROVED_REVS_VERSION', isset( $credits['version'] ) ? $credits['version'] : 'UNKNOWN' );
+		if ( isset( $credits['version'] ) ) {
+			$version = $credits['version'];
+		}
+
+		define( 'SMW_APPROVED_REVS_VERSION', $version );
 
 		$GLOBALS['wgMessagesDirs']['SemanticApprovedRevs'] = __DIR__ . '/i18n';
 	}
