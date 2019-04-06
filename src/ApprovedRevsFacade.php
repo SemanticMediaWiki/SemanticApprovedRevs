@@ -18,7 +18,7 @@ use ApprovedRevs;
 class ApprovedRevsFacade {
 
 	/**
-	 * @since  1.0
+	 * @since 1.0
 	 *
 	 * @param Title $title
 	 *
@@ -29,7 +29,7 @@ class ApprovedRevsFacade {
 	}
 
 	/**
-	 * @since  1.0
+	 * @since 1.0
 	 *
 	 * @param Title $title
 	 *
@@ -40,7 +40,7 @@ class ApprovedRevsFacade {
 	}
 
 	/**
-	 * @since  1.0
+	 * @since 1.0
 	 *
 	 * @param Title $title
 	 *
@@ -48,6 +48,15 @@ class ApprovedRevsFacade {
 	 */
 	public function getApprovedFileInfo( Title $title ) {
 		return ApprovedRevs::getApprovedFileInfo( $title );
+	}
+
+	/**
+	 * @since 1.0
+	 *
+	 * @param Title $title
+	 */
+	public function clearApprovedFileInfo( Title $title ) {
+		unset( ApprovedRevs::$mApprovedFileInfo[ $title->getDBkey() ] );
 	}
 
 }

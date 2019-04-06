@@ -5,12 +5,12 @@
 [![Latest Stable Version](https://poser.pugx.org/mediawiki/semantic-approved-revs/version.png)](https://packagist.org/packages/mediawiki/semantic-approved-revs)
 [![Packagist download count](https://poser.pugx.org/mediawiki/semantic-approved-revs/d/total.png)](https://packagist.org/packages/mediawiki/semantic-approved-revs)
 
-Semantic Approved Revs (a.k.a. SAR) is an extension to [Semantic MediaWiki][smw] and complements the Approved Revs extension to control the storage of approved revision content. The extension provides:
+Semantic Approved Revs (a.k.a. SAR) is a [Semantic MediaWiki][smw] extension and a complement to the Approved Revs extension to help store data related to an approved revision. The extension provides:
 
-- Control of Semantic MediaWiki related updates to match those of the `Approved Revs` hereby ensuring that only data of the approved revision is used for the storage
+- Control over Semantic MediaWiki related updates to only store data for an approved revision (managed by `Approved Revs`)
 - Provides additional properties (`Approved by`, `Approved date`, `Approved revision`, and `Approval status`) to accompany the approval process
 
-This short [video](https://youtu.be/cl9XmzKQ2Ec) demonstrates the interaction between the Semantic MediaWiki, Semantic Approved Revs, and Approved Revs extension.
+This short [video](https://youtu.be/cl9XmzKQ2Ec) demonstrates the interaction between the Semantic MediaWiki, Semantic Approved Revs, and the Approved Revs extension.
 
 ## Requirements
 

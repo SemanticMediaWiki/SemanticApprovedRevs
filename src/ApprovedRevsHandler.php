@@ -98,7 +98,14 @@ class ApprovedRevsHandler {
 	 */
 	public function doChangeFile( Title $title, &$file ) {
 
-		list( $timestamp, $file_sha1 ) = $this->approvedRevsFacade->getApprovedFileInfo( $title );
+		// It has been observed that when running `runJobs.php` with `--wait`
+		// the `ApprovedRevs` instance holds an outdated cache entry therefore
+		// clear the static before trying to get the info
+		$this->approvedRevsFacade->clearApprovedFileInfo( $title );
+
+		list( $timestamp, $file_sha1 ) = $this->approvedRevsFacade->getApprovedFileInfo(
+			$title
+		);
 
 		if ( $file_sha1 === false ) {
 			return true;
