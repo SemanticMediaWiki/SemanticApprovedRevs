@@ -68,6 +68,30 @@ class Hooks {
 	}
 
 	/**
+	 * @since 1.0
+	 *
+	 * @param array &$vars
+	 */
+	public static function initExtension( &$vars ) {
+
+		/**
+		 * @see https://www.semantic-mediawiki.org/wiki/Hooks#SMW::Config::BeforeCompletion
+		 *
+		 * @since 1.0
+		 *
+		 * @param array &$config
+		 */
+		$vars['wgHooks']['SMW::Config::BeforeCompletion'][] = function( &$config ) {
+
+			if ( isset( $config['smwgImportFileDirs'] ) ) {
+				$config['smwgImportFileDirs'] += [ 'sar' => __DIR__ . '/../data/import' ];
+			}
+
+			return true;
+		};
+	}
+
+	/**
 	 * @since  1.0
 	 */
 	public function register() {
@@ -120,7 +144,7 @@ class Hooks {
 	 * @param Title $title
 	 * @param integer $latestRevID
 	 */
-	public function onSkipUpdate( $title, $latestRevID ) {
+	public function onIsApprovedRevision( $title, $latestRevID ) {
 
 		$approvedRevsHandler =  new ApprovedRevsHandler(
 			new ApprovedRevsFacade()
@@ -257,17 +281,20 @@ class Hooks {
 	}
 
 	/**
-	 * @see https://www.semantic-mediawiki.org/wiki/Hooks#SMW::Config::BeforeCompletion
+	 * @see https://www.semantic-mediawiki.org/wiki/Hooks#...
 	 *
 	 * @since 1.0
 	 *
-	 * @param array &$config
+	 * @param Title $title
+	 * @param File &$file
 	 */
-	public function onConfigBeforeCompletion( &$config ) {
+	public function onChangeFile( $title, &$file ) {
 
-		if ( isset( $config['smwgImportFileDirs'] ) ) {
-			$config['smwgImportFileDirs'] += [ 'sar' => __DIR__ . '/../data/import' ];
-		}
+		$approvedRevsHandler = new ApprovedRevsHandler(
+			new ApprovedRevsFacade()
+		);
+
+		$approvedRevsHandler->doChangeFile( $title, $file );
 
 		return true;
 	}
@@ -295,14 +322,12 @@ class Hooks {
 		$this->handlers = [
 			'ApprovedRevsRevisionApproved' => [ $this, 'onApprovedRevsRevisionApproved' ],
 			'ApprovedRevsFileRevisionApproved' => [ $this, 'onApprovedRevsFileRevisionApproved' ],
-			'SMW::LinksUpdate::ApprovedUpdate' => [ $this, 'onSkipUpdate' ],
-			'SMW::DataUpdater::SkipUpdate' => [ $this, 'onSkipUpdate' ],
-			'SMW::Parser::ChangeRevision' => [ $this, 'onChangeRevision' ],
-			'SMW::Factbox::OverrideRevisionID' => [ $this, 'onOverrideRevisionID' ],
+			'SMW::RevisionGuard::IsApprovedRevision' => [ $this, 'onIsApprovedRevision' ],
+			'SMW::RevisionGuard::ChangeRevision' => [ $this, 'onChangeRevision' ],
+			'SMW::RevisionGuard::ChangeRevisionID' => [ $this, 'onOverrideRevisionID' ],
+			'SMW::RevisionGuard::ChangeFile' => [ $this, 'onChangeFile' ],
 			'SMW::Property::initProperties' => [ $this, 'onInitProperties' ],
 			'SMWStore::updateDataBefore' => [ $this, 'onUpdateDataBefore' ],
-			'SMW::Config::BeforeCompletion' => [ $this, 'onConfigBeforeCompletion' ],
-			'SMW::ElasticStore::FileIndexer::ChangeFileBeforeIngestProcessComplete' => [ $this, 'onChangeFileBeforeIngestProcessComplete' ]
 		];
 	}
 

@@ -62,6 +62,31 @@ class ApprovedRevsFacadeTest extends \PHPUnit_Framework_TestCase {
 			'array',
 			$instance->getApprovedFileInfo( $title )
 		);
+
+	}
+
+	public function testClearApprovedFileInfo() {
+
+		$this->assertTrue(
+			property_exists( new \ApprovedRevs(), 'mApprovedFileInfo' )
+		);
+
+		$title = $this->getMockBuilder( '\Title' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$instance = new ApprovedRevsFacade();
+
+		$this->assertInternalType(
+			'array',
+			$instance->getApprovedFileInfo( $title )
+		);
+
+		$title->expects( $this->once() )
+			->method( 'getDBkey' );
+
+		$instance = new ApprovedRevsFacade();
+		$instance->clearApprovedFileInfo( $title );
 	}
 
 }

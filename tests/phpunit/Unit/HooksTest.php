@@ -34,14 +34,13 @@ class HooksTest extends \PHPUnit_Framework_TestCase {
 		$this->callOnApprovedRevsRevisionApproved( $instance );
 		$this->callOnApprovedRevsFileRevisionApproved( $instance );
 
-		$this->callOnSMWLinksUpdateApprovedUpdate( $instance );
-		$this->callOnSMWDataUpdaterSkipUpdate( $instance );
-		$this->callOnSMWParserChangeRevision( $instance );
-		$this->callOnSMWFactboxOverrideRevisionID( $instance );
+		$this->callOnSMWRevisionGuardIsApprovedRevision( $instance );
+		$this->callOnSMWRevisionGuardChangeRevision( $instance );
+		$this->callOnSMWRevisionGuardChangeRevisionID( $instance );
 		$this->callOnSMWInitProperties( $instance );
 		$this->callOnSMWStoreUpdateDataBefore( $instance );
 		$this->callOnSMWConfigBeforeCompletion( $instance );
-		$this->callOnSMWElasticStoreFileIndexerChangeFileBeforeIngestProcessComplete( $instance );
+		$this->callOnSMWRevisionGuardChangeFile( $instance );
 	}
 
 	public function callOnApprovedRevsRevisionApproved( $instance ) {
@@ -108,29 +107,9 @@ class HooksTest extends \PHPUnit_Framework_TestCase {
 		);
 	}
 
-	public function callOnSMWLinksUpdateApprovedUpdate( $instance ) {
+	public function callOnSMWRevisionGuardIsApprovedRevision( $instance ) {
 
-		$handler = 'SMW::LinksUpdate::ApprovedUpdate';
-
-		$title = $this->getMockBuilder( '\Title' )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$this->assertTrue(
-			$instance->isRegistered( $handler )
-		);
-
-		$rev = 0;
-
-		$this->assertThatHookIsExcutable(
-			$instance->getHandlers( $handler ),
-			[ $title, $rev ]
-		);
-	}
-
-	public function callOnSMWDataUpdaterSkipUpdate( $instance ) {
-
-		$handler = 'SMW::DataUpdater::SkipUpdate';
+		$handler = 'SMW::RevisionGuard::IsApprovedRevision';
 
 		$title = $this->getMockBuilder( '\Title' )
 			->disableOriginalConstructor()
@@ -148,9 +127,9 @@ class HooksTest extends \PHPUnit_Framework_TestCase {
 		);
 	}
 
-	public function callOnSMWParserChangeRevision( $instance ) {
+	public function callOnSMWRevisionGuardChangeRevision( $instance ) {
 
-		$handler = 'SMW::Parser::ChangeRevision';
+		$handler = 'SMW::RevisionGuard::ChangeRevision';
 
 		$title = $this->getMockBuilder( '\Title' )
 			->disableOriginalConstructor()
@@ -168,9 +147,9 @@ class HooksTest extends \PHPUnit_Framework_TestCase {
 		);
 	}
 
-	public function callOnSMWFactboxOverrideRevisionID( $instance ) {
+	public function callOnSMWRevisionGuardChangeRevisionID( $instance ) {
 
-		$handler = 'SMW::Factbox::OverrideRevisionID';
+		$handler = 'SMW::RevisionGuard::ChangeRevisionID';
 
 		$title = $this->getMockBuilder( '\Title' )
 			->disableOriginalConstructor()
@@ -251,9 +230,9 @@ class HooksTest extends \PHPUnit_Framework_TestCase {
 		);
 	}
 
-	public function callOnSMWElasticStoreFileIndexerChangeFileBeforeIngestProcessComplete( $instance ) {
+	public function callOnSMWRevisionGuardChangeFile( $instance ) {
 
-		$handler = 'SMW::ElasticStore::FileIndexer::ChangeFileBeforeIngestProcessComplete';
+		$handler = 'SMW::RevisionGuard::ChangeFile';
 
 		$this->assertTrue(
 			$instance->isRegistered( $handler )

@@ -46,6 +46,10 @@ class SemanticApprovedRevs {
 		define( 'SMW_APPROVED_REVS_VERSION', $version );
 
 		$GLOBALS['wgMessagesDirs']['SemanticApprovedRevs'] = __DIR__ . '/i18n';
+
+		// Register hooks that require to be listed as soon as possible and preferable
+		// before the execution of onExtensionFunction
+		Hooks::initExtension( $GLOBALS );
 	}
 
 	/**
