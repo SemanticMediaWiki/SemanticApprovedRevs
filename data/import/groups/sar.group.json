@@ -2,18 +2,18 @@
     "type": "PROPERTY_GROUP_SCHEMA",
     "manifest_version": 1,
     "description": "Defines a property group for the Approved* properties provided by the `Semantic Approved Revs` extension.",
-    "groups": {
-        "approved_revs": {
+    "groups": [
+        {
             "group_name": "Approval status",
-            "msg_key": "sar-property-group-label-semantc-approved-revs-group",
-            "property_list": [
+            "message_key": "sar-property-group-label-semantc-approved-revs-group",
+            "properties": [
                 "__sar_approved_rev",
                 "__sar_approved_by",
                 "__sar_approved_date",
                 "__sar_approved_status"
             ]
         }
-    },
+    ],
     "tags": [
         "group",
         "property group",
