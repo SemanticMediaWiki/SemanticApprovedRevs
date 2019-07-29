@@ -1,11 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kghbln",
-			"Shirayuki",
-			"Андрей"
+			"MWJames",
+			"Kghbln"
 		]
 	},
-	"sdata-desc": "{{desc|name=Semantic Extra Special Properties|url=https://www.mediawiki.org/wiki/Extension:Semantic_Extra_Special_Properties}}",
-	"sdata-name": "{{notranslate}}\nName of the extension as it should be displayed."
+	"semantic-approvedrevs-desc": "{{desc|name=Semantic Approved Revs|url=hhttps://www.mediawiki.org/wiki/Extension:Semantic_Approved_Revs}}",
+	"semantic-approvedrevs-name": "{{notranslate}}\nSemantic Approved Revs",
+	"semantic-approvedrevs-property-approved-rev": "This is the name of a special property.",
+	"semantic-approvedrevs-property-approved-rev-desc": "This message describes a special proberty.\n\nParameter:\n* $1 holds the name of the special property",
+	"semantic-approvedrevs-property-approved-by": "This is the name of a special property.",
+	"semantic-approvedrevs-property-approved-by-desc": "This message describes a special proberty.\n\nParameter:\n* $1 holds the name of the special property",
+	"semantic-approvedrevs-property-approved-date": "This is the name of a special property.",
+	"semantic-approvedrevs-property-approved-date-desc": "This message describes a special proberty.\n\nParameter:\n* $1 holds the name of the special property",
+	"semantic-approvedrevs-property-approved-status": "This is the name of a special property.",
+	"semantic-approvedrevs-property-approved-status-desc": "This message describes a special proberty.\n\nParameter:\n* $1 holds the name of the special property"
 }
