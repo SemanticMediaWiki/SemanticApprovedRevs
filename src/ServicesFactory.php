@@ -36,7 +36,7 @@ class ServicesFactory {
 	public function getConnection() {
 
 		if ( $this->connection === null ) {
-			$this->connection = wfGetDB( DB_SLAVE );
+			$this->connection = wfGetDB( DB_REPLICA );
 		}
 
 		return $this->connection;
