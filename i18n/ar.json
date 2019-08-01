@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mr. Ibrahem",
+			"ديفيد"
+		]
+	},
+	"semantic-approvedrevs-desc": "امتداد تكميلي لميدياويكي الدلالي و المراجعات المعتمدة للتحكم في تخزين محتوى المراجعة المعتمد.",
+	"semantic-approvedrevs-property-approved-rev": "مراجعة معتمدة",
+	"semantic-approvedrevs-property-approved-rev-desc": "يعرف \"$1\" معرف المراجعة للصفحة التي تمت الموافقة عليها ويتم توفيره بواسطة امتداد [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs المراجعات المعتمدة الدلالية].",
+	"semantic-approvedrevs-property-approved-by": "وافق عليها",
+	"semantic-approvedrevs-property-approved-by-desc": "يعرف \"$1\" المستخدم الذي قام بتعيين حالة الموافقة للصفحة ويتم توفيره بواسطة امتداد [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs المراجعات المعتمدة الدلالية].",
+	"semantic-approvedrevs-property-approved-date": "تاريخ الموافقة",
+	"semantic-approvedrevs-property-approved-date-desc": "يحدد \"$1\" الوقت الذي تم فيه تعيين حالة الموافقة للصفحة ويتم توفيره بواسطة امتداد [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs المراجعات المعتمدة الدلالية].",
+	"semantic-approvedrevs-property-approved-status": "حالة الموافقة",
+	"semantic-approvedrevs-property-approved-status-desc": "يحدد \"$1\" حالة الموافقة على الصفحة ويتم توفيره بواسطة امتداد [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs المراجعات المعتمدة الدلالية]."
+}

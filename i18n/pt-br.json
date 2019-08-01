@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo Addad de Oliveira"
+		]
+	},
+	"semantic-approvedrevs-property-approved-rev": "Revisão aprovada",
+	"semantic-approvedrevs-property-approved-by": "Melhorado por:",
+	"semantic-approvedrevs-property-approved-date": "Data de aprovação",
+	"semantic-approvedrevs-property-approved-status": "Status de aprovação"
+}

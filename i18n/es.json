@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"semantic-approvedrevs-property-approved-rev": "Revisión aprobada",
+	"semantic-approvedrevs-property-approved-date": "Fecha de aprobación",
+	"semantic-approvedrevs-property-approved-status": "Estado de aprobación"
+}

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Brazal.dang"
+		]
+	},
+	"semantic-approvedrevs-property-approved-rev": "Aprubadong mga  rebisyon",
+	"semantic-approvedrevs-property-approved-by": "Inaprubahan ni",
+	"semantic-approvedrevs-property-approved-date": "Petsa kan pag-apruba",
+	"semantic-approvedrevs-property-approved-status": "Estado kan pag-apruba"
+}

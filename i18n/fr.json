@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"semantic-approvedrevs-desc": "Extension complémentaire de MédiaWiki Sémantique et  Révisions Approuvées, pour contrôler le stockage du contenu des révisions approuvées.",
+	"semantic-approvedrevs-property-approved-rev": "Révision approuvée",
+	"semantic-approvedrevs-property-approved-rev-desc": "« $1 » identifie l’ID de la révision d’une page qui a été approuvée, et est fourni par l’extension [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Révisions approuvées sémantiques].",
+	"semantic-approvedrevs-property-approved-by": "Approuvé par",
+	"semantic-approvedrevs-property-approved-by-desc": "« $1 » identifie l’utilisateur qui a mis l’état approuvé sur la page, et est fourni par l’extension [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Révisions approuvées sémantiques].",
+	"semantic-approvedrevs-property-approved-date": "Date d’approbation",
+	"semantic-approvedrevs-property-approved-date-desc": "« $1 » identifie l’heure à laquelle l’état approuvé de la page a été mis, et est fourni par l’extension [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Révisions approuvées sémantiques].",
+	"semantic-approvedrevs-property-approved-status": "État d’approbation",
+	"semantic-approvedrevs-property-approved-status-desc": "« $1 » identifie l’état d’approbation de a page, et est fourni par l’extension [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Révisions approuvées sémantiques]."
+}

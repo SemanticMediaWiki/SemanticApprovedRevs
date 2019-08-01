@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"semantic-approvedrevs-property-approved-rev": "Одобрена преработка",
+	"semantic-approvedrevs-property-approved-by": "Одобрена од",
+	"semantic-approvedrevs-property-approved-date": "Одобрено на",
+	"semantic-approvedrevs-property-approved-status": "Одобрителна состојба"
+}

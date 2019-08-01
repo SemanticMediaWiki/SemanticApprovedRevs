@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"semantic-approvedrevs-property-approved-rev": "Versione approvata",
+	"semantic-approvedrevs-property-approved-by": "Approvato da",
+	"semantic-approvedrevs-property-approved-date": "Data approvazione",
+	"semantic-approvedrevs-property-approved-status": "Stato approvazione"
+}

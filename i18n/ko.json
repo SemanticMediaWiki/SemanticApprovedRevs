@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ykhwong"
+		]
+	},
+	"semantic-approvedrevs-property-approved-rev": "승인된 판",
+	"semantic-approvedrevs-property-approved-by": "승인자",
+	"semantic-approvedrevs-property-approved-date": "승인 날짜",
+	"semantic-approvedrevs-property-approved-status": "승인 상태"
+}

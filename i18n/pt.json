@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu"
+		]
+	},
+	"semantic-approvedrevs-desc": "Extensão que complementa as extensões MediaWiki Semântico e Approved Revs para controlar o armazenamento do conteúdo das revisões aprovadas.",
+	"semantic-approvedrevs-property-approved-rev": "Revisão aprovada",
+	"semantic-approvedrevs-property-approved-rev-desc": "\"$1\" identifica o identificador da revisão aprovada de uma página e é fornecida pela extensão [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Revisões Aprovadas Semânticas].",
+	"semantic-approvedrevs-property-approved-by": "Aprovada por",
+	"semantic-approvedrevs-property-approved-by-desc": "\"$1\" identifica o utilizador que definiu o estado de aprovação da página e é fornecida pela extensão [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Revisões Aprovadas Semânticas].",
+	"semantic-approvedrevs-property-approved-date": "Data de aprovação",
+	"semantic-approvedrevs-property-approved-date-desc": "\"$1\" identifica a hora em que o estado de aprovação da página foi definido e é fornecida pela extensão [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Revisões Aprovadas Semânticas].",
+	"semantic-approvedrevs-property-approved-status": "Estado de aprovação",
+	"semantic-approvedrevs-property-approved-status-desc": "\"$1\" identifica o estado de aprovação de uma página e é fornecida pela extensão [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Revisões Aprovadas Semânticas]."
+}

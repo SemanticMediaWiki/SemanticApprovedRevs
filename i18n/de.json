@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kghbln",
+			"Krabina"
+		]
+	},
+	"semantic-approvedrevs-desc": "Ermöglicht das semantische Verwalten von Informationen zum Veröffentlichungs- und Bestätigungsstatus von Seiten",
+	"semantic-approvedrevs-property-approved-rev": "Bestätigte Version",
+	"semantic-approvedrevs-property-approved-rev-desc": "„$1“ speichert die Kennung der Version einer Seite, die bestätigt wurde. Das Spezialattribut wird von der Erweiterung [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] zur Verfügung gestellt.",
+	"semantic-approvedrevs-property-approved-by": "Bestätigt von",
+	"semantic-approvedrevs-property-approved-by-desc": "„$1“ speichert den Benutzer, der den Bestätigungsstatus der Seite festgelegt hat. Das Spezialattribut wird von der Erweiterung [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] zur Verfügung gestellt.",
+	"semantic-approvedrevs-property-approved-date": "Bestätigungsdatum",
+	"semantic-approvedrevs-property-approved-date-desc": "„$1“ speichert den Zeitpunkt an dem der Bestätigungsstatus der Seite festgelegt wurde. Das Spezialattribut wird von der Erweiterung [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] zur Verfügung gestellt.",
+	"semantic-approvedrevs-property-approved-status": "Bestätigungsstatus",
+	"semantic-approvedrevs-property-approved-status-desc": "„$1“ speichert den Bestätigungsstatus einer Seite. Das Spezialattribut wird von der Erweiterung [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] zur Verfügung gestellt."
+}

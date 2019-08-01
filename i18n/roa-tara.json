@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"semantic-approvedrevs-desc": "Estenzione comblemendare de Semantic MediaWiki e Approved Revs pe condrollà 'a memorizzazzione d'u condenute d'a revisione approvate.",
+	"semantic-approvedrevs-property-approved-rev": "Revisione approvate",
+	"semantic-approvedrevs-property-approved-rev-desc": "\"$1\" idendifeche l'ID d'a revisione de 'na pàgene ca ha state approvate e jè date da l'estenzione [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-by": "Approvate da",
+	"semantic-approvedrevs-property-approved-by-desc": "\"$1\" idendifeche l'utende ca ave 'mbostate 'u state de approvazzione d'a pàgene ca ha state approvate e jè date da l'estenzione [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-date": "Date de approvazzione",
+	"semantic-approvedrevs-property-approved-date-desc": "\"$1\" idendifeche l'orarie d'u state de approvazzione d'a pàgene ca ha state approvate e jè date da l'estenzione [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-status": "State de approvazzione",
+	"semantic-approvedrevs-property-approved-status-desc": "\"$1\" idendifeche 'u state de approvazzione d'a pàgene ca ha state approvate e jè date da l'estenzione [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs]."
+}
