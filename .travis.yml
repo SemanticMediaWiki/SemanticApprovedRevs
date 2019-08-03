@@ -21,7 +21,7 @@ matrix:
       php: 7.1
   allow_failures:
     # Due to APPROVED_REVS failing on MW master
-    - env: DB=mysql; MW=master;
+    - env: DB=mysql; MW=master; PHPUNIT=6.5.*; APPROVED_REVS=1.0
 
 install:
   - composer self-update
