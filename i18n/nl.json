@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Romaine"
+		]
+	},
+	"semantic-approvedrevs-property-approved-rev": "Goedgekeurde versie",
+	"semantic-approvedrevs-property-approved-by": "Goedgekeurd door",
+	"semantic-approvedrevs-property-approved-date": "Datum goedkeuring"
+}
