@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"semantic-approvedrevs-property-approved-rev": "Затверджена версія",
+	"semantic-approvedrevs-property-approved-by": "Затвердив",
+	"semantic-approvedrevs-property-approved-date": "Дата затвердження",
+	"semantic-approvedrevs-property-approved-status": "Статус затвердження"
+}
