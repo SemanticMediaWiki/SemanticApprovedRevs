@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"semantic-approvedrevs-property-approved-by": "Patvirtino",
+	"semantic-approvedrevs-property-approved-date": "Patvirtinimo data",
+	"semantic-approvedrevs-property-approved-status": "Patvirtinimo būsena"
+}

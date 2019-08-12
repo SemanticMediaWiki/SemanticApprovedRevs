@@ -5,7 +5,11 @@
 		]
 	},
 	"semantic-approvedrevs-property-approved-rev": "Одобрена преработка",
+	"semantic-approvedrevs-property-approved-rev-desc": "„$1“ ја означува назнаката на преработката за страница која е одобрена и доставена од додатокот [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
 	"semantic-approvedrevs-property-approved-by": "Одобрена од",
+	"semantic-approvedrevs-property-approved-by-desc": "„$1“ го утврдува корисникот кој ја задал одобрителната состојба на страницата и е овозможено од додатокот [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
 	"semantic-approvedrevs-property-approved-date": "Одобрено на",
-	"semantic-approvedrevs-property-approved-status": "Одобрителна состојба"
+	"semantic-approvedrevs-property-approved-date-desc": "„$1“ го утврдува времето кога е поставена состојбата на одобрување на страницата и е овозможено од додатокот [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-status": "Одобрителна состојба",
+	"semantic-approvedrevs-property-approved-status-desc": "„$1“ ја утврдува одобрителната состојба на страница и е овозможено од додатокот [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs]."
 }
