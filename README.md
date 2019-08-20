@@ -7,10 +7,11 @@
 
 Semantic Approved Revs (a.k.a. SAR) is a [Semantic MediaWiki][smw] extension and a complement to the Approved Revs extension to help store data related to an approved revision. The extension provides:
 
-- Control over Semantic MediaWiki related updates to only store data for an approved revision (managed by `Approved Revs`)
-- Provides additional properties (`Approved by`, `Approved date`, `Approved revision`, and `Approval status`) to accompany the approval process
+- Control over Semantic MediaWiki related updates to only store data for an approved revision (managed by extension Approved Revs)
+- Additional properties ("Approved by", "Approved date", "Approved revision" and "Approval status") to accompany the approval process
 
 This short [video](https://youtu.be/cl9XmzKQ2Ec) demonstrates the interaction between the Semantic MediaWiki, Semantic Approved Revs, and the Approved Revs extension.
+
 
 ## Requirements
 
@@ -19,11 +20,20 @@ This short [video](https://youtu.be/cl9XmzKQ2Ec) demonstrates the interaction be
 - Semantic MediaWiki 3.1 or later
 - ApprovedRevs extension 0.8 or later
 
+
 ## Installation
 
-The recommended way to install Semantic Approved Revs is by using [Composer][composer].
+The recommended way to install  Semantic Approved Revs is using [Composer](https://getcomposer.org) with
+[MediaWiki's built-in support for Composer](https://www.mediawiki.org/wiki/Composer).
 
-1. Either execute `composer require mediawiki/semantic-approved-revs:~1.0` from your MediaWiki installation directory or add an entry to MediaWiki's "composer.local.json" file with:
+Note that the required extensions Semantic MediaWiki and Scribunto must be installed first according to
+the installation instructions provided.
+
+### Step 1
+    
+Change to the base directory of your MediaWiki installation. If you do not have a "composer.local.json" file yet,
+create one and add the following content to it:
+
 ```json
 {
 	"require": {
@@ -31,15 +41,33 @@ The recommended way to install Semantic Approved Revs is by using [Composer][com
 	}
 }
 ```
-2. Afterwards run `composer update --no-dev` and edit your LocalSettings.php and add the line
-```php
-   wfLoadExtension( 'SemanticApprovedRevs' );
-```
-3. Navigate to _Special:Version_ on your wiki and verify that the extension   has been successfully installed.
+
+If you already have a "composer.local.json" file add the following line to the end of the "require"
+section in your file:
+
+    "mediawiki/semantic-approved-revs": "~1.0"
+
+Remember to add a comma to the end of the preceding line in this section.
+
+### Step 2
+
+Run the following command in your shell:
+
+    php composer.phar update --no-dev
+
+Note if you have Git installed on your system add the `--prefer-source` flag to the above command.
+
+### Step 3
+
+Add the following line to the end of your "LocalSettings.php" file:
+
+    wfLoadExtension( 'SemanticApprovedRevs' );
+
 
 ## Usage
 
 Not additional customizing is necessary.
+
 
 ## Contribution and support
 
