@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"semantic-approvedrevs-desc": "對於 Semantic MediaWiki 和批准修訂的補充擴充功能，來控制已批准修訂內容的存儲。",
+	"semantic-approvedrevs-property-approved-rev": "已批准修訂",
+	"semantic-approvedrevs-property-approved-rev-desc": "「$1」為確認已批准頁面的修訂 ID，並由 [ttps://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] 擴充功能提供。",
+	"semantic-approvedrevs-property-approved-by": "批准由",
+	"semantic-approvedrevs-property-approved-by-desc": "「$1」為確認設定頁面批准狀態的使用者，並由 [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] 擴充功能提供。",
+	"semantic-approvedrevs-property-approved-date": "批准日期",
+	"semantic-approvedrevs-property-approved-date-desc": "「$1」為確認頁面批准狀態的設定時間，並由 [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] 擴充功能提供。",
+	"semantic-approvedrevs-property-approved-status": "批准狀態",
+	"semantic-approvedrevs-property-approved-status-desc": "「$1」為確認頁面的批准狀態，並由 [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] 擴充功能提供。"
+}
