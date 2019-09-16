@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250"
+			"Vlad5250",
+			"Bjankuloski06"
 		]
 	},
+	"semantic-approvedrevs-desc": "Додаток за Семантички МедијаВики и Одобрени преработки за складирање на одобрени преработени содржини.",
 	"semantic-approvedrevs-property-approved-rev": "Одобрена преработка",
 	"semantic-approvedrevs-property-approved-rev-desc": "„$1“ ја означува назнаката на преработката за страница која е одобрена и доставена од додатокот [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
 	"semantic-approvedrevs-property-approved-by": "Одобрена од",
