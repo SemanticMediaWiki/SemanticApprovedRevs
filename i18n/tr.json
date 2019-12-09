@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"BaRaN6161 TURK"
+		]
+	},
+	"semantic-approvedrevs-desc": "Onaylanan revizyon içeriğinin depolanmasını kontrol etmek için Semantic MediaWiki ve Onaylı Revizyon tamamlayıcı genişletme.",
+	"semantic-approvedrevs-property-approved-rev": "Onaylanan düzenleme",
+	"semantic-approvedrevs-property-approved-rev-desc": "\"$1\", [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantik Onaylı Düzenleme] uzantısı tarafından onaylanmış ve sağlanan bir sayfanın revizyon kimliğini tanımlar.",
+	"semantic-approvedrevs-property-approved-by": "Onaylayan:",
+	"semantic-approvedrevs-property-approved-by-desc": "\"$1\", sayfanın onay durumunu belirleyen ve [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantik Onaylı Düzenleme] uzantısı tarafından sağlanan kullanıcıyı tanımlar.",
+	"semantic-approvedrevs-property-approved-date": "Onay tarihi",
+	"semantic-approvedrevs-property-approved-date-desc": "\"$1\", sayfanın onay durumunun ne zaman ayarlandığını ve [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantik Onaylı Düzenleme] uzantısı tarafından verildiği zamanı tanımlar.",
+	"semantic-approvedrevs-property-approved-status": "Onay durumu",
+	"semantic-approvedrevs-property-approved-status-desc": "\"$1\", bir sayfanın onay durumunu tanımlar ve [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantik Onaylı Düzenleme] uzantısı tarafından sağlanır."
+}
