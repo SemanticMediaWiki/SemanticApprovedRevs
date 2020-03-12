@@ -1,11 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250"
+			"Vlad5250",
+			"Piramidion"
 		]
 	},
+	"semantic-approvedrevs-desc": "Допоміжне розширення для Семантичної MediaWiki та затверджених версій (Approved Revs) для контролю за зберіганням контенту затверджених версій.",
 	"semantic-approvedrevs-property-approved-rev": "Затверджена версія",
+	"semantic-approvedrevs-property-approved-rev-desc": "«$1» визначає ідентифікатор версії сторінки, яку було затверджено. Забезпечується розширенням [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
 	"semantic-approvedrevs-property-approved-by": "Затвердив",
+	"semantic-approvedrevs-property-approved-by-desc": "«$1» визначає користувача, який встановив статус затвердження сторінки. Забезпечується розширенням [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
 	"semantic-approvedrevs-property-approved-date": "Дата затвердження",
-	"semantic-approvedrevs-property-approved-status": "Статус затвердження"
+	"semantic-approvedrevs-property-approved-date-desc": "«$1» визначає час, коли було встановлено статус затвердження сторінки. Забезпечується розширенням [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-status": "Статус затвердження",
+	"semantic-approvedrevs-property-approved-status-desc": "«$1» визначає статус затвердження сторінки. Забезпечується розширенням [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs]."
 }
