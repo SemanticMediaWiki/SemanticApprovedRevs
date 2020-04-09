@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250",
-			"Piramidion"
+			"Piramidion",
+			"Vlad5250"
 		]
 	},
 	"semantic-approvedrevs-desc": "Допоміжне розширення для Семантичної MediaWiki та затверджених версій (Approved Revs) для контролю за зберіганням контенту затверджених версій.",
