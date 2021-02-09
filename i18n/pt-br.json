@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Eduardoaddad"
 		]
 	},
 	"semantic-approvedrevs-desc": "Extensão que complementa as extensões MediaWiki Semântico e Approved Revs para controlar o armazenamento do conteúdo das revisões aprovadas.",
