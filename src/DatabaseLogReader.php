@@ -4,10 +4,10 @@ namespace SMW\ApprovedRevs;
 
 use ArrayIterator;
 use DatabaseLogEntry;
-use DatabaseBase;
 use MWTimestamp;
 use Title;
 use User;
+use Wikimedia\Rdbms\IDatabase;
 
 class DatabaseLogReader {
 
@@ -48,7 +48,7 @@ class DatabaseLogReader {
 	 * @param Title|null $title
 	 * @param string $type of log (default: approval)
 	 */
-	public function __construct( DatabaseBase $dbr, Title $title = null , $type = 'approval' ) {
+	public function __construct( IDatabase $dbr, Title $title = null , $type = 'approval' ) {
 		$this->dbr = $dbr;
 		$this->dbKey = $title instanceof Title ? $title->getDBkey() : null;
 		$this->type = $type;
