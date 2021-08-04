@@ -18,24 +18,12 @@
 			"i18n"
 		]
 	},
-	"callback": "SemanticApprovedRevs::initExtension",
+	"callback": "SMW\\ApprovedRevs\\Hooks::initExtension",
 	"ExtensionFunctions": [
-		"SemanticApprovedRevs::onExtensionFunction"
+		"SMW\\ApprovedRevs\\Hooks::onExtensionFunction"
 	],
-	"AutoloadClasses": {
-		"SemanticApprovedRevs": "SemanticApprovedRevs.php",
-		"SMW\\ApprovedRevs\\Hooks": "src/Hooks.php",
-		"SMW\\ApprovedRevs\\ApprovedRevsHandler": "src/ApprovedRevsHandler.php",
-		"SMW\\ApprovedRevs\\ApprovedRevsFacade": "src/ApprovedRevsFacade.php",
-		"SMW\\ApprovedRevs\\PropertyRegistry": "src/PropertyRegistry.php",
-		"SMW\\ApprovedRevs\\PropertyAnnotator": "src/PropertyAnnotator.php",
-		"SMW\\ApprovedRevs\\ServicesFactory": "src/ServicesFactory.php",
-		"SMW\\ApprovedRevs\\DatabaseLogReader": "src/DatabaseLogReader.php",
-		"SMW\\ApprovedRevs\\PropertyAnnotators\\ApprovedStatusPropertyAnnotator": "src/PropertyAnnotators/ApprovedStatusPropertyAnnotator.php",
-		"SMW\\ApprovedRevs\\PropertyAnnotators\\ApprovedByPropertyAnnotator": "src/PropertyAnnotators/ApprovedByPropertyAnnotator.php",
-		"SMW\\ApprovedRevs\\PropertyAnnotators\\ApprovedDatePropertyAnnotator": "src/PropertyAnnotators/ApprovedDatePropertyAnnotator.php",
-		"SMW\\ApprovedRevs\\PropertyAnnotators\\ApprovedRevPropertyAnnotator": "src/PropertyAnnotators/ApprovedRevPropertyAnnotator.php"
-},
-	"load_composer_autoloader":true,
-	"manifest_version": 1
+	"AutoloadNamespaces": {
+		"SMW\\ApprovedRevs\\": "src/"
+	},
+	"manifest_version": 2
 }

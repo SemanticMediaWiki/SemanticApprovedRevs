@@ -2,11 +2,12 @@
 
 namespace SMW\ApprovedRevs;
 
-use Title;
-use Revision;
-use RepoGroup;
-use OldLocalFile;
 use File;
+use MediaWiki\MediaWikiServices;
+use OldLocalFile;
+use RepoGroup;
+use MediaWiki\Revision\RevisionStoreRecord;
+use Title;
 
 /**
  * @license GNU GPL v2+
@@ -62,16 +63,16 @@ class ApprovedRevsHandler {
 	 * @since  1.0
 	 *
 	 * @param Title $title
-	 * @param Revision|null &$revision
+	 * @param ?RevisionStoreRecord &$revision
 	 */
-	public function doChangeRevision( Title $title, &$revision ) {
+	public function doChangeRevision( Title $title, ?RevisionStoreRecord &$revision ) {
 
 		// Forcibly change the revision to match what ApprovedRevs sees as
 		// approved
 		if ( ( $approvedRevID = $this->approvedRevsFacade->getApprovedRevID( $title ) ) !== null ) {
-			$approvedRev = Revision::newFromId( $approvedRevID );
-
-			if ( $approvedRev instanceof Revision ) {
+			$approvedRev = MediaWikiServices::getInstance()
+					   ->getRevisionLookup()->getRevisionById( $approvedRevID );
+			if ( $approvedRev instanceof RevisionStoreRecord ) {
 				$revision = $approvedRev;
 			}
 		}

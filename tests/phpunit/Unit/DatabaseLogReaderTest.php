@@ -19,7 +19,7 @@ class DatabaseLogReaderTest extends \PHPUnit_Framework_TestCase {
 	private $servicesFactory;
 	private $connection;
 
-	protected function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$this->servicesFactory = new ServicesFactory();

@@ -22,13 +22,11 @@ class I18nJsonFileIntegrityTest extends \PHPUnit_Framework_TestCase {
 
 		$jsonFileReader = UtilityFactory::getInstance()->newJsonFileReader( $file );
 
-		$this->assertInternalType(
-			'integer',
+		$this->assertIsInt(
 			$jsonFileReader->getModificationTime()
 		);
 
-		$this->assertInternalType(
-			'array',
+		$this->assertIsArray(
 			$jsonFileReader->read()
 		);
 	}
@@ -38,13 +36,17 @@ class I18nJsonFileIntegrityTest extends \PHPUnit_Framework_TestCase {
 		$provider = [];
 		$location = $GLOBALS['wgMessagesDirs']['SemanticApprovedRevs'];
 
-		$bulkFileProvider = UtilityFactory::getInstance()->newBulkFileProvider( $location );
-		$bulkFileProvider->searchByFileExtension( 'json' );
-
-		foreach ( $bulkFileProvider->getFiles() as $file ) {
-			$provider[] = [ $file ];
+		if ( !is_array( $location ) ) {
+			$location = [ $location ];
 		}
+		foreach ( $location as $oneDir ) {
+			$bulkFileProvider = UtilityFactory::getInstance()->newBulkFileProvider( $oneDir );
+			$bulkFileProvider->searchByFileExtension( 'json' );
 
+			foreach ( $bulkFileProvider->getFiles() as $file ) {
+				$provider[] = [ $file ];
+			}
+		}
 		return $provider;
 	}
 

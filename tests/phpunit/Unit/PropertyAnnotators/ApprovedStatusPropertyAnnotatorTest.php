@@ -17,7 +17,7 @@ class ApprovedStatusPropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 
 	private $databaseLogReader;
 
-	protected function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$this->databaseLogReader = $this->getMockBuilder( '\SMW\ApprovedRevs\DatabaseLogReader' )

@@ -56,7 +56,7 @@ class ApprovedRevsFacade {
 	 * @param Title $title
 	 */
 	public function clearApprovedFileInfo( Title $title ) {
-		unset( ApprovedRevs::$mApprovedFileInfo[ $title->getDBkey() ] );
+		ApprovedRevs::clearApprovedFileInfo( $title );
 	}
 
 }

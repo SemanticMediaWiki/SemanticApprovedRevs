@@ -17,7 +17,7 @@ class PropertyRegistryTest extends \PHPUnit_Framework_TestCase {
 
 	private $propertyRegistry;
 
-	protected function setUp( ) {
+	protected function setUp(): void {
 
 		$this->propertyRegistry = $this->getMockBuilder( '\SMW\PropertyRegistry' )
 			->disableOriginalConstructor()

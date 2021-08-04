@@ -2,8 +2,9 @@
 
 namespace SMW\ApprovedRevs;
 
-use SMW\ApplicationFactory;
+use MediaWiki\MediaWikiServices;
 use Onoi\Cache\Cache;
+use SMW\ApplicationFactory;
 
 /**
  * @license GNU GPL v2+
@@ -73,6 +74,14 @@ class Hooks {
 	 * @param array &$vars
 	 */
 	public static function initExtension( &$vars ) {
+		$version = 'UNKNOWN' ;
+
+		// See https://phabricator.wikimedia.org/T151136
+		if ( isset( $credits['version'] ) ) {
+			$version = $credits['version'];
+		}
+
+		define( 'SMW_APPROVED_REVS_VERSION', $version );
 
 		/**
 		 * @see https://www.semantic-mediawiki.org/wiki/Hooks#SMW::Config::BeforeCompletion
@@ -81,7 +90,7 @@ class Hooks {
 		 *
 		 * @param array &$config
 		 */
-		$vars['wgHooks']['SMW::Config::BeforeCompletion'][] = function( &$config ) {
+		$GLOBALS['wgHooks']['SMW::Config::BeforeCompletion'][] = function( &$config ) {
 
 			if ( isset( $config['smwgImportFileDirs'] ) ) {
 				$config['smwgImportFileDirs'] += [ 'sar' => __DIR__ . '/../data/import' ];
@@ -105,8 +114,7 @@ class Hooks {
 	 */
 	public function deregister() {
 		foreach ( array_keys( $this->handlers ) as $name ) {
-
-			\Hooks::clear( $name );
+			MediaWikiServices::getInstance()->getHookContainer()->clear( $name );
 
 			// Remove registered `wgHooks` hooks that are not cleared by the
 			// previous call
@@ -310,6 +318,48 @@ class Hooks {
 			'SMW::Property::initProperties' => [ $this, 'onInitProperties' ],
 			'SMWStore::updateDataBefore' => [ $this, 'onUpdateDataBefore' ],
 		];
+	}
+
+	/**
+	 * @since 1.0
+	 */
+	public static function onExtensionFunction() {
+
+		if ( !defined( 'SMW_VERSION' ) ) {
+			if ( PHP_SAPI === 'cli' || PHP_SAPI === 'phpdbg' ) {
+				die( "\nThe 'Semantic Approved Revs' extension requires the 'Semantic MediaWiki' extension to be installed and enabled.\n" );
+			} else {
+				die(
+					'<b>Error:</b> The <a href="https://github.com/SemanticMediaWiki/SemanticApprovedRevs/">Semantic Approved Revs</a> extension' .
+					' requires the <a href="https://www.semantic-mediawiki.org/wiki/Semantic_MediaWiki">Semantic MediaWiki</a> extension to be installed and enabled.<br />'
+				);
+			}
+		}
+
+		// We expected to check for APPROVED_REVS_VERSION but the extension and
+		// its `extension.json` doesn't set the constant so we have to rely on
+		// active class loading (which is an anti-pattern) to check whether the
+		// extension is enabled or not!
+		if ( !class_exists( 'ApprovedRevs' ) ) {
+			if ( PHP_SAPI === 'cli' || PHP_SAPI === 'phpdbg' ) {
+				die( "\nThe 'Semantic Approved Revs' extension requires the 'Approved Revs' extension to be installed and enabled.\n" );
+			} else {
+				die(
+					'<b>Error:</b> The <a href="https://github.com/SemanticMediaWiki/SemanticApprovedRevs/">Semantic Approved Revs</a> extension' .
+					' requires the <a href="https://www.mediawiki.org/wiki/Extension:Approved_Revs">Approved Revs</a> extension to be installed and enabled.<br />'
+				);
+			}
+		}
+
+		if ( defined( 'SESP_VERSION' ) && version_compare( SESP_VERSION, '2.1.0', '<' ) && ( $prop = Hooks::hasPropertyCollisions( $GLOBALS ) ) !== false ) {
+			die(
+				"\nPlease remove the `$prop` property (defined by the SemanticExtraSpecialProperties extension) and switch to the new SESP version 2.1" .
+				" to avoid collision with the 'Semantic Approved Revs' list of properties.\n"
+			);
+		}
+
+		$hooks = new Hooks();
+		$hooks->register();
 	}
 
 }

@@ -17,7 +17,7 @@ class ApprovedRevsHandlerTest extends \PHPUnit_Framework_TestCase {
 
 	private $approvedRevsFacade;
 
-	protected function setUp() {
+	protected function setUp(): void {
 
 		$this->approvedRevsFacade = $this->getMockBuilder( '\SMW\ApprovedRevs\ApprovedRevsFacade' )
 			->disableOriginalConstructor()

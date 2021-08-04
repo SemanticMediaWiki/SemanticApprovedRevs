@@ -18,7 +18,7 @@ class ApprovedRevPropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 
 	private $approvedRevsFacade;
 
-	protected function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$this->approvedRevsFacade = $this->getMockBuilder( '\SMW\ApprovedRevs\ApprovedRevsFacade' )

@@ -44,8 +44,7 @@ class ApprovedRevsFacadeTest extends \PHPUnit_Framework_TestCase {
 
 		$instance = new ApprovedRevsFacade();
 
-		$this->assertInternalType(
-			'boolean',
+		$this->assertIsBool(
 			$instance->hasApprovedRevision( $title )
 		);
 	}
@@ -58,8 +57,7 @@ class ApprovedRevsFacadeTest extends \PHPUnit_Framework_TestCase {
 
 		$instance = new ApprovedRevsFacade();
 
-		$this->assertInternalType(
-			'array',
+		$this->assertIsArray(
 			$instance->getApprovedFileInfo( $title )
 		);
 
@@ -77,8 +75,7 @@ class ApprovedRevsFacadeTest extends \PHPUnit_Framework_TestCase {
 
 		$instance = new ApprovedRevsFacade();
 
-		$this->assertInternalType(
-			'array',
+		$this->assertIsArray(
 			$instance->getApprovedFileInfo( $title )
 		);
 
