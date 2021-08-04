@@ -258,8 +258,7 @@ class HooksTest extends \PHPUnit_Framework_TestCase {
 
 		foreach ( $hooks as $hook ) {
 
-			$this->assertInternalType(
-				'boolean',
+			$this->assertIsBool(
 				call_user_func_array( $hook, $arguments )
 			);
 		}

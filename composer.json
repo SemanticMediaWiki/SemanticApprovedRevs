@@ -27,7 +27,7 @@
 	"require": {
 		"php": ">=5.6.0",
 		"composer/installers": "1.*,>=1.0.1",
-		"mediawiki/semantic-media-wiki": "~3.0"
+		"mediawiki/semantic-media-wiki": "dev-jsonscript-rename"
 	},
 	"extra": {
 		"branch-alias": {
@@ -35,9 +35,6 @@
 		}
 	},
 	"autoload": {
-		"files" : [
-			"SemanticApprovedRevs.php"
-		],
 		"psr-4": {
 			"SMW\\ApprovedRevs\\": "src/"
 		}

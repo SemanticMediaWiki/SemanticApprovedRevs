@@ -18,7 +18,7 @@ class PropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 	private $servicesFactory;
 	private $logger;
 
-	protected function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$approvedByPropertyAnnotator = $this->getMockBuilder( '\SMW\ApprovedRevs\PropertyAnnotators\ApprovedByPropertyAnnotator' )
