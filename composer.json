@@ -27,7 +27,7 @@
 	"require": {
 		"php": ">=5.6.0",
 		"composer/installers": "1.*,>=1.0.1",
-		"mediawiki/semantic-media-wiki": "dev-jsonscript-rename"
+		"mediawiki/semantic-media-wiki": "dev-master"
 	},
 	"extra": {
 		"branch-alias": {

@@ -40,9 +40,7 @@ jobs:
           echo '{"require":{"${{env.composerID}}":"dev-github-action-docker"},'
           '"repositories": ['
           '{"type":"vcs",'
-          '"url":"https://github.com/${{github.repository}}.git"},'
-          '{"type":"vcs",'
-          '"url":"https://github.com/hexmode/SemanticMediaWiki.git"}]}'
+          '"url":"https://github.com/${{github.repository}}.git"}]}'
           > ${{env.MW_INSTALL_PATH}}/composer.local.json                      &&
           php composer.phar config minimum-stability dev
           --working-dir ${{env.MW_INSTALL_PATH}}                              &&
