@@ -29,7 +29,7 @@ jobs:
       - name: Extract ApprovedRevs
         uses: actions/checkout@v2
         with:
-          repository: hexmode/mediawiki-extensions-ApprovedRevs
+          repository: wikimedia/mediawiki-extensions-ApprovedRevs
           path: ApprovedRevs
       - name: Move ApprovedRevs into place
         run: >-
