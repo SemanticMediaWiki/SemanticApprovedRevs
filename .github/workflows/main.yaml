@@ -37,7 +37,8 @@ jobs:
           mv ApprovedRevs ${{env.extDir}}
       - name: Update MediaWiki with composer deps && install extension
         run: >-
-          echo '{"require":{"${{env.composerID}}":"dev-github-action-docker"},'
+          branch=`echo ${{ github.ref }} | sed 's,refs/heads/,,'`             &&
+          echo '{"require":{"${{env.composerID}}":"dev-'${branch}'"},'
           '"repositories": ['
           '{"type":"vcs",'
           '"url":"https://github.com/${{github.repository}}.git"}]}'
