@@ -3,6 +3,7 @@
 namespace SMW\ApprovedRevs;
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionStoreRecord;
 use Onoi\Cache\Cache;
 use SMW\ApplicationFactory;
 
@@ -165,15 +166,19 @@ class Hooks {
 	 * @since 1.0
 	 *
 	 * @param Title $title
-	 * @param Revision|null &$revision
+	 * @param ?Revision $revision
 	 */
-	public function onChangeRevision( $title, &$revision ) {
+	public function onChangeRevision( $title, ?Revision $revision ) {
 
 		$approvedRevsHandler =  new ApprovedRevsHandler(
 			new ApprovedRevsFacade()
 		);
 
-		$approvedRevsHandler->doChangeRevision( $title, $revision );
+		$record = null;
+		if ( $revision !== null ) {
+			$record = $revision->getRevisionRecord();
+		}
+		$approvedRevsHandler->doChangeRevision( $title, $record );
 
 		return true;
 	}
