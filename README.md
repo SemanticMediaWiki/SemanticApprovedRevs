@@ -1,5 +1,5 @@
 # Semantic Approved Revs
-![CI](https://github.com/SemanticMediaWiki/SemanticApprovedRevs/actions/workflows/main.yml/badge.svg)
+[![CI](https://github.com/SemanticMediaWiki/SemanticApprovedRevs/actions/workflows/main.yaml/badge.svg)](https://github.com/SemanticMediaWiki/SemanticApprovedRevs/actions/workflows/main.yaml)
 [![codecov](https://codecov.io/gh/SemanticMediaWiki/SemanticApprovedRevs/branch/master/graph/badge.svg?token=77DNOQPTNF)](https://codecov.io/gh/SemanticMediaWiki/SemanticApprovedRevs)
 [![Latest Stable Version](https://poser.pugx.org/mediawiki/semantic-approved-revs/version.png)](https://packagist.org/packages/mediawiki/semantic-approved-revs)
 [![Packagist download count](https://poser.pugx.org/mediawiki/semantic-approved-revs/d/total.png)](https://packagist.org/packages/mediawiki/semantic-approved-revs)
