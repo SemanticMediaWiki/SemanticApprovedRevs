@@ -1,7 +1,6 @@
 # Semantic Approved Revs
-[![Build Status](https://travis-ci.org/SemanticMediaWiki/SemanticApprovedRevs.svg?branch=master)](https://travis-ci.org/SemanticMediaWiki/SemanticApprovedRevs)
-[![Code Coverage](https://scrutinizer-ci.com/g/SemanticMediaWiki/SemanticApprovedRevs/badges/coverage.png?s=c5563fd91abeb49b37a6ef999198530b6796dd3c)](https://scrutinizer-ci.com/g/SemanticMediaWiki/SemanticApprovedRevs/)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/SemanticMediaWiki/SemanticApprovedRevs/badges/quality-score.png?s=9cc8ce493f63f5c2c22db71b2061b4b8c21f43ba)](https://scrutinizer-ci.com/g/SemanticMediaWiki/SemanticApprovedRevs/)
+![CI](https://github.com/SemanticMediaWiki/SemanticApprovedRevs/actions/workflows/main.yml/badge.svg)
+[![codecov](https://codecov.io/gh/SemanticMediaWiki/SemanticApprovedRevs/branch/master/graph/badge.svg?token=77DNOQPTNF)](https://codecov.io/gh/SemanticMediaWiki/SemanticApprovedRevs)
 [![Latest Stable Version](https://poser.pugx.org/mediawiki/semantic-approved-revs/version.png)](https://packagist.org/packages/mediawiki/semantic-approved-revs)
 [![Packagist download count](https://poser.pugx.org/mediawiki/semantic-approved-revs/d/total.png)](https://packagist.org/packages/mediawiki/semantic-approved-revs)
 
@@ -30,7 +29,7 @@ Note that the required extensions Semantic MediaWiki and Scribunto must be insta
 the installation instructions provided.
 
 ### Step 1
-    
+
 Change to the base directory of your MediaWiki installation. If you do not have a "composer.local.json" file yet,
 create one and add the following content to it:
 
