@@ -18,18 +18,18 @@ jobs:
       matrix:
         include:
           - mediawiki_version: 1.35
-            semantic_mediawiki_version: 3.2.3
-            approvedrevs_version: 1.7
+            semantic_mediawiki_version: 4.0.0
+            approvedrevs_version: 1.7.3
             coverage: true
             experimental: false
           - mediawiki_version: 1.36
             semantic_mediawiki_version: dev-master
-            approvedrevs_version: 1.7
+            approvedrevs_version: 1.7.3
             coverage: false
             experimental: true
           - mediawiki_version: 1.37
             semantic_mediawiki_version: dev-master
-            approvedrevs_version: 1.7
+            approvedrevs_version: 1.7.3
             coverage: false
             experimental: true            
 
