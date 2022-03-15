@@ -15,12 +15,12 @@ use ApiTestCase;
 class ApproveRevisionTest extends ApiTestCase {
 
 	public function testApprove() {
-		// NOTE: this test is known not to work when using MySql (SMW problem with temporary tables)
+		// NOTE: this test is known not to work when using MySql
+		// Seems like an SMW problem with temporary tables; the following would help:
+		// \MediaWikiCliOptions::$additionalOptions['use-normal-tables'] = true
 
 		// Re-register SMW hook handlers
-		// TODO: find a way to have the test use the Wiki "as it is".
-		// Experiments trying to undo the changes of MediaWikiIntegrationTestCase->overrideMwServices()
-		// have failed.
+		// TODO: find a way to have the test use the Wiki "as it is" without having to re-register manually
 		\SemanticMediaWiki::onExtensionFunction();
 		\SMW\ApprovedRevs\Hooks::onExtensionFunction();
 
