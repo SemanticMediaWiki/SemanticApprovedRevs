@@ -167,18 +167,14 @@ class Hooks {
 	 * @since 1.0
 	 *
 	 * @param Title $title
-	 * @param ?Revision $revision
+	 * @param ?RevisionStoreRecord $record
 	 */
-	public function onChangeRevision( $title, ?Revision $revision ) {
+	public function onChangeRevision( $title, ?RevisionStoreRecord $record ) {
 
 		$approvedRevsHandler =  new ApprovedRevsHandler(
 			new ApprovedRevsFacade()
 		);
 
-		$record = null;
-		if ( $revision !== null ) {
-			$record = $revision->getRevisionRecord();
-		}
 		$approvedRevsHandler->doChangeRevision( $title, $record );
 
 		return true;
