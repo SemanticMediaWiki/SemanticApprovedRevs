@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"SemanticPioneer"
+		]
+	},
+	"semantic-approvedrevs-desc": "Uzupełniające rozszerzenie Semantic MediaWiki i Approved Revs w celu kontrolowania przechowywania zatwierdzonych treści wersji.",
+	"semantic-approvedrevs-property-approved-rev": "Zatwierdzona wersja",
+	"semantic-approvedrevs-property-approved-rev-desc": "„ $1 ” określa identyfikator wersji strony, która została zatwierdzona i jest dostarczany przez rozszerzenie [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-by": "Zatwierdzono przez",
+	"semantic-approvedrevs-property-approved-by-desc": "„$1” przechowuje użytkownika, który ustawił status strony na zatwierdzoną. Właściwość jest dostarczana przez rozszerzenie [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Extra_Special_Properties Semantic Extra Special Properties].",
+	"semantic-approvedrevs-property-approved-date": "Data zatwierdzenia",
+	"semantic-approvedrevs-property-approved-date-desc": "„$1” przechowuje czas, w którym strona otrzymała status zatwierdzonej. Właściwość jest dostarczana przez rozszerzenie [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Extra_Special_Properties Semantic Extra Special Properties].",
+	"semantic-approvedrevs-property-approved-status": "Status zatwierdzenia",
+	"semantic-approvedrevs-property-approved-status-desc": "„ $1 ” określa stan zatwierdzenia strony i jest udostępniany przez rozszerzenie [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs]."
+}
