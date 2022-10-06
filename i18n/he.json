@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80"
+		]
+	},
+	"semantic-approvedrevs-desc": "הרחבה משלימה ל־Semantic MediaWiki ול־Approved Revs כדי לשלוט באחסון של תוכן גרסה מאושר.",
+	"semantic-approvedrevs-property-approved-rev": "גרסה מאושרת",
+	"semantic-approvedrevs-property-approved-rev-desc": "\"$1\" מציג את מזהה הגרסה של דף שאושר והוא מסופק על־ידי ההרחבה [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-by": "אושר על־ידי",
+	"semantic-approvedrevs-property-approved-by-desc": "\"$1\" מזהה את המשתמש שקבע את מצב האישור של הדף והוא מסופק על־ידי ההרחבה [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-date": "תאריך האישור",
+	"semantic-approvedrevs-property-approved-date-desc": "\"$1\" מזהה את הזמן שבו נקבע מצב האישור של הדף והוא מסופק על־ידי ההרחבה [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-status": "מצב האישור",
+	"semantic-approvedrevs-property-approved-status-desc": "\"$1\" מזהה את מצב האישור של דף והוא מסופק על־ידי ההרחבה [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs]."
+}
