@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"semantic-approvedrevs-desc": "Extension complementari a Semantic MediaWiki e Versiones Approbate pro controlar le immagazinage de contento de versiones approbate.",
+	"semantic-approvedrevs-property-approved-rev": "Version approbate",
+	"semantic-approvedrevs-property-approved-rev-desc": "\"$1\" identifica le ID del version de un pagina que ha essite approbate e es fornite per le extension [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Versiones Semantic Approbate].",
+	"semantic-approvedrevs-property-approved-by": "Approbate per",
+	"semantic-approvedrevs-property-approved-by-desc": "\"$1\" identifica le usator qui ha definite le stato de approbation del pagina e es fornite per le extension [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Versiones Semantic Approbate].",
+	"semantic-approvedrevs-property-approved-date": "Data de approbation",
+	"semantic-approvedrevs-property-approved-date-desc": "\"$1\" identifica le hora al qual le stato de approbation del pagina ha essite definite e es fornite per le extension [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Versiones Semantic Approbate].",
+	"semantic-approvedrevs-property-approved-status": "Stato de approbation",
+	"semantic-approvedrevs-property-approved-status-desc": "\"$1\" identifica le stato de approbation de un pagina e es fornite per le [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Versiones Semantic Approbate]."
+}
