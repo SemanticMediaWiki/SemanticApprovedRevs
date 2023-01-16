@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"semantic-approvedrevs-desc": "Dopolnilna razširitev za Semantični MediaWiki in Odobrene redakcije za nadzor shranjevanja vsebine odobrenih redakcij.",
+	"semantic-approvedrevs-property-approved-rev": "Odobrena redakcija",
+	"semantic-approvedrevs-property-approved-rev-desc": "Lastnost »$1« označuje ID odobrene redakcije strani. Zagotavlja jo razširitev [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-by": "Odobritelj",
+	"semantic-approvedrevs-property-approved-by-desc": "Lastnost »$1« označuje uporabnika, ki je nastavil odobreno stanje strani. Zagotavlja jo razširitev [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-date": "Datum odobritve",
+	"semantic-approvedrevs-property-approved-date-desc": "Lastnost »$1« označuje ;as nastavitve odobrenega stanja strani. Zagotavlja jo razširitev [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-status": "Stanje odobritve",
+	"semantic-approvedrevs-property-approved-status-desc": "Lastnost »$1« označuje uporabnika, ki je nastavil odobreno stanje strani. Zagotavlja jo razširitev [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs]."
+}
