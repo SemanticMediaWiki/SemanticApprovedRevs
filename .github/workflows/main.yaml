@@ -52,7 +52,7 @@ jobs:
           php ${{ env.MW_INST_PATH }}/maintenance/update.php --skip-external-dependencies --quick
 
       - name: Extract ApprovedRevs
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: wikimedia/mediawiki-extensions-ApprovedRevs
           ref: ${{ matrix.approvedrevs_version }}
@@ -66,7 +66,7 @@ jobs:
           php ${{ env.MW_INST_PATH }}/maintenance/update.php --skip-external-dependencies --quick
 
       - name: Checkout SemanticApprovedRevs
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: ${{ env.EXT_NAME }}
 
@@ -102,7 +102,7 @@ jobs:
         if: matrix.coverage == true
 
       - name: Upload code coverage
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ${{ env.MW_INST_PATH }}/docs/coverage.xml
