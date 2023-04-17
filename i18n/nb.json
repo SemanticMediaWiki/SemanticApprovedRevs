@@ -4,9 +4,9 @@
 			"Jon Harald Søby"
 		]
 	},
-	"semantic-approvedrevs-desc": "Komplementær utvidelse for Semantic MediaWiki og Approved Revs for å kontrollere lagringen av godkjent revisjonsinnhold.",
-	"semantic-approvedrevs-property-approved-rev": "Godkjent revisjon",
-	"semantic-approvedrevs-property-approved-rev-desc": "«$1» identifiserer revisjons-ID-en til en side som har blitt godkjent og gis av utvidelsen [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-desc": "Komplementær utvidelse for Semantic MediaWiki og Approved Revs for å kontrollere lagringen av godkjent sideversjonsinnhold.",
+	"semantic-approvedrevs-property-approved-rev": "Godkjent sideversjon",
+	"semantic-approvedrevs-property-approved-rev-desc": "«$1» identifiserer sideversjons-ID-en til en side som har blitt godkjent og gis av utvidelsen [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
 	"semantic-approvedrevs-property-approved-by": "Godkjent av",
 	"semantic-approvedrevs-property-approved-by-desc": "«$1» identifiserer brukeren som satte godkjenningsstatusen til siden og gis av utvidelsen [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
 	"semantic-approvedrevs-property-approved-date": "Godkjent dato",
