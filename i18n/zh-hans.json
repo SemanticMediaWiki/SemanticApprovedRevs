@@ -1,10 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"LittlePaw365",
 			"Viztor"
 		]
 	},
-	"semantic-approvedrevs-property-approved-rev": "批准版本",
-	"semantic-approvedrevs-property-approved-by": "批准：",
-	"semantic-approvedrevs-property-approved-status": "批准状态"
+	"semantic-approvedrevs-desc": "语义MediaWiki和Approved Revs的补充扩展，控制已核准修订内容的存储。",
+	"semantic-approvedrevs-property-approved-rev": "已核准修订",
+	"semantic-approvedrevs-property-approved-rev-desc": "“$1”标识已核准的页面修订ID，由[https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs 语义Approved Revs]扩展提供。",
+	"semantic-approvedrevs-property-approved-by": "核准者",
+	"semantic-approvedrevs-property-approved-by-desc": "“$1”标识设置页面核准状态的用户，由[https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs 语义Approved Revs]扩展提供。",
+	"semantic-approvedrevs-property-approved-date": "核准日期",
+	"semantic-approvedrevs-property-approved-date-desc": "“$1”标识页面核准状态的设置时间，由[https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs 语义Approved Revs]扩展提供。",
+	"semantic-approvedrevs-property-approved-status": "核准状态",
+	"semantic-approvedrevs-property-approved-status-desc": "“$1”标识页面的核准状态，由[https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs 语义Approved Revs]扩展提供。"
 }
