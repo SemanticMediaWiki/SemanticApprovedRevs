@@ -1,10 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"McDutchie",
 			"Romaine"
 		]
 	},
+	"semantic-approvedrevs-desc": "Aanvullende uitbreiding op Semantic MediaWiki en Approved Revs om de opslag van goedgekeurde versie-inhoud te beheren.",
 	"semantic-approvedrevs-property-approved-rev": "Goedgekeurde versie",
+	"semantic-approvedrevs-property-approved-rev-desc": "“$1” identificeert de versie-ID van een pagina die is goedgekeurd en wordt geleverd door de uitbreiding [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
 	"semantic-approvedrevs-property-approved-by": "Goedgekeurd door",
-	"semantic-approvedrevs-property-approved-date": "Datum goedkeuring"
+	"semantic-approvedrevs-property-approved-by-desc": "“$1” identificeert de gebruiker die de goedkeuringsstatus van de pagina heeft ingesteld en wordt geleverd door de uitbreiding [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-date": "Datum goedkeuring",
+	"semantic-approvedrevs-property-approved-date-desc": "“$1” identificeert het tijdstip waarop de goedkeuringsstatus van de pagina werd ingesteld en wordt geleverd door de uitbreiding [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-status": "Goedkeuringsstatus",
+	"semantic-approvedrevs-property-approved-status-desc": "“$1” identificeert de goedkeuringsstatus van een pagina en wordt geleverd door de uitbreiding [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs]."
 }
