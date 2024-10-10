@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elefentiste"
+		]
+	},
+	"semantic-approvedrevs-property-approved-rev": "Revisa aprobada",
+	"semantic-approvedrevs-property-approved-by": "Aprobada par",
+	"semantic-approvedrevs-property-approved-date": "Data de aproba",
+	"semantic-approvedrevs-property-approved-status": "State de aproba"
+}
