@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Къарачайлы"
+		]
+	},
+	"semantic-approvedrevs-desc": "Бегитилген Версия контентни сакъландырыуну контроль этер ючюн Семантика MediaWiki эмда Бегитилген Версияланы (Approved Revs) тамамлаучу кенгертиу.",
+	"semantic-approvedrevs-property-approved-rev": "Бегитилген версия",
+	"semantic-approvedrevs-property-approved-rev-desc": "\"$1\", [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] кенгериу джанындан бегитилген эмда баджарылгъан бетни версия идентификаторуну танытыууду.",
+	"semantic-approvedrevs-property-approved-by": "Бегитген:",
+	"semantic-approvedrevs-property-approved-by-desc": "\"$1\", бетни бегитиу статусун белгилеген эмда [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] кенгериу джанындан баджарылгъан хайырланыучуну танытыр.",
+	"semantic-approvedrevs-property-approved-date": "Бегитиу дата",
+	"semantic-approvedrevs-property-approved-date-desc": "\"$1\", бетни бегитиу статусун не заман белгиленнгенин эмда [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] кенгериу джанындан берилген заманны танытыр.",
+	"semantic-approvedrevs-property-approved-status": "Бегитиу статус",
+	"semantic-approvedrevs-property-approved-status-desc": "\"$1\", бетни бегитиу статусун белгилер эмда [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] кенгериу джанындан баджарылыр."
+}
