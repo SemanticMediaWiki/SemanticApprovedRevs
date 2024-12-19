@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hideki Yoshida",
+			"もなー(偽物)"
+		]
+	},
+	"semantic-approvedrevs-desc": "承認された版のコンテンツの保存を制御するための、Semantic MediaWiki および Approved Revs の補完的な拡張機能です。",
+	"semantic-approvedrevs-property-approved-rev": "承認済みの版",
+	"semantic-approvedrevs-property-approved-by": "承認者:",
+	"semantic-approvedrevs-property-approved-date": "承認日",
+	"semantic-approvedrevs-property-approved-status": "承認状態"
+}
