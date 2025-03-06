@@ -2,17 +2,16 @@
 
 namespace SMW\ApprovedRevs\PropertyAnnotators;
 
-use SMW\DIProperty;
-use SMW\SemanticData;
-use SMWDITime as DITime;;
 use SMW\ApprovedRevs\DatabaseLogReader;
 use SMW\ApprovedRevs\PropertyRegistry;
-use User;
+use SMW\DIProperty;
+use SMW\SemanticData;
+use SMWDITime as DITime;
 
 /**
  * @private
  *
- * @license GNU GPL v2+
+ * @license GPL-2.0-or-later
  */
 class ApprovedDatePropertyAnnotator {
 
@@ -22,7 +21,7 @@ class ApprovedDatePropertyAnnotator {
 	private $databaseLogReader;
 
 	/**
-	 * @var Integer|null
+	 * @var int|null
 	 */
 	private $approvedDate;
 
@@ -36,7 +35,7 @@ class ApprovedDatePropertyAnnotator {
 	/**
 	 * @since 1.0
 	 *
-	 * @param integer $approvedDate
+	 * @param int $approvedDate
 	 */
 	public function setApprovedDate( $approvedDate ) {
 		$this->approvedDate = $approvedDate;
@@ -57,7 +56,6 @@ class ApprovedDatePropertyAnnotator {
 	 * @param SemanticData $semanticData
 	 */
 	public function addAnnotation( SemanticData $semanticData ) {
-
 		if ( $this->approvedDate === null ) {
 			$this->approvedDate = $this->databaseLogReader->getDateOfLogEntry(
 				$semanticData->getSubject()->getTitle(),
@@ -75,7 +73,6 @@ class ApprovedDatePropertyAnnotator {
 	}
 
 	private function newDITime() {
-
 		if ( $this->approvedDate === null || is_bool( $this->approvedDate ) ) {
 			return;
 		}

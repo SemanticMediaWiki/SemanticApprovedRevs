@@ -8,24 +8,22 @@ use SMW\ApprovedRevs\ApprovedRevsHandler;
  * @covers \SMW\ApprovedRevs\ApprovedRevsHandler
  * @group semantic-approved-revs
  *
- * @license GNU GPL v2+
+ * @license GPL-2.0-or-later
  * @since 1.0
  *
  * @author mwjames
  */
-class ApprovedRevsHandlerTest extends \PHPUnit_Framework_TestCase {
+class ApprovedRevsHandlerTest extends \PHPUnit\Framework\TestCase {
 
 	private $approvedRevsFacade;
 
 	protected function setUp(): void {
-
 		$this->approvedRevsFacade = $this->getMockBuilder( '\SMW\ApprovedRevs\ApprovedRevsFacade' )
 			->disableOriginalConstructor()
 			->getMock();
 	}
 
 	public function testCanConstruct() {
-
 		$this->assertInstanceOf(
 			ApprovedRevsHandler::class,
 			new ApprovedRevsHandler( $this->approvedRevsFacade )
@@ -33,14 +31,13 @@ class ApprovedRevsHandlerTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testIsApprovedUpdate_True() {
-
 		$this->approvedRevsFacade->expects( $this->once() )
 			->method( 'hasApprovedRevision' )
-			->will( $this->returnValue( true ) );
+			->willReturn( true );
 
 		$this->approvedRevsFacade->expects( $this->once() )
 			->method( 'getApprovedRevID' )
-			->will( $this->returnValue( 42 ) );
+			->willReturn( 42 );
 
 		$title = $this->getMockBuilder( '\Title' )
 			->disableOriginalConstructor()
@@ -56,10 +53,9 @@ class ApprovedRevsHandlerTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testIsApprovedUpdate_True_WhenNoApprovedRevIsAvailable() {
-
 		$this->approvedRevsFacade->expects( $this->once() )
 			->method( 'hasApprovedRevision' )
-			->will( $this->returnValue( false ) );
+			->willReturn( false );
 
 		$title = $this->getMockBuilder( '\Title' )
 			->disableOriginalConstructor()
@@ -75,14 +71,13 @@ class ApprovedRevsHandlerTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testIsApprovedUpdate_False() {
-
 		$this->approvedRevsFacade->expects( $this->once() )
 			->method( 'hasApprovedRevision' )
-			->will( $this->returnValue( true ) );
+			->willReturn( true );
 
 		$this->approvedRevsFacade->expects( $this->once() )
 			->method( 'getApprovedRevID' )
-			->will( $this->returnValue( 42 ) );
+			->willReturn( 42 );
 
 		$title = $this->getMockBuilder( '\Title' )
 			->disableOriginalConstructor()
@@ -98,14 +93,13 @@ class ApprovedRevsHandlerTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testIsApprovedUpdate_TrueNoApprovedRev() {
-
 		$this->approvedRevsFacade->expects( $this->once() )
 			->method( 'hasApprovedRevision' )
-			->will( $this->returnValue( true ) );
+			->willReturn( true );
 
 		$this->approvedRevsFacade->expects( $this->once() )
 			->method( 'getApprovedRevID' )
-			->will( $this->returnValue( null ) );
+			->willReturn( null );
 
 		$title = $this->getMockBuilder( '\Title' )
 			->disableOriginalConstructor()
@@ -121,10 +115,9 @@ class ApprovedRevsHandlerTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testDoChangeRevision() {
-
 		$this->approvedRevsFacade->expects( $this->once() )
 			->method( 'getApprovedRevID' )
-			->will( $this->returnValue( 42 ) );
+			->willReturn( 42 );
 
 		$title = $this->getMockBuilder( '\Title' )
 			->disableOriginalConstructor()
@@ -140,10 +133,9 @@ class ApprovedRevsHandlerTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testDoChangeRevisionID() {
-
 		$this->approvedRevsFacade->expects( $this->once() )
 			->method( 'getApprovedRevID' )
-			->will( $this->returnValue( 42 ) );
+			->willReturn( 42 );
 
 		$title = $this->getMockBuilder( '\Title' )
 			->disableOriginalConstructor()
@@ -159,10 +151,9 @@ class ApprovedRevsHandlerTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testDoChangeFile_NoSha1() {
-
 		$this->approvedRevsFacade->expects( $this->once() )
 			->method( 'getApprovedFileInfo' )
-			->will( $this->returnValue( [ '', false ] ) );
+			->willReturn( [ '', false ] );
 
 		$title = $this->getMockBuilder( '\Title' )
 			->disableOriginalConstructor()
@@ -180,12 +171,11 @@ class ApprovedRevsHandlerTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testDoChangeFile_FromLocalRepo() {
-
 		$f = null;
 
 		$this->approvedRevsFacade->expects( $this->once() )
 			->method( 'getApprovedFileInfo' )
-			->will( $this->returnValue( [ '1552165749', '2fd4e1c67a2d28fced849ee1bb76e7391b93eb12' ] ) );
+			->willReturn( [ '1552165749', '2fd4e1c67a2d28fced849ee1bb76e7391b93eb12' ] );
 
 		$file = $this->getMockBuilder( '\File' )
 			->disableOriginalConstructor()
@@ -195,7 +185,7 @@ class ApprovedRevsHandlerTest extends \PHPUnit_Framework_TestCase {
 			->disableOriginalConstructor()
 			->getMock();
 
-		$db = $this->getMockBuilder( '\DatabaseBase' )
+		$db = $this->getMockBuilder( '\Wikimedia\Rdbms\Database' )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -205,12 +195,12 @@ class ApprovedRevsHandlerTest extends \PHPUnit_Framework_TestCase {
 
 		$localRepo->expects( $this->once() )
 			->method( 'getReplicaDB' )
-			->will( $this->returnValue( $db ) );
+			->willReturn( $db );
 
 		$localRepo->expects( $this->once() )
 			->method( 'findBySha1' )
-			->with( $this->equalTo( '2fd4e1c67a2d28fced849ee1bb76e7391b93eb12' ) )
-			->will( $this->returnValue( [ $file ] ) );
+			->with( '2fd4e1c67a2d28fced849ee1bb76e7391b93eb12' )
+			->willReturn( [ $file ] );
 
 		$repoGroup = $this->getMockBuilder( '\RepoGroup' )
 			->disableOriginalConstructor()
@@ -218,7 +208,7 @@ class ApprovedRevsHandlerTest extends \PHPUnit_Framework_TestCase {
 
 		$repoGroup->expects( $this->once() )
 			->method( 'getLocalRepo' )
-			->will( $this->returnValue( $localRepo ) );
+			->willReturn( $localRepo );
 
 		$instance = new ApprovedRevsHandler(
 			$this->approvedRevsFacade,

@@ -2,18 +2,18 @@
 
 namespace SMW\ApprovedRevs\PropertyAnnotators;
 
-use SMW\DIProperty;
-use SMW\SemanticData;
-use SMW\DIWikiPage;
 use SMW\ApprovedRevs\DatabaseLogReader;
 use SMW\ApprovedRevs\PropertyRegistry;
-use User;
+use SMW\DIProperty;
+use SMW\DIWikiPage;
+use SMW\SemanticData;
 use Title;
+use User;
 
 /**
  * @private
  *
- * @license GNU GPL v2+
+ * @license GPL-2.0-or-later
  */
 class ApprovedByPropertyAnnotator {
 
@@ -23,7 +23,7 @@ class ApprovedByPropertyAnnotator {
 	private $databaseLogReader;
 
 	/**
-	 * @var Integer|null
+	 * @var int|null
 	 */
 	private $approvedBy;
 
@@ -58,7 +58,6 @@ class ApprovedByPropertyAnnotator {
 	 * @param SemanticData $semanticData
 	 */
 	public function addAnnotation( SemanticData $semanticData ) {
-
 		if ( $this->approvedBy === null ) {
 			$this->approvedBy = $this->databaseLogReader->getUserForLogEntry(
 				$semanticData->getSubject()->getTitle(),
@@ -76,7 +75,6 @@ class ApprovedByPropertyAnnotator {
 	}
 
 	private function newDIWikiPage() {
-
 		if ( !$this->approvedBy instanceof User ) {
 			return;
 		}

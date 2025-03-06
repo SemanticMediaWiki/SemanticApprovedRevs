@@ -2,19 +2,18 @@
 
 namespace SMW\ApprovedRevs\Tests\PropertyAnnotators;
 
-use SMW\ApprovedRevs\PropertyAnnotators\ApprovedDatePropertyAnnotator;
-use SMW\DIProperty;
 use MWTimestamp;
+use SMW\ApprovedRevs\PropertyAnnotators\ApprovedDatePropertyAnnotator;
 use SMWDITime as DITime;
 
 /**
  * @covers \SMW\ApprovedRevs\PropertyAnnotators\ApprovedDatePropertyAnnotator
  * @group semantic-approved-revs
  *
- * @license GNU GPL v2+
+ * @license GPL-2.0-or-later
  * @since 1.0
  */
-class ApprovedDatePropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
+class ApprovedDatePropertyAnnotatorTest extends \PHPUnit\Framework\TestCase {
 
 	private $databaseLogReader;
 
@@ -27,7 +26,6 @@ class ApprovedDatePropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testCanConstruct() {
-
 		$this->assertInstanceOf(
 			ApprovedDatePropertyAnnotator::class,
 			new ApprovedDatePropertyAnnotator( $this->databaseLogReader )
@@ -46,7 +44,6 @@ class ApprovedDatePropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testAddAnnotation() {
-
 		$now = new MWTimestamp( wfTimestampNow() );
 		$time = self::getDITime( $now );
 
@@ -58,7 +55,7 @@ class ApprovedDatePropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 			->method( 'addPropertyObjectValue' )
 			->with(
 				$this->anyThing(),
-				$this->equalTo( $time )
+				$time
 			);
 
 		$annotator = new ApprovedDatePropertyAnnotator(

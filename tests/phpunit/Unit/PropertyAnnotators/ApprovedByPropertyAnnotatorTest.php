@@ -3,7 +3,6 @@
 namespace SMW\ApprovedRevs\Tests\PropertyAnnotators;
 
 use SMW\ApprovedRevs\PropertyAnnotators\ApprovedByPropertyAnnotator;
-use SMW\DIProperty;
 use SMW\DIWikiPage;
 use User;
 
@@ -11,10 +10,10 @@ use User;
  * @covers \SMW\ApprovedRevs\PropertyAnnotators\ApprovedByPropertyAnnotator
  * @group semantic-approved-revs
  *
- * @license GNU GPL v2+
+ * @license GPL-2.0-or-later
  * @since 1.0
  */
-class ApprovedByPropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
+class ApprovedByPropertyAnnotatorTest extends \PHPUnit\Framework\TestCase {
 
 	private $databaseLogReader;
 
@@ -27,7 +26,6 @@ class ApprovedByPropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testCanConstruct() {
-
 		$this->assertInstanceOf(
 			ApprovedByPropertyAnnotator::class,
 			new ApprovedByPropertyAnnotator( $this->databaseLogReader )
@@ -35,7 +33,6 @@ class ApprovedByPropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testAddAnnotation() {
-
 		$user = User::newFromName( "UnitTest" );
 
 		$semanticData = $this->getMockBuilder( '\SMW\SemanticData' )
@@ -46,7 +43,7 @@ class ApprovedByPropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 			->method( 'addPropertyObjectValue' )
 			->with(
 				$this->anyThing(),
-				$this->equalTo( DIWikiPage::newFromTitle( $user->getUserPage() ) ) );
+				DIWikiPage::newFromTitle( $user->getUserPage() ) );
 
 		$annotator = new ApprovedByPropertyAnnotator(
 			$this->databaseLogReader
@@ -57,7 +54,6 @@ class ApprovedByPropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testRemoval() {
-
 		$semanticData = $this->getMockBuilder( '\SMW\SemanticData' )
 			->disableOriginalConstructor()
 			->getMock();

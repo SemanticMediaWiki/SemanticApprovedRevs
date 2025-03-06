@@ -5,11 +5,12 @@ namespace SMW\ApprovedRevs;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionStoreRecord;
 use Onoi\Cache\Cache;
-use Revision;
-use SMW\ApplicationFactory;
+use SMW\SemanticData;
+use SMW\Services\ServicesFactory as ApplicationFactory;
+use SMW\Store;
 
 /**
- * @license GNU GPL v2+
+ * @license GPL-2.0-or-later
  * @since 1.0
  *
  * @author mwjames
@@ -48,7 +49,6 @@ class Hooks {
 	 * @since  1.0
 	 */
 	public static function hasPropertyCollisions( $var ) {
-
 		if ( !isset( $var['sespgEnabledPropertyList'] ) ) {
 			return false;
 		}
@@ -76,7 +76,7 @@ class Hooks {
 	 * @param array &$vars
 	 */
 	public static function initExtension( &$vars ) {
-		$version = 'UNKNOWN' ;
+		$version = 'UNKNOWN';
 
 		// See https://phabricator.wikimedia.org/T151136
 		if ( isset( $credits['version'] ) ) {
@@ -92,8 +92,7 @@ class Hooks {
 		 *
 		 * @param array &$config
 		 */
-		$GLOBALS['wgHooks']['SMW::Config::BeforeCompletion'][] = function( &$config ) {
-
+		$GLOBALS['wgHooks']['SMW::Config::BeforeCompletion'][] = static function ( &$config ) {
 			if ( isset( $config['smwgImportFileDirs'] ) ) {
 				$config['smwgImportFileDirs'] += [ 'sar' => __DIR__ . '/../data/import' ];
 			}
@@ -106,8 +105,9 @@ class Hooks {
 	 * @since  1.0
 	 */
 	public function register() {
+		$hookContainer = MediaWikiServices::getInstance()->getHookContainer();
 		foreach ( $this->handlers as $name => $callback ) {
-			\Hooks::register( $name, $callback );
+			$hookContainer->register( $name, $callback );
 		}
 	}
 
@@ -131,10 +131,10 @@ class Hooks {
 	 *
 	 * @param string $name
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isRegistered( $name ) {
-		return \Hooks::isRegistered( $name );
+		return MediaWikiServices::getInstance()->getHookContainer()->isRegistered( $name );
 	}
 
 	/**
@@ -145,18 +145,20 @@ class Hooks {
 	 * @return array
 	 */
 	public function getHandlers( $name ) {
-		return \Hooks::getHandlers( $name );
+		$container = MediaWikiServices::getInstance()->getHookContainer();
+		return method_exists( $container, 'getHandlerCallbacks' )
+			? $container->getHandlerCallbacks( $name )
+			: $container->getHandlers( $name );
 	}
 
 	/**
 	 * @since 1.0
 	 *
 	 * @param Title $title
-	 * @param integer $latestRevID
+	 * @param int $latestRevID
 	 */
 	public function onIsApprovedRevision( $title, $latestRevID ) {
-
-		$approvedRevsHandler =  new ApprovedRevsHandler(
+		$approvedRevsHandler = new ApprovedRevsHandler(
 			new ApprovedRevsFacade()
 		);
 
@@ -170,8 +172,7 @@ class Hooks {
 	 * @param ?RevisionStoreRecord $record
 	 */
 	public function onChangeRevision( $title, ?RevisionStoreRecord $record ) {
-
-		$approvedRevsHandler =  new ApprovedRevsHandler(
+		$approvedRevsHandler = new ApprovedRevsHandler(
 			new ApprovedRevsFacade()
 		);
 
@@ -184,11 +185,10 @@ class Hooks {
 	 * @since 1.0
 	 *
 	 * @param Title $title
-	 * @param integer &$latestRevID
+	 * @param int &$latestRevID
 	 */
 	public function onOverrideRevisionID( $title, &$latestRevID ) {
-
-		$approvedRevsHandler =  new ApprovedRevsHandler(
+		$approvedRevsHandler = new ApprovedRevsHandler(
 			new ApprovedRevsFacade()
 		);
 
@@ -202,11 +202,9 @@ class Hooks {
 	 *
 	 * @since 1.0
 	 *
-	 * @param ProertyRegistry $$registry
-	 * @param integer &$latestRevID
+	 * @param ProertyRegistry $registry
 	 */
 	public function onInitProperties( $registry ) {
-
 		$propertyRegistry = new PropertyRegistry();
 		$propertyRegistry->register( $registry );
 
@@ -218,11 +216,10 @@ class Hooks {
 	 *
 	 * @since 1.0
 	 *
-	 * @param ProertyRegistry $$registry
-	 * @param integer &$latestRevID
+	 * @param Store $store
+	 * @param SemanticData $semanticData
 	 */
 	public function onUpdateDataBefore( $store, $semanticData ) {
-
 		$propertyAnnotator = new PropertyAnnotator(
 			new ServicesFactory()
 		);
@@ -243,11 +240,10 @@ class Hooks {
 	 *
 	 * @param ParserOutput $output
 	 * @param Title $title
-	 * @param integer $rev_id
+	 * @param int $rev_id
 	 * @param string $content
 	 */
-	public function onApprovedRevsRevisionApproved( $output, $title, $rev_id, $content  ) {
-
+	public function onApprovedRevsRevisionApproved( $output, $title, $rev_id, $content ) {
 		$ttl = 60 * 60; // 1hr
 
 		if ( $this->cache === null ) {
@@ -272,11 +268,10 @@ class Hooks {
 	 *
 	 * @param Parser $parser
 	 * @param Title $title
-	 * @param integer $timestamp
+	 * @param int $timestamp
 	 * @param string $sha1
 	 */
-	public function onApprovedRevsFileRevisionApproved( $parser, $title, $timestamp, $sha1  ) {
-
+	public function onApprovedRevsFileRevisionApproved( $parser, $title, $timestamp, $sha1 ) {
 		$ttl = 60 * 60; // 1hr
 
 		if ( $this->cache === null ) {
@@ -299,7 +294,6 @@ class Hooks {
 	 * @param File &$file
 	 */
 	public function onChangeFile( $title, &$file ) {
-
 		$approvedRevsHandler = new ApprovedRevsHandler(
 			new ApprovedRevsFacade()
 		);
@@ -326,7 +320,6 @@ class Hooks {
 	 * @since 1.0
 	 */
 	public static function onExtensionFunction() {
-
 		if ( !defined( 'SMW_VERSION' ) ) {
 			if ( PHP_SAPI === 'cli' || PHP_SAPI === 'phpdbg' ) {
 				die( "\nThe 'Semantic Approved Revs' extension requires the 'Semantic MediaWiki' extension to be installed and enabled.\n" );
@@ -353,7 +346,7 @@ class Hooks {
 			}
 		}
 
-		if ( defined( 'SESP_VERSION' ) && version_compare( SESP_VERSION, '2.1.0', '<' ) && ( $prop = Hooks::hasPropertyCollisions( $GLOBALS ) ) !== false ) {
+		if ( defined( 'SESP_VERSION' ) && version_compare( SESP_VERSION, '2.1.0', '<' ) && ( $prop = self::hasPropertyCollisions( $GLOBALS ) ) !== false ) {
 			die(
 				"\nPlease remove the `$prop` property (defined by the SemanticExtraSpecialProperties extension) and switch to the new SESP version 2.1" .
 				" to avoid collision with the 'Semantic Approved Revs' list of properties.\n"

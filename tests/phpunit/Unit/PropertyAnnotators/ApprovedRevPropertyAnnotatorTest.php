@@ -3,18 +3,16 @@
 namespace SMW\ApprovedRevs\Tests\PropertyAnnotators;
 
 use SMW\ApprovedRevs\PropertyAnnotators\ApprovedRevPropertyAnnotator;
-use SMW\DIProperty;
-use SMW\DIWikiPage;
 use SMWDINumber as DINumber;
 
 /**
  * @covers \SMW\ApprovedRevs\PropertyAnnotators\ApprovedRevPropertyAnnotator
  * @group semantic-approved-revs
  *
- * @license GNU GPL v2+
+ * @license GPL-2.0-or-later
  * @since 1.0
  */
-class ApprovedRevPropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
+class ApprovedRevPropertyAnnotatorTest extends \PHPUnit\Framework\TestCase {
 
 	private $approvedRevsFacade;
 
@@ -27,7 +25,6 @@ class ApprovedRevPropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testCanConstruct() {
-
 		$this->assertInstanceOf(
 			ApprovedRevPropertyAnnotator::class,
 			new ApprovedRevPropertyAnnotator( $this->approvedRevsFacade )
@@ -35,7 +32,6 @@ class ApprovedRevPropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testAddAnnotation() {
-
 		$semanticData = $this->getMockBuilder( '\SMW\SemanticData' )
 			->disableOriginalConstructor()
 			->getMock();
@@ -44,7 +40,7 @@ class ApprovedRevPropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 			->method( 'addPropertyObjectValue' )
 			->with(
 				$this->anyThing(),
-				$this->equalTo( new DINumber( 42 ) ) );
+				new DINumber( 42 ) );
 
 		$annotator = new ApprovedRevPropertyAnnotator(
 			$this->approvedRevsFacade
@@ -55,7 +51,6 @@ class ApprovedRevPropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testRemoval() {
-
 		$semanticData = $this->getMockBuilder( '\SMW\SemanticData' )
 			->disableOriginalConstructor()
 			->getMock();

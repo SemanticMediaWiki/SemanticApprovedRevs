@@ -2,16 +2,16 @@
 
 namespace SMW\ApprovedRevs\PropertyAnnotators;
 
+use SMW\ApprovedRevs\DatabaseLogReader;
+use SMW\ApprovedRevs\PropertyRegistry;
 use SMW\DIProperty;
 use SMW\SemanticData;
 use SMWDIBlob as DIBlob;
-use SMW\ApprovedRevs\DatabaseLogReader;
-use SMW\ApprovedRevs\PropertyRegistry;
 
 /**
  * @private
  *
- * @license GNU GPL v2+
+ * @license GPL-2.0-or-later
  */
 class ApprovedStatusPropertyAnnotator {
 
@@ -21,7 +21,7 @@ class ApprovedStatusPropertyAnnotator {
 	private $databaseLogReader;
 
 	/**
-	 * @var Integer|null
+	 * @var int|null
 	 */
 	private $approvedStatus;
 
@@ -56,7 +56,6 @@ class ApprovedStatusPropertyAnnotator {
 	 * @param SemanticData $semanticData
 	 */
 	public function addAnnotation( SemanticData $semanticData ) {
-
 		if ( $this->approvedStatus === null ) {
 			$this->approvedStatus = $this->databaseLogReader->getStatusOfLogEntry(
 				$semanticData->getSubject()->getTitle(),
