@@ -148,7 +148,7 @@ class Hooks {
 		$container = MediaWikiServices::getInstance()->getHookContainer();
 		return method_exists( $container, 'getHandlerCallbacks' )
 			? $container->getHandlerCallbacks( $name )
-			: $container->getHandlers( $name );
+			: \Hooks::getHandlers();
 	}
 
 	/**
