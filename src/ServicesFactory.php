@@ -3,13 +3,14 @@
 namespace SMW\ApprovedRevs;
 
 use SMW\ApprovedRevs\PropertyAnnotators\ApprovedByPropertyAnnotator;
-use SMW\ApprovedRevs\PropertyAnnotators\ApprovedStatusPropertyAnnotator;
 use SMW\ApprovedRevs\PropertyAnnotators\ApprovedDatePropertyAnnotator;
 use SMW\ApprovedRevs\PropertyAnnotators\ApprovedRevPropertyAnnotator;
+use SMW\ApprovedRevs\PropertyAnnotators\ApprovedStatusPropertyAnnotator;
 use Title;
+use Wikimedia\Rdbms\Database;
 
 /**
- * @license GNU GPL v2+
+ * @license GPL-2.0-or-later
  * @since 1.0
  *
  * @author mwjames
@@ -17,24 +18,23 @@ use Title;
 class ServicesFactory {
 
 	/**
-	 * @var DatabaseBase
+	 * @var Database
 	 */
 	private $connection;
 
 	/**
 	 * @since 1.0
 	 */
-	public function setConnection( \DatabaseBase $connection ) {
+	public function setConnection( Database $connection ) {
 		$this->connection = $connection;
 	}
 
 	/**
 	 * @since 1.3
 	 *
-	 * @return DatabaseBase
+	 * @return Database
 	 */
 	public function getConnection() {
-
 		if ( $this->connection === null ) {
 			$this->connection = wfGetDB( DB_REPLICA );
 		}
@@ -58,7 +58,7 @@ class ServicesFactory {
 	 * @param string $type which log entries to get (default: approval)
 	 * @return DatabaseLogReader
 	 */
-	public function newDatabaseLogReader( Title $title = null, $type = 'approval' ) {
+	public function newDatabaseLogReader( ?Title $title = null, $type = 'approval' ) {
 		return new DatabaseLogReader( $this->getConnection(), $title, $type );
 	}
 

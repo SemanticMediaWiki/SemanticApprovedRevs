@@ -3,17 +3,16 @@
 namespace SMW\ApprovedRevs\Tests;
 
 use SMW\ApprovedRevs\PropertyAnnotator;
-use SMW\DIProperty;
 use SMW\DIWikiPage;
 
 /**
  * @covers \SMW\ApprovedRevs\PropertyAnnotator
  * @group semantic-approved-revs
  *
- * @license GNU GPL v2+
+ * @license GPL-2.0-or-later
  * @since 1.0
  */
-class PropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
+class PropertyAnnotatorTest extends \PHPUnit\Framework\TestCase {
 
 	private $servicesFactory;
 	private $logger;
@@ -43,19 +42,19 @@ class PropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 
 		$this->servicesFactory->expects( $this->any() )
 			->method( 'newApprovedByPropertyAnnotator' )
-			->will( $this->returnValue( $approvedByPropertyAnnotator ) );
+			->willReturn( $approvedByPropertyAnnotator );
 
 		$this->servicesFactory->expects( $this->any() )
 			->method( 'newApprovedStatusPropertyAnnotator' )
-			->will( $this->returnValue( $approvedStatusPropertyAnnotator ) );
+			->willReturn( $approvedStatusPropertyAnnotator );
 
 		$this->servicesFactory->expects( $this->any() )
 			->method( 'newApprovedDatePropertyAnnotator' )
-			->will( $this->returnValue( $approvedDatePropertyAnnotator ) );
+			->willReturn( $approvedDatePropertyAnnotator );
 
 		$this->servicesFactory->expects( $this->any() )
 			->method( 'newApprovedRevPropertyAnnotator' )
-			->will( $this->returnValue( $approvedRevPropertyAnnotator ) );
+			->willReturn( $approvedRevPropertyAnnotator );
 
 		$this->logger = $this->getMockBuilder( '\Psr\Log\NullLogger' )
 			->disableOriginalConstructor()
@@ -63,7 +62,6 @@ class PropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testCanConstruct() {
-
 		$this->assertInstanceOf(
 			PropertyAnnotator::class,
 			new PropertyAnnotator( $this->servicesFactory )
@@ -71,7 +69,6 @@ class PropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testAddAnnotation() {
-
 		$this->logger->expects( $this->once() )
 			->method( 'info' );
 
@@ -81,7 +78,7 @@ class PropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 
 		$semanticData->expects( $this->once() )
 			->method( 'getSubject' )
-			->will( $this->returnValue( DIWikiPage::newFromText( 'Foo' ) ) );
+			->willReturn( DIWikiPage::newFromText( 'Foo' ) );
 
 		$annotator = new PropertyAnnotator(
 			$this->servicesFactory
@@ -92,7 +89,6 @@ class PropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testCanNotAnnotate() {
-
 		$this->logger->expects( $this->never() )
 			->method( 'info' );
 
@@ -106,7 +102,7 @@ class PropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 
 		$semanticData->expects( $this->once() )
 			->method( 'getSubject' )
-			->will( $this->returnValue( $subject ) );
+			->willReturn( $subject );
 
 		$annotator = new PropertyAnnotator(
 			$this->servicesFactory

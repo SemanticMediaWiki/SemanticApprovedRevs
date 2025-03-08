@@ -3,17 +3,17 @@
 namespace SMW\ApprovedRevs;
 
 /**
- * @license GNU GPL v2+
+ * @license GPL-2.0-or-later
  * @since 1.0
  *
  * @author mwjames
  */
 class PropertyRegistry {
 
-	const SAR_PROP_APPROVED_REV = '__sar_approved_rev';
-	const SAR_PROP_APPROVED_BY = '__sar_approved_by';
-	const SAR_PROP_APPROVED_DATE = '__sar_approved_date';
-	const SAR_PROP_APPROVED_STATUS = '__sar_approved_status';
+	public const SAR_PROP_APPROVED_REV = '__sar_approved_rev';
+	public const SAR_PROP_APPROVED_BY = '__sar_approved_by';
+	public const SAR_PROP_APPROVED_DATE = '__sar_approved_date';
+	public const SAR_PROP_APPROVED_STATUS = '__sar_approved_status';
 
 	/**
 	 * @since 1.0
@@ -21,7 +21,6 @@ class PropertyRegistry {
 	 * @param PropertyRegistry $propertyRegistry
 	 */
 	public function register( $propertyRegistry ) {
-
 		$defs = [
 			self::SAR_PROP_APPROVED_REV => [
 				'label' => 'Approved revision',

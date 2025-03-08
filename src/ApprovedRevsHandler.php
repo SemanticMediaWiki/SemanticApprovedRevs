@@ -4,13 +4,13 @@ namespace SMW\ApprovedRevs;
 
 use File;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionStoreRecord;
 use OldLocalFile;
 use RepoGroup;
-use MediaWiki\Revision\RevisionStoreRecord;
 use Title;
 
 /**
- * @license GNU GPL v2+
+ * @license GPL-2.0-or-later
  * @since 1.0
  *
  * @author mwjames
@@ -33,7 +33,7 @@ class ApprovedRevsHandler {
 	 * @param ApprovedRevsFacade $approvedRevsFacade
 	 * @param RepoGroup|null $repoGroup
 	 */
-	public function __construct( ApprovedRevsFacade $approvedRevsFacade, RepoGroup $repoGroup = null ) {
+	public function __construct( ApprovedRevsFacade $approvedRevsFacade, ?RepoGroup $repoGroup = null ) {
 		$this->approvedRevsFacade = $approvedRevsFacade;
 		$this->repoGroup = $repoGroup;
 	}
@@ -42,12 +42,11 @@ class ApprovedRevsHandler {
 	 * @since  1.0
 	 *
 	 * @param Title $title
-	 * @param integer $latestRevID
+	 * @param int $latestRevID
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isApprovedUpdate( Title $title, $latestRevID ) {
-
 		if ( !$this->approvedRevsFacade->hasApprovedRevision( $title ) ) {
 			return true;
 		}
@@ -66,7 +65,6 @@ class ApprovedRevsHandler {
 	 * @param ?RevisionStoreRecord &$revision
 	 */
 	public function doChangeRevision( Title $title, ?RevisionStoreRecord &$revision ) {
-
 		// Forcibly change the revision to match what ApprovedRevs sees as
 		// approved
 		if ( ( $approvedRevID = $this->approvedRevsFacade->getApprovedRevID( $title ) ) !== null ) {
@@ -82,10 +80,9 @@ class ApprovedRevsHandler {
 	 * @since  1.0
 	 *
 	 * @param Title $title
-	 * @param integer &$revisionID
+	 * @param int &$revisionID
 	 */
 	public function doChangeRevisionID( Title $title, &$revisionID ) {
-
 		if ( ( $approvedRevID = $this->approvedRevsFacade->getApprovedRevID( $title ) ) !== null ) {
 			$revisionID = $approvedRevID;
 		}
@@ -98,13 +95,12 @@ class ApprovedRevsHandler {
 	 * @param File &$file
 	 */
 	public function doChangeFile( Title $title, &$file ) {
-
 		// It has been observed that when running `runJobs.php` with `--wait`
 		// the `ApprovedRevs` instance holds an outdated cache entry therefore
 		// clear the static before trying to get the info
 		$this->approvedRevsFacade->clearApprovedFileInfo( $title );
 
-		list( $timestamp, $file_sha1 ) = $this->approvedRevsFacade->getApprovedFileInfo(
+		[ $timestamp, $file_sha1 ] = $this->approvedRevsFacade->getApprovedFileInfo(
 			$title
 		);
 

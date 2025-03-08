@@ -8,15 +8,14 @@ use SMW\ApprovedRevs\ApprovedRevsFacade;
  * @covers \SMW\ApprovedRevs\ApprovedRevsFacade
  * @group semantic-approved-revs
  *
- * @license GNU GPL v2+
+ * @license GPL-2.0-or-later
  * @since 1.0
  *
  * @author mwjames
  */
-class ApprovedRevsFacadeTest extends \PHPUnit_Framework_TestCase {
+class ApprovedRevsFacadeTest extends \PHPUnit\Framework\TestCase {
 
 	public function testCanConstruct() {
-
 		$this->assertInstanceOf(
 			ApprovedRevsFacade::class,
 			new ApprovedRevsFacade()
@@ -24,7 +23,6 @@ class ApprovedRevsFacadeTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testGetApprovedRevID() {
-
 		$title = $this->getMockBuilder( '\Title' )
 			->disableOriginalConstructor()
 			->getMock();
@@ -37,7 +35,6 @@ class ApprovedRevsFacadeTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testHasApprovedRevision() {
-
 		$title = $this->getMockBuilder( '\Title' )
 			->disableOriginalConstructor()
 			->getMock();
@@ -50,7 +47,6 @@ class ApprovedRevsFacadeTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testGetApprovedFileInfo() {
-
 		$title = $this->getMockBuilder( '\Title' )
 			->disableOriginalConstructor()
 			->getMock();
@@ -60,11 +56,9 @@ class ApprovedRevsFacadeTest extends \PHPUnit_Framework_TestCase {
 		$this->assertIsArray(
 			$instance->getApprovedFileInfo( $title )
 		);
-
 	}
 
 	public function testClearApprovedFileInfo() {
-
 		$this->assertTrue(
 			property_exists( new \ApprovedRevs(), 'mApprovedFileInfo' )
 		);

@@ -24,16 +24,14 @@ class ApproveRevisionTest extends ApiTestCase {
 		\SemanticMediaWiki::onExtensionFunction();
 		\SMW\ApprovedRevs\Hooks::onExtensionFunction();
 
-		$page = $this->getExistingTestPage('ApproveRevisionApiTest');
+		$page = $this->getExistingTestPage( 'ApproveRevisionApiTest' );
 		$revId = $page->getRevisionRecord()->getId();
-		$tokens = $this->getTokenList($this->getTestSysop());
 
-		$result = $this->doApiRequest( [
+		$result = $this->doApiRequestWithToken( [
 			'action' => 'approve',
 			'revid' => $revId,
-			'token' => $tokens['edittoken']
 		] );
 
-		$this->assertEquals("Revision was successfully approved.", $result[0]["approve"]["result"]);
+		$this->assertEquals( "Revision was successfully approved.", $result[0]["approve"]["result"] );
 	}
 }

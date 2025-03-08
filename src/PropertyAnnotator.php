@@ -3,17 +3,12 @@
 namespace SMW\ApprovedRevs;
 
 use Psr\Log\LoggerAwareTrait;
-use SMW\DIProperty;
 use SMW\SemanticData;
-use SMW\ApprovedRevs\PropertyAnnotators\ApprovedStatusPropertyAnnotator;
-use SMW\ApprovedRevs\PropertyAnnotators\ApprovedByPropertyAnnotator;
-use SMW\ApprovedRevs\PropertyAnnotators\ApprovedDatePropertyAnnotator;
-use SMW\ApprovedRevs\PropertyAnnotators\ApprovedRevPropertyAnnotator;
 
 /**
  * @private
  *
- * @license GNU GPL v2+
+ * @license GPL-2.0-or-later
  * @since 1.0
  *
  * @author mwjames
@@ -47,7 +42,6 @@ class PropertyAnnotator {
 	 * @param SemanticData $semanticData
 	 */
 	public function addAnnotation( SemanticData $semanticData ) {
-
 		$time = microtime( true );
 
 		if ( !$this->canAnnotate( $semanticData->getSubject() ) ) {
@@ -69,7 +63,6 @@ class PropertyAnnotator {
 	}
 
 	private function canAnnotate( $subject ) {
-
 		if ( $subject === null || $subject->getTitle() === null || $subject->getTitle()->isSpecialPage() ) {
 			return false;
 		}

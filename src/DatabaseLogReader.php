@@ -48,7 +48,7 @@ class DatabaseLogReader {
 	 * @param Title|null $title
 	 * @param string $type of log (default: approval)
 	 */
-	public function __construct( IDatabase $dbr, Title $title = null , $type = 'approval' ) {
+	public function __construct( IDatabase $dbr, ?Title $title = null, $type = 'approval' ) {
 		$this->dbr = $dbr;
 		$this->dbKey = $title instanceof Title ? $title->getDBkey() : null;
 		$this->type = $type;
@@ -80,8 +80,7 @@ class DatabaseLogReader {
 	 *
 	 * @return User
 	 */
-	public function getUserForLogEntry( Title $title = null, $type = 'approval' ) {
-
+	public function getUserForLogEntry( ?Title $title = null, $type = 'approval' ) {
 		$this->init( $title, $type );
 		$logLine = $this->getLog()->current();
 
@@ -98,8 +97,7 @@ class DatabaseLogReader {
 	 *
 	 * @return Timestamp
 	 */
-	public function getDateOfLogEntry( Title $title = null, $type = 'approval' ) {
-
+	public function getDateOfLogEntry( ?Title $title = null, $type = 'approval' ) {
 		$this->init( $title, $type );
 		$logLine = $this->getLog()->current();
 
@@ -116,8 +114,7 @@ class DatabaseLogReader {
 	 *
 	 * @return string
 	 */
-	public function getStatusOfLogEntry( Title $title = null, $type = 'approval' ) {
-
+	public function getStatusOfLogEntry( ?Title $title = null, $type = 'approval' ) {
 		$this->init( $title, $type );
 		$logLine = $this->getLog()->current();
 
@@ -130,7 +127,6 @@ class DatabaseLogReader {
 	 * Take care of loading from the cache or filling the query.
 	 */
 	private function init( $title, $type ) {
-
 		$this->dbKey = $title instanceof Title ? $title->getDBkey() : null;
 		$this->type = $type;
 
@@ -152,7 +148,6 @@ class DatabaseLogReader {
 			$this->query = $cache->getQuery();
 			$this->log = $cache->getLog();
 		}
-
 	}
 
 	/**
@@ -162,7 +157,6 @@ class DatabaseLogReader {
 	 * @throws DBError
 	 */
 	private function getLog() {
-
 		if ( $this->log !== null ) {
 			return $this->log;
 		}

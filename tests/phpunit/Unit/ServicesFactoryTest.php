@@ -8,24 +8,22 @@ use SMW\ApprovedRevs\ServicesFactory;
  * @covers \SMW\ApprovedRevs\ServicesFactory
  * @group semantic-approved-revs
  *
- * @license GNU GPL v2+
+ * @license GPL-2.0-or-later
  * @since 1.0
  *
  * @author mwjames
  */
-class ServicesFactoryTest extends \PHPUnit_Framework_TestCase {
+class ServicesFactoryTest extends \PHPUnit\Framework\TestCase {
 
 	public function testCanConstruct() {
-
 		$this->assertInstanceOf(
 			ServicesFactory::class,
 			new ServicesFactory()
 		);
 	}
 
-	public function testGetConnection( ) {
-
-		$connection = $this->getMockBuilder( '\DatabaseBase' )
+	public function testGetConnection() {
+		$connection = $this->getMockBuilder( '\Wikimedia\Rdbms\Database' )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -41,8 +39,7 @@ class ServicesFactoryTest extends \PHPUnit_Framework_TestCase {
 		);
 	}
 
-	public function testCanConstructApprovedRevsFacade( ) {
-
+	public function testCanConstructApprovedRevsFacade() {
 		$instance = new ServicesFactory();
 
 		$this->assertInstanceOf(
@@ -52,8 +49,7 @@ class ServicesFactoryTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testCanConstructDatabaseLogReader() {
-
-		$connection = $this->getMockBuilder( '\DatabaseBase' )
+		$connection = $this->getMockBuilder( '\Wikimedia\Rdbms\Database' )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -68,7 +64,6 @@ class ServicesFactoryTest extends \PHPUnit_Framework_TestCase {
 	 * @dataProvider propertyAnnotatorsProvider
 	 */
 	public function testCanConstructPropertyAnnotators( $name, $instanceOf ) {
-
 		$instance = new ServicesFactory();
 
 		$this->assertInstanceOf(
@@ -78,7 +73,6 @@ class ServicesFactoryTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function propertyAnnotatorsProvider() {
-
 		yield [
 			'newApprovedByPropertyAnnotator',
 			'\SMW\ApprovedRevs\PropertyAnnotators\ApprovedByPropertyAnnotator'

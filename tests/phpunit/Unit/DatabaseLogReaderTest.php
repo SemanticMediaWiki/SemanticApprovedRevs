@@ -9,12 +9,12 @@ use SMW\ApprovedRevs\ServicesFactory;
  * @covers \SMW\ApprovedRevs\DatabaseLogReader
  * @group semantic-approved-revs
  *
- * @license GNU GPL v2+
+ * @license GPL-2.0-or-later
  * @since 1.0
  *
  * @author mwjames
  */
-class DatabaseLogReaderTest extends \PHPUnit_Framework_TestCase {
+class DatabaseLogReaderTest extends \PHPUnit\Framework\TestCase {
 
 	private $servicesFactory;
 	private $connection;
@@ -24,7 +24,7 @@ class DatabaseLogReaderTest extends \PHPUnit_Framework_TestCase {
 
 		$this->servicesFactory = new ServicesFactory();
 
-		$this->connection = $this->getMockBuilder( '\DatabaseBase' )
+		$this->connection = $this->getMockBuilder( '\Wikimedia\Rdbms\Database' )
 			->disableOriginalConstructor()
 			->getMock();
 	}
@@ -87,7 +87,7 @@ class DatabaseLogReaderTest extends \PHPUnit_Framework_TestCase {
 
 		$this->connection->expects( $this->any() )
 			->method( 'select' )
-			->will( $this->returnValue( new \ArrayIterator( [ $row ] ) ) );
+			->willReturn( new \ArrayIterator( [ $row ] ) );
 
 		$this->servicesFactory->setConnection(
 			$this->connection
@@ -128,7 +128,7 @@ class DatabaseLogReaderTest extends \PHPUnit_Framework_TestCase {
 
 		$this->connection->expects( $this->once() )
 			->method( 'select' )
-			->will( $this->returnValue( new \ArrayIterator( [ $row ] ) ) );
+			->willReturn( new \ArrayIterator( [ $row ] ) );
 
 		$this->servicesFactory->setConnection(
 			$this->connection

@@ -2,16 +2,16 @@
 
 namespace SMW\ApprovedRevs\PropertyAnnotators;
 
+use SMW\ApprovedRevs\ApprovedRevsFacade;
+use SMW\ApprovedRevs\PropertyRegistry;
 use SMW\DIProperty;
 use SMW\SemanticData;
 use SMWDINumber as DINumber;
-use SMW\ApprovedRevs\ApprovedRevsFacade;
-use SMW\ApprovedRevs\PropertyRegistry;
 
 /**
  * @private
  *
- * @license GNU GPL v2+
+ * @license GPL-2.0-or-later
  */
 class ApprovedRevPropertyAnnotator {
 
@@ -21,7 +21,7 @@ class ApprovedRevPropertyAnnotator {
 	private $approvedRevsFacade;
 
 	/**
-	 * @var Integer|null
+	 * @var int|null
 	 */
 	private $approvedRev;
 
@@ -35,7 +35,7 @@ class ApprovedRevPropertyAnnotator {
 	/**
 	 * @since 1.0
 	 *
-	 * @param integer $approvedRev
+	 * @param int $approvedRev
 	 */
 	public function setApprovedRev( $approvedRev ) {
 		$this->approvedRev = $approvedRev;
@@ -56,7 +56,6 @@ class ApprovedRevPropertyAnnotator {
 	 * @param SemanticData $semanticData
 	 */
 	public function addAnnotation( SemanticData $semanticData ) {
-
 		if ( $this->approvedRev === null ) {
 			$this->approvedRev = $this->approvedRevsFacade->getApprovedRevID(
 				$semanticData->getSubject()->getTitle()

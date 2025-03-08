@@ -3,17 +3,16 @@
 namespace SMW\ApprovedRevs\Tests\PropertyAnnotators;
 
 use SMW\ApprovedRevs\PropertyAnnotators\ApprovedStatusPropertyAnnotator;
-use SMW\DIProperty;
-use SMWDIString as DIString;
+use SMWDIBlob;
 
 /**
  * @covers \SMW\ApprovedRevs\PropertyAnnotators\ApprovedStatusPropertyAnnotator
  * @group semantic-approved-revs
  *
- * @license GNU GPL v2+
+ * @license GPL-2.0-or-later
  * @since 1.0
  */
-class ApprovedStatusPropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
+class ApprovedStatusPropertyAnnotatorTest extends \PHPUnit\Framework\TestCase {
 
 	private $databaseLogReader;
 
@@ -26,7 +25,6 @@ class ApprovedStatusPropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testCanConstruct() {
-
 		$this->assertInstanceOf(
 			ApprovedStatusPropertyAnnotator::class,
 			new ApprovedStatusPropertyAnnotator( $this->databaseLogReader )
@@ -34,7 +32,6 @@ class ApprovedStatusPropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testAddAnnotation() {
-
 		$semanticData = $this->getMockBuilder( '\SMW\SemanticData' )
 			->disableOriginalConstructor()
 			->getMock();
@@ -43,7 +40,7 @@ class ApprovedStatusPropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 			->method( 'addPropertyObjectValue' )
 			->with(
 				$this->anyThing(),
-				$this->equalTo( new DIString( "checkme" ) ) );
+				new SMWDIBlob( "checkme" ) );
 
 		$annotator = new ApprovedStatusPropertyAnnotator(
 			$this->databaseLogReader
@@ -54,7 +51,6 @@ class ApprovedStatusPropertyAnnotatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testRemoval() {
-
 		$semanticData = $this->getMockBuilder( '\SMW\SemanticData' )
 			->disableOriginalConstructor()
 			->getMock();
