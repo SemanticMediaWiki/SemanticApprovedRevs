@@ -4,8 +4,13 @@
 			"Умар"
 		]
 	},
+	"semantic-approvedrevs-desc": "ТӀетоьхна шуьйра дӀасадаржор Semantic MediaWiki а, Approved Revs а, тӀечӀагӀбина хийцаран чулацам Ӏалашбарна тӀехь урхалла дан.",
 	"semantic-approvedrevs-property-approved-rev": "Бакъйина верси",
+	"semantic-approvedrevs-property-approved-rev-desc": "«$1» билгалйоккху агӀонан хийцаран ID, иза тӀеэцна а, шордарна луш а йу [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
 	"semantic-approvedrevs-property-approved-by": "Магийна",
+	"semantic-approvedrevs-property-approved-by-desc": "«$1» агӀонан статус тӀеэцначу декъашхочун идентификаци йа, иза луш ду шордаро [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
 	"semantic-approvedrevs-property-approved-date": "ТӀечӀагӀйина хан",
-	"semantic-approvedrevs-property-approved-status": "ТӀечӀагӀдаран статус"
+	"semantic-approvedrevs-property-approved-date-desc": "«$1» билгалйоккху агӀонан тӀеэцаран статус хӀоттийна хан, иза ло [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] шордаро.",
+	"semantic-approvedrevs-property-approved-status": "ТӀечӀагӀдаран статус",
+	"semantic-approvedrevs-property-approved-status-desc": "«$1»  билгалдоккху агӀонан тӀеэцаран статус, иза ло [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] шордаро."
 }
