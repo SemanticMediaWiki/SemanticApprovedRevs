@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"semantic-approvedrevs-desc": "Extensión complementaria para Semantic MediaWiki e Approved Revs para controlar o almacenamento do contido das revisións aprobadas.",
+	"semantic-approvedrevs-property-approved-rev": "Revisión aprobada",
+	"semantic-approvedrevs-property-approved-rev-desc": "«$1» identifica o ID de revisión dunha páxina que foi aprobada e está proporcionada pola extensión [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-by": "Aprobada por",
+	"semantic-approvedrevs-property-approved-by-desc": "«$1» identifica o usuario que estableceu o estado de aprobación da páxina e está proporcionado pola extensión [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-date": "Data de aprobación",
+	"semantic-approvedrevs-property-approved-date-desc": "«$1» identifica a data e hora na que se estableceu o estado de aprobación da páxina e está proporcionado pola extensión [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-status": "Estado de aprobación",
+	"semantic-approvedrevs-property-approved-status-desc": "«$1» identifica o estado de aprobación da páxina e está proporcionado pola extensión [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs]."
+}
