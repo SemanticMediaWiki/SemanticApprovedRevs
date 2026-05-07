@@ -1,11 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"Tensama0415",
 			"Ykhwong"
 		]
 	},
+	"semantic-approvedrevs-desc": "시맨틱 미디어위키 및 Approved Revs 기능을 보완하는 확장 기능으로, 승인된 판 콘텐츠의 저장 방식을 제어합니다",
 	"semantic-approvedrevs-property-approved-rev": "승인된 판",
+	"semantic-approvedrevs-property-approved-rev-desc": "\"$1\"은(는) 승인된 문서의 판 ID를 식별하며 [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs 시맨틱 Approved Revs] 확장 기능에 의해 제공됩니다.",
 	"semantic-approvedrevs-property-approved-by": "승인자",
+	"semantic-approvedrevs-property-approved-by-desc": "\"$1\"은(는) 문서를 승인 상태로 설정한 사용자를 식별하며 [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs 시맨틱 Approved Revs] 확장 기능에 의해 제공됩니다.",
 	"semantic-approvedrevs-property-approved-date": "승인 날짜",
-	"semantic-approvedrevs-property-approved-status": "승인 상태"
+	"semantic-approvedrevs-property-approved-date-desc": "\"$1\"은(는) 문서가 승인 상태로 설정된 시간을 식별하며 [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs 시맨틱 Approved Revs] 확장 기능에 의해 제공됩니다.",
+	"semantic-approvedrevs-property-approved-status": "승인 상태",
+	"semantic-approvedrevs-property-approved-status-desc": "\"$1\"은(는) 문서의 승인 상태를 식별하며 [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs 시맨틱 Approved Revs] 확장 기능에 의해 제공됩니다."
 }
