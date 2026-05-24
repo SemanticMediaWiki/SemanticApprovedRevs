@@ -2,6 +2,7 @@
 
 namespace SMW\ApprovedRevs\Tests;
 
+use MediaWiki\Title\Title;
 use SMW\ApprovedRevs\ApprovedRevsFacade;
 
 /**
@@ -23,7 +24,7 @@ class ApprovedRevsFacadeTest extends \PHPUnit\Framework\TestCase {
 	}
 
 	public function testGetApprovedRevID() {
-		$title = $this->getMockBuilder( '\Title' )
+		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -35,7 +36,7 @@ class ApprovedRevsFacadeTest extends \PHPUnit\Framework\TestCase {
 	}
 
 	public function testHasApprovedRevision() {
-		$title = $this->getMockBuilder( '\Title' )
+		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -47,7 +48,7 @@ class ApprovedRevsFacadeTest extends \PHPUnit\Framework\TestCase {
 	}
 
 	public function testGetApprovedFileInfo() {
-		$title = $this->getMockBuilder( '\Title' )
+		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -63,7 +64,7 @@ class ApprovedRevsFacadeTest extends \PHPUnit\Framework\TestCase {
 			property_exists( new \ApprovedRevs(), 'mApprovedFileInfo' )
 		);
 
-		$title = $this->getMockBuilder( '\Title' )
+		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 
