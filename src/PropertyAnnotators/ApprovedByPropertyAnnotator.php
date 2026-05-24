@@ -2,13 +2,13 @@
 
 namespace SMW\ApprovedRevs\PropertyAnnotators;
 
+use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use SMW\ApprovedRevs\DatabaseLogReader;
 use SMW\ApprovedRevs\PropertyRegistry;
 use SMW\DIProperty;
 use SMW\DIWikiPage;
 use SMW\SemanticData;
-use Title;
-use User;
 
 /**
  * @private
