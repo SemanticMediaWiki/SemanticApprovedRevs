@@ -3,7 +3,7 @@
 namespace SMW\ApprovedRevs;
 
 use ApprovedRevs;
-use Title;
+use MediaWiki\Title\Title;
 
 /**
  * The original `ApprovedRevs` consist of only static methods which are not mockable
