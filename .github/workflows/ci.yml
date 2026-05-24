@@ -17,42 +17,30 @@ jobs:
     strategy:
       matrix:
         include:
-          - mediawiki_version: '1.39'
+          - mediawiki_version: '1.43'
             smw_version: dev-master
-            ar_version: master
             php_version: 8.1
             database_type: mysql
             database_image: "mariadb:10"
             coverage: false
             experimental: false
-          - mediawiki_version: '1.40'
+          - mediawiki_version: '1.43'
             smw_version: dev-master
-            ar_version: master
-            php_version: 8.1
+            php_version: 8.2
             database_type: mysql
             database_image: "mariadb:11.2"
             coverage: true
             experimental: false
-          - mediawiki_version: '1.41'
+          - mediawiki_version: '1.44'
             smw_version: dev-master
-            ar_version: master
-            php_version: 8.1
+            php_version: 8.3
             database_type: mysql
             database_image: "mariadb:11.2"
             coverage: false
             experimental: false
-          - mediawiki_version: '1.42'
+          - mediawiki_version: '1.45'
             smw_version: dev-master
-            ar_version: master
-            php_version: 8.1
-            database_type: mysql
-            database_image: "mariadb:11.2"
-            coverage: false
-            experimental: false
-          - mediawiki_version: '1.43'
-            smw_version: dev-master
-            ar_version: master
-            php_version: 8.1
+            php_version: 8.4
             database_type: mysql
             database_image: "mariadb:11.2"
             coverage: false
@@ -90,4 +78,3 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage/php/coverage.xml
         if: matrix.coverage == true
-
