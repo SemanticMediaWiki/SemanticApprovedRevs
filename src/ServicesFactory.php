@@ -2,11 +2,11 @@
 
 namespace SMW\ApprovedRevs;
 
+use MediaWiki\Title\Title;
 use SMW\ApprovedRevs\PropertyAnnotators\ApprovedByPropertyAnnotator;
 use SMW\ApprovedRevs\PropertyAnnotators\ApprovedDatePropertyAnnotator;
 use SMW\ApprovedRevs\PropertyAnnotators\ApprovedRevPropertyAnnotator;
 use SMW\ApprovedRevs\PropertyAnnotators\ApprovedStatusPropertyAnnotator;
-use Title;
 use Wikimedia\Rdbms\Database;
 
 /**
