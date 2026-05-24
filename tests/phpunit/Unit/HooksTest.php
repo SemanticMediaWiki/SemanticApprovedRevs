@@ -2,6 +2,7 @@
 
 namespace SMW\ApprovedRevs\Tests;
 
+use MediaWiki\Title\Title;
 use SMW\ApprovedRevs\Hooks;
 
 /**
@@ -44,7 +45,7 @@ class HooksTest extends \PHPUnit\Framework\TestCase {
 	public function callOnApprovedRevsRevisionApproved( $instance ) {
 		$handler = 'ApprovedRevsRevisionApproved';
 
-		$title = $this->getMockBuilder( '\Title' )
+		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -75,7 +76,7 @@ class HooksTest extends \PHPUnit\Framework\TestCase {
 	public function callOnApprovedRevsFileRevisionApproved( $instance ) {
 		$handler = 'ApprovedRevsFileRevisionApproved';
 
-		$title = $this->getMockBuilder( '\Title' )
+		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -106,7 +107,7 @@ class HooksTest extends \PHPUnit\Framework\TestCase {
 	public function callOnSMWRevisionGuardIsApprovedRevision( $instance ) {
 		$handler = 'SMW::RevisionGuard::IsApprovedRevision';
 
-		$title = $this->getMockBuilder( '\Title' )
+		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -125,7 +126,7 @@ class HooksTest extends \PHPUnit\Framework\TestCase {
 	public function callOnSMWRevisionGuardChangeRevision( $instance ) {
 		$handler = 'SMW::RevisionGuard::ChangeRevision';
 
-		$title = $this->getMockBuilder( '\Title' )
+		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -144,7 +145,7 @@ class HooksTest extends \PHPUnit\Framework\TestCase {
 	public function callOnSMWRevisionGuardChangeRevisionID( $instance ) {
 		$handler = 'SMW::RevisionGuard::ChangeRevisionID';
 
-		$title = $this->getMockBuilder( '\Title' )
+		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -227,7 +228,7 @@ class HooksTest extends \PHPUnit\Framework\TestCase {
 			$instance->isRegistered( $handler )
 		);
 
-		$title = $this->getMockBuilder( '\Title' )
+		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 

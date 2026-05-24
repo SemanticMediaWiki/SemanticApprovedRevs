@@ -4,6 +4,7 @@ namespace SMW\ApprovedRevs;
 
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionStoreRecord;
+use MediaWiki\Title\Title;
 use Onoi\Cache\Cache;
 use SMW\SemanticData;
 use SMW\Services\ServicesFactory as ApplicationFactory;

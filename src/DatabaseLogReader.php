@@ -4,9 +4,9 @@ namespace SMW\ApprovedRevs;
 
 use ArrayIterator;
 use DatabaseLogEntry;
+use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use MWTimestamp;
-use Title;
-use User;
 use Wikimedia\Rdbms\IDatabase;
 
 class DatabaseLogReader {

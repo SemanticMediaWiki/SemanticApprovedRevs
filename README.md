@@ -1,5 +1,5 @@
 # Semantic Approved Revs
-[![CI](https://github.com/SemanticMediaWiki/SemanticApprovedRevs/actions/workflows/main.yaml/badge.svg)](https://github.com/SemanticMediaWiki/SemanticApprovedRevs/actions/workflows/main.yaml)
+[![CI](https://github.com/SemanticMediaWiki/SemanticApprovedRevs/actions/workflows/ci.yml/badge.svg)](https://github.com/SemanticMediaWiki/SemanticApprovedRevs/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/SemanticMediaWiki/SemanticApprovedRevs/branch/master/graph/badge.svg?token=77DNOQPTNF)](https://codecov.io/gh/SemanticMediaWiki/SemanticApprovedRevs)
 [![Latest Stable Version](https://poser.pugx.org/mediawiki/semantic-approved-revs/version.png)](https://packagist.org/packages/mediawiki/semantic-approved-revs)
 [![Packagist download count](https://poser.pugx.org/mediawiki/semantic-approved-revs/d/total.png)](https://packagist.org/packages/mediawiki/semantic-approved-revs)
@@ -14,9 +14,9 @@ This short [video](https://youtu.be/cl9XmzKQ2Ec) demonstrates the interaction be
 
 ## Requirements
 
-- PHP 7.0 or later
-- MediaWiki 1.31 or later
-- Semantic MediaWiki 3.1 or later
+- PHP 8.1 or later
+- MediaWiki 1.43 or later
+- Semantic MediaWiki 6.0 or later
 - ApprovedRevs extension 0.8 or later
 
 
