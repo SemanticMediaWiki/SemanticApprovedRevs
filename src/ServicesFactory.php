@@ -2,6 +2,7 @@
 
 namespace SMW\ApprovedRevs;
 
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use SMW\ApprovedRevs\PropertyAnnotators\ApprovedByPropertyAnnotator;
 use SMW\ApprovedRevs\PropertyAnnotators\ApprovedDatePropertyAnnotator;
@@ -36,7 +37,7 @@ class ServicesFactory {
 	 */
 	public function getConnection() {
 		if ( $this->connection === null ) {
-			$this->connection = wfGetDB( DB_REPLICA );
+			$this->connection = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		}
 
 		return $this->connection;
