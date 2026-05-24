@@ -2,6 +2,7 @@
 
 namespace SMW\ApprovedRevs\Tests;
 
+use MediaWiki\Title\Title;
 use SMW\ApprovedRevs\ApprovedRevsHandler;
 
 /**
@@ -39,7 +40,7 @@ class ApprovedRevsHandlerTest extends \PHPUnit\Framework\TestCase {
 			->method( 'getApprovedRevID' )
 			->willReturn( 42 );
 
-		$title = $this->getMockBuilder( '\Title' )
+		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -57,7 +58,7 @@ class ApprovedRevsHandlerTest extends \PHPUnit\Framework\TestCase {
 			->method( 'hasApprovedRevision' )
 			->willReturn( false );
 
-		$title = $this->getMockBuilder( '\Title' )
+		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -79,7 +80,7 @@ class ApprovedRevsHandlerTest extends \PHPUnit\Framework\TestCase {
 			->method( 'getApprovedRevID' )
 			->willReturn( 42 );
 
-		$title = $this->getMockBuilder( '\Title' )
+		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -101,7 +102,7 @@ class ApprovedRevsHandlerTest extends \PHPUnit\Framework\TestCase {
 			->method( 'getApprovedRevID' )
 			->willReturn( null );
 
-		$title = $this->getMockBuilder( '\Title' )
+		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -119,7 +120,7 @@ class ApprovedRevsHandlerTest extends \PHPUnit\Framework\TestCase {
 			->method( 'getApprovedRevID' )
 			->willReturn( 42 );
 
-		$title = $this->getMockBuilder( '\Title' )
+		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -137,7 +138,7 @@ class ApprovedRevsHandlerTest extends \PHPUnit\Framework\TestCase {
 			->method( 'getApprovedRevID' )
 			->willReturn( 42 );
 
-		$title = $this->getMockBuilder( '\Title' )
+		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -155,7 +156,7 @@ class ApprovedRevsHandlerTest extends \PHPUnit\Framework\TestCase {
 			->method( 'getApprovedFileInfo' )
 			->willReturn( [ '', false ] );
 
-		$title = $this->getMockBuilder( '\Title' )
+		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -181,7 +182,7 @@ class ApprovedRevsHandlerTest extends \PHPUnit\Framework\TestCase {
 			->disableOriginalConstructor()
 			->getMock();
 
-		$title = $this->getMockBuilder( '\Title' )
+		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 
