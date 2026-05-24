@@ -2,6 +2,7 @@
 
 namespace SMW\ApprovedRevs\Tests;
 
+use MediaWiki\Title\Title;
 use SMW\ApprovedRevs\DatabaseLogReader;
 use SMW\ApprovedRevs\ServicesFactory;
 
@@ -53,7 +54,7 @@ class DatabaseLogReaderTest extends \PHPUnit\Framework\TestCase {
 	}
 
 	public function testGetNull() {
-		$title = \Title::newFromText( "none" );
+		$title = Title::newFromText( "none" );
 
 		$log = $this->servicesFactory->newDatabaseLogReader( $title );
 
@@ -78,7 +79,7 @@ class DatabaseLogReaderTest extends \PHPUnit\Framework\TestCase {
 	}
 
 	public function testGetLogAndQuery() {
-		$title = \Title::newFromText( __METHOD__ );
+		$title = Title::newFromText( __METHOD__ );
 
 		$row = new \stdClass;
 		$row->user_id = 1;
@@ -119,7 +120,7 @@ class DatabaseLogReaderTest extends \PHPUnit\Framework\TestCase {
 	}
 
 	public function testCache() {
-		$title = \Title::newFromText( __METHOD__ );
+		$title = Title::newFromText( __METHOD__ );
 
 		$row = new \stdClass;
 		$row->user_id = 1;
