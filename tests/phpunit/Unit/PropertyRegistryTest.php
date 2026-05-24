@@ -46,7 +46,7 @@ class PropertyRegistryTest extends \PHPUnit\Framework\TestCase {
 			->method( 'registerPropertyAliasByMsgKey' );
 
 		$this->propertyRegistry->expects( $this->exactly( 4 ) )
-			->method( 'registerPropertyDescriptionMsgKeyById' );
+			->method( 'registerPropertyDescriptionByMsgKey' );
 
 		$instance = new PropertyRegistry();
 
