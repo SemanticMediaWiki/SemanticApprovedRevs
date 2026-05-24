@@ -4,10 +4,10 @@ namespace SMW\ApprovedRevs;
 
 use File;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use MediaWiki\Revision\RevisionStoreRecord;
 use OldLocalFile;
 use RepoGroup;
-use Title;
 
 /**
  * @license GPL-2.0-or-later
