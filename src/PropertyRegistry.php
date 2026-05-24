@@ -71,7 +71,7 @@ class PropertyRegistry {
 				$definition['alias']
 			);
 
-			$propertyRegistry->registerPropertyDescriptionMsgKeyById(
+			$propertyRegistry->registerPropertyDescriptionByMsgKey(
 				$key,
 				$definition['desc']
 			);
