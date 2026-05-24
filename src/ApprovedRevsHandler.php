@@ -4,8 +4,8 @@ namespace SMW\ApprovedRevs;
 
 use File;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Title\Title;
 use MediaWiki\Revision\RevisionStoreRecord;
+use MediaWiki\Title\Title;
 use OldLocalFile;
 use RepoGroup;
 
