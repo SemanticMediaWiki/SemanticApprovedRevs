@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"HakanIST"
 		]
 	},
 	"semantic-approvedrevs-desc": "Onaylanan revizyon içeriğinin depolanmasını kontrol etmek için Semantic MediaWiki ve Onaylı Revizyon tamamlayıcı genişletme.",
