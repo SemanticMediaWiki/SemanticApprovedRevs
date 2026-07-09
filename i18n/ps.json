@@ -4,8 +4,13 @@
 			"شاه زمان پټان"
 		]
 	},
+	"semantic-approvedrevs-desc": "د منل شوې بياليدنې د منځپانگې د زخيره‌کولو کنترول لپاره ماناپوهنيزه مېډياويکي او منل شوې بياليدنې لپاره بشپړوونکی شاتاړی.",
 	"semantic-approvedrevs-property-approved-rev": "منل شوې بياليدنه",
+	"semantic-approvedrevs-property-approved-rev-desc": "\"$1\" د هغه مخ د بياليدنې پېژند پېژني چې د [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs مانا پوهنيزه منل شويو بياليدنو] شاتاړي له‌خوا منل شوی او چمتو شوی دی.",
 	"semantic-approvedrevs-property-approved-by": "منونکی",
+	"semantic-approvedrevs-property-approved-by-desc": "\"$1\" د مخ د منلو دريځ ټاکونکی کارن پېژني چې د [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs مانا پوهنيزه منل شويو بياليدنو] شاتاړي له‌خوا چمتو شوی دی.",
 	"semantic-approvedrevs-property-approved-date": "منلو نېټه",
-	"semantic-approvedrevs-property-approved-status": "منلو دريځ"
+	"semantic-approvedrevs-property-approved-date-desc": "\"$1\" د مخ منلو د دريځ ټاکلو وخت پېژني چې د [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs مانا پوهنيزه منل شويو بياليدنو] شاتاړي له‌خوا چمتو شوی دی.",
+	"semantic-approvedrevs-property-approved-status": "منلو دريځ",
+	"semantic-approvedrevs-property-approved-status-desc": "\"$1\" د مخ منلو دريځ پېژني چې د [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs مانا پوهنيزه منل شويو بياليدنو] شاتاړي له‌خوا چمتو شوی دی."
 }
