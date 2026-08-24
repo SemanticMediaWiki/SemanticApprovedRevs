@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"semantic-approvedrevs-desc": "Doplnkové rozšírenie k Semantic MediaWiki a Approved Revs na riadenie ukladania obsahu schválených revízií.",
+	"semantic-approvedrevs-property-approved-rev": "Schválená revízia",
+	"semantic-approvedrevs-property-approved-rev-desc": "„$1“ určuje ID revízie stránky, ktorá bola schválená, a poskytuje ju rozšírenie [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-by": "Schválil",
+	"semantic-approvedrevs-property-approved-by-desc": "„$1“ určuje používateľa, ktorý nastavil stav schválenia stránky, a poskytuje ju rozšírenie [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-date": "Dátum schválenia",
+	"semantic-approvedrevs-property-approved-date-desc": "„$1“ určuje čas, kedy bol nastavený stav schválenia stránky, a poskytuje ju rozšírenie [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs].",
+	"semantic-approvedrevs-property-approved-status": "Stav schválenia",
+	"semantic-approvedrevs-property-approved-status-desc": "„$1“ určuje stav schválenia stránky a poskytuje ju rozšírenie [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs]."
+}
