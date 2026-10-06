@@ -305,7 +305,7 @@ class Hooks {
 	 * @since 1.0
 	 *
 	 * @param Title $title
-	 * @param File &$file
+	 * @param File|false|null &$file
 	 *
 	 * @return bool
 	 */

@@ -84,7 +84,7 @@ class ApprovedRevsHandler {
 	 * @since  1.0
 	 *
 	 * @param Title $title
-	 * @param int &$revisionID
+	 * @param int|null &$revisionID
 	 */
 	public function doChangeRevisionID( Title $title, &$revisionID ) {
 		$approvedRevID = $this->approvedRevsFacade->getApprovedRevID( $title );
@@ -98,7 +98,7 @@ class ApprovedRevsHandler {
 	 * @since  1.0
 	 *
 	 * @param Title $title
-	 * @param File &$file
+	 * @param File|false|null &$file
 	 *
 	 * @return true|null
 	 */
