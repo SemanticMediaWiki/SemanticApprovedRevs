@@ -1,5 +1,15 @@
 These are the release notes for the [Semantic Approved Revs](https://github.com/SemanticMediaWiki/SemanticApprovedRevs) (a.k.a SAR) MediaWiki extension.
 
+## SAR 1.0.1
+
+Released on 2026-10-06.
+
+### Bug Fixes
+
+* Fixed forced updates (`UpdateJob`, `rebuildData.php -page`) storing the semantic data of the latest revision instead of the approved one (#35)
+* Fixed an error when Semantic MediaWiki passes a revision that is not yet stored, e.g. in a preview
+* Fixed Semantic MediaWiki ignoring the approved revision ID of a page (e.g. in `RevisionGuard::getLatestRevID()`), and pages without an approved revision getting the revision ID 0 with ApprovedRevs master (#36)
+
 ## SAR 1.0.0
 
 Released on 2026-10-06.
