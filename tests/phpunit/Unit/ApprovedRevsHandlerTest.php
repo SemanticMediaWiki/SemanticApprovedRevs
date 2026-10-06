@@ -2,7 +2,10 @@
 
 namespace SMW\ApprovedRevs\Tests;
 
+use MediaWiki\Revision\RevisionLookup;
+use MediaWiki\Revision\RevisionStoreRecord;
 use MediaWiki\Title\Title;
+use MediaWikiIntegrationTestCase;
 use SMW\ApprovedRevs\ApprovedRevsHandler;
 
 /**
@@ -14,7 +17,7 @@ use SMW\ApprovedRevs\ApprovedRevsHandler;
  *
  * @author mwjames
  */
-class ApprovedRevsHandlerTest extends \PHPUnit\Framework\TestCase {
+class ApprovedRevsHandlerTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @var \SMW\ApprovedRevs\ApprovedRevsFacade|\PHPUnit\Framework\MockObject\MockObject
@@ -118,24 +121,6 @@ class ApprovedRevsHandlerTest extends \PHPUnit\Framework\TestCase {
 		);
 	}
 
-	public function testDoChangeRevision() {
-		$this->approvedRevsFacade->expects( $this->once() )
-			->method( 'getApprovedRevID' )
-			->willReturn( 42 );
-
-		$title = $this->getMockBuilder( Title::class )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$instance = new ApprovedRevsHandler(
-			$this->approvedRevsFacade
-		);
-
-		$rev = null;
-
-		$instance->doChangeRevision( $title, $rev );
-	}
-
 	public function testDoChangeRevisionID() {
 		$this->approvedRevsFacade->expects( $this->once() )
 			->method( 'getApprovedRevID' )
@@ -152,6 +137,85 @@ class ApprovedRevsHandlerTest extends \PHPUnit\Framework\TestCase {
 		$rev = null;
 
 		$instance->doChangeRevisionID( $title, $rev );
+
+		$this->assertSame( 42, $rev );
+	}
+
+	public function testDoChangeRevisionID_KeepsLatestWhenNothingIsApproved() {
+		$this->approvedRevsFacade->expects( $this->once() )
+			->method( 'getApprovedRevID' )
+			->willReturn( null );
+
+		$title = $this->getMockBuilder( Title::class )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$instance = new ApprovedRevsHandler(
+			$this->approvedRevsFacade
+		);
+
+		$rev = 1001;
+
+		$instance->doChangeRevisionID( $title, $rev );
+
+		$this->assertSame( 1001, $rev );
+	}
+
+	public function testDoChangeRevision_ReplacesRevisionWithApprovedOne() {
+		$approvedRev = $this->getMockBuilder( RevisionStoreRecord::class )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$revisionLookup = $this->createMock( RevisionLookup::class );
+		$revisionLookup->expects( $this->once() )
+			->method( 'getRevisionById' )
+			// @phan-suppress-next-line PhanTypeMismatchArgumentProbablyReal PHPUnit with() typing
+			->with( 42 )
+			->willReturn( $approvedRev );
+
+		$this->setService( 'RevisionLookup', $revisionLookup );
+
+		$this->approvedRevsFacade->expects( $this->once() )
+			->method( 'getApprovedRevID' )
+			->willReturn( 42 );
+
+		$title = $this->getMockBuilder( Title::class )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$instance = new ApprovedRevsHandler(
+			$this->approvedRevsFacade
+		);
+
+		$rev = null;
+
+		$instance->doChangeRevision( $title, $rev );
+
+		$this->assertSame( $approvedRev, $rev );
+	}
+
+	public function testDoChangeRevision_KeepsRevisionWhenNothingIsApproved() {
+		$this->approvedRevsFacade->expects( $this->once() )
+			->method( 'getApprovedRevID' )
+			->willReturn( null );
+
+		$title = $this->getMockBuilder( Title::class )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$instance = new ApprovedRevsHandler(
+			$this->approvedRevsFacade
+		);
+
+		$latest = $this->getMockBuilder( RevisionStoreRecord::class )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$rev = $latest;
+
+		$instance->doChangeRevision( $title, $rev );
+
+		$this->assertSame( $latest, $rev );
 	}
 
 	public function testDoChangeFile_NoSha1() {
@@ -226,6 +290,55 @@ class ApprovedRevsHandlerTest extends \PHPUnit\Framework\TestCase {
 			'2fd4e1c67a2d28fced849ee1bb76e7391b93eb12',
 			$f->file_sha1
 		);
+	}
+
+	public function testDoChangeFile_UsesRepoGroupServiceByDefault() {
+		$sha1 = '2fd4e1c67a2d28fced849ee1bb76e7391b93eb12';
+
+		$this->approvedRevsFacade->expects( $this->once() )
+			->method( 'getApprovedFileInfo' )
+			->willReturn( [ '1552165749', $sha1 ] );
+
+		$file = $this->getMockBuilder( '\File' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$db = $this->getMockBuilder( '\Wikimedia\Rdbms\Database' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$localRepo = $this->getMockBuilder( '\LocalRepo' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$localRepo->method( 'getReplicaDB' )
+			->willReturn( $db );
+
+		$localRepo->expects( $this->once() )
+			->method( 'findBySha1' )
+			// @phan-suppress-next-line PhanTypeMismatchArgumentProbablyReal PHPUnit with() typing
+			->with( $sha1 )
+			->willReturn( [ $file ] );
+
+		$repoGroup = $this->getMockBuilder( '\RepoGroup' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$repoGroup->expects( $this->once() )
+			->method( 'getLocalRepo' )
+			->willReturn( $localRepo );
+
+		$this->setService( 'RepoGroup', $repoGroup );
+
+		$title = $this->getMockBuilder( Title::class )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$f = null;
+
+		( new ApprovedRevsHandler( $this->approvedRevsFacade ) )->doChangeFile( $title, $f );
+
+		$this->assertSame( $file, $f );
 	}
 
 }
