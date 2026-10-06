@@ -51,7 +51,9 @@ class ApprovedRevsHandler {
 			return true;
 		}
 
-		if ( ( $approvedRevID = $this->approvedRevsFacade->getApprovedRevID( $title ) ) !== null ) {
+		$approvedRevID = $this->approvedRevsFacade->getApprovedRevID( $title );
+
+		if ( $approvedRevID !== null ) {
 			return $approvedRevID == $latestRevID;
 		}
 
@@ -67,7 +69,9 @@ class ApprovedRevsHandler {
 	public function doChangeRevision( Title $title, ?RevisionStoreRecord &$revision ) {
 		// Forcibly change the revision to match what ApprovedRevs sees as
 		// approved
-		if ( ( $approvedRevID = $this->approvedRevsFacade->getApprovedRevID( $title ) ) !== null ) {
+		$approvedRevID = $this->approvedRevsFacade->getApprovedRevID( $title );
+
+		if ( $approvedRevID !== null ) {
 			$approvedRev = MediaWikiServices::getInstance()
 					   ->getRevisionLookup()->getRevisionById( $approvedRevID );
 			if ( $approvedRev instanceof RevisionStoreRecord ) {
@@ -83,7 +87,9 @@ class ApprovedRevsHandler {
 	 * @param int &$revisionID
 	 */
 	public function doChangeRevisionID( Title $title, &$revisionID ) {
-		if ( ( $approvedRevID = $this->approvedRevsFacade->getApprovedRevID( $title ) ) !== null ) {
+		$approvedRevID = $this->approvedRevsFacade->getApprovedRevID( $title );
+
+		if ( $approvedRevID !== null ) {
 			$revisionID = $approvedRevID;
 		}
 	}
