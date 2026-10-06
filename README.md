@@ -15,9 +15,9 @@ This short [video](https://youtu.be/cl9XmzKQ2Ec) demonstrates the interaction be
 ## Requirements
 
 - PHP 8.1 or later
-- MediaWiki 1.43 or later
-- Semantic MediaWiki 6.0 or later
-- ApprovedRevs extension 0.8 or later
+- MediaWiki 1.39 or later
+- Semantic MediaWiki 5.0 or later (6.0 or later for MediaWiki 1.43+)
+- ApprovedRevs extension 2.1.2 or later
 
 
 ## Installation
