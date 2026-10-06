@@ -18,7 +18,14 @@ use SMW\ApprovedRevs\ServicesFactory;
  */
 class DatabaseLogReaderTest extends \PHPUnit\Framework\TestCase {
 
+	/**
+	 * @var \SMW\ApprovedRevs\ServicesFactory
+	 */
 	private $servicesFactory;
+
+	/**
+	 * @var \Wikimedia\Rdbms\Database|\PHPUnit\Framework\MockObject\MockObject
+	 */
 	private $connection;
 
 	protected function setUp(): void {

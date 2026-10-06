@@ -16,6 +16,9 @@ use SMW\ApprovedRevs\ApprovedRevsHandler;
  */
 class ApprovedRevsHandlerTest extends \PHPUnit\Framework\TestCase {
 
+	/**
+	 * @var \SMW\ApprovedRevs\ApprovedRevsFacade|\PHPUnit\Framework\MockObject\MockObject
+	 */
 	private $approvedRevsFacade;
 
 	protected function setUp(): void {

@@ -14,7 +14,14 @@ use SMW\DIWikiPage;
  */
 class PropertyAnnotatorTest extends \PHPUnit\Framework\TestCase {
 
+	/**
+	 * @var \SMW\ApprovedRevs\ServicesFactory|\PHPUnit\Framework\MockObject\MockObject
+	 */
 	private $servicesFactory;
+
+	/**
+	 * @var \Psr\Log\NullLogger|\PHPUnit\Framework\MockObject\MockObject
+	 */
 	private $logger;
 
 	protected function setUp(): void {

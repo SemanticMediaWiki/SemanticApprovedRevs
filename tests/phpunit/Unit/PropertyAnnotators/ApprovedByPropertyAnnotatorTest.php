@@ -15,6 +15,9 @@ use User;
  */
 class ApprovedByPropertyAnnotatorTest extends \PHPUnit\Framework\TestCase {
 
+	/**
+	 * @var \SMW\ApprovedRevs\DatabaseLogReader|\PHPUnit\Framework\MockObject\MockObject
+	 */
 	private $databaseLogReader;
 
 	protected function setUp(): void {

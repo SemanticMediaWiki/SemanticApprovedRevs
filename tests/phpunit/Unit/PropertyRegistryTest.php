@@ -15,6 +15,9 @@ use SMW\ApprovedRevs\PropertyRegistry;
  */
 class PropertyRegistryTest extends \PHPUnit\Framework\TestCase {
 
+	/**
+	 * @var \SMW\PropertyRegistry|\PHPUnit\Framework\MockObject\MockObject
+	 */
 	private $propertyRegistry;
 
 	protected function setUp(): void {
