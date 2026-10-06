@@ -4,6 +4,7 @@ namespace SMW\ApprovedRevs;
 
 use File;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStoreRecord;
 use MediaWiki\Title\Title;
 use OldLocalFile;
@@ -64,9 +65,9 @@ class ApprovedRevsHandler {
 	 * @since  1.0
 	 *
 	 * @param Title $title
-	 * @param ?RevisionStoreRecord &$revision
+	 * @param ?RevisionRecord &$revision
 	 */
-	public function doChangeRevision( Title $title, ?RevisionStoreRecord &$revision ) {
+	public function doChangeRevision( Title $title, ?RevisionRecord &$revision ) {
 		// Forcibly change the revision to match what ApprovedRevs sees as
 		// approved
 		$approvedRevID = $this->approvedRevsFacade->getApprovedRevID( $title );

@@ -6,7 +6,7 @@ use File;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOutput;
-use MediaWiki\Revision\RevisionStoreRecord;
+use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use SMW\Services\ServicesFactory as ApplicationFactory;
 use Wikimedia\ObjectCache\BagOStuff;
@@ -130,11 +130,11 @@ class Hooks {
 	 * @since 1.0
 	 *
 	 * @param Title $title
-	 * @param ?RevisionStoreRecord &$record
+	 * @param ?RevisionRecord &$record
 	 *
 	 * @return bool
 	 */
-	public function onChangeRevision( $title, ?RevisionStoreRecord &$record ) {
+	public function onChangeRevision( $title, ?RevisionRecord &$record ) {
 		$approvedRevsHandler = new ApprovedRevsHandler(
 			new ApprovedRevsFacade()
 		);

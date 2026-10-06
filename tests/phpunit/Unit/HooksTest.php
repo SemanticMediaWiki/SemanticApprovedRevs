@@ -2,6 +2,7 @@
 
 namespace SMW\ApprovedRevs\Tests;
 
+use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use SMW\ApprovedRevs\Hooks;
 use Wikimedia\ObjectCache\BagOStuff;
@@ -185,6 +186,25 @@ class HooksTest extends \PHPUnit\Framework\TestCase {
 			$instance->getHandlers( $handler ),
 			[ $title, &$file ]
 		);
+	}
+
+	/**
+	 * SMW passes whatever RevisionRecord it holds (e.g. an unsaved revision
+	 * from a preview), not only stored ones.
+	 */
+	public function testOnChangeRevisionAcceptsRevisionThatIsNotStored() {
+		$title = $this->getMockBuilder( Title::class )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$revision = $this->createMock( RevisionRecord::class );
+		$given = $revision;
+
+		$this->assertTrue(
+			( new Hooks() )->onChangeRevision( $title, $revision )
+		);
+
+		$this->assertSame( $given, $revision );
 	}
 
 	private function assertThatHookIsExcutable( $hooks, $arguments ) {
