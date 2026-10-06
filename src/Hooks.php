@@ -253,7 +253,8 @@ class Hooks {
 	 * @return bool
 	 */
 	public function onApprovedRevsRevisionApproved( $output, $title, $rev_id, $content ) {
-		$ttl = 60 * 60; // 1hr
+		// 1hr
+		$ttl = 60 * 60;
 
 		// Send an event to ParserAfterTidy and allow it to pass the preliminary
 		// test even in cases where the content doesn't contain any SMW related
@@ -279,7 +280,8 @@ class Hooks {
 	 * @return bool
 	 */
 	public function onApprovedRevsFileRevisionApproved( $parser, $title, $timestamp, $sha1 ) {
-		$ttl = 60 * 60; // 1hr
+		// 1hr
+		$ttl = 60 * 60;
 
 		// @see onApprovedRevsRevisionApproved for the same reason
 		$key = smwfCacheKey( 'smw:parseraftertidy', $title->getPrefixedDBKey() );
