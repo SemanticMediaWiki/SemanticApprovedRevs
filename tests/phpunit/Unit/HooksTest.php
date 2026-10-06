@@ -186,7 +186,7 @@ class HooksTest extends \PHPUnit\Framework\TestCase {
 	}
 
 	public function callOnSMWStoreUpdateDataBefore( $instance ) {
-		$handler = 'SMWStore::updateDataBefore';
+		$handler = 'SMW::Store::BeforeDataUpdateComplete';
 
 		$store = $this->getMockBuilder( '\SMW\Store' )
 			->disableOriginalConstructor()

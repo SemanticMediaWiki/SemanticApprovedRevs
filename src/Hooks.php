@@ -205,7 +205,7 @@ class Hooks {
 	}
 
 	/**
-	 * @see https://www.semantic-mediawiki.org/wiki/Hooks#SMWStore::updateDataBefore
+	 * @see https://www.semantic-mediawiki.org/wiki/Hooks#SMW::Store::BeforeDataUpdateComplete
 	 *
 	 * @since 1.0
 	 *
@@ -315,7 +315,7 @@ class Hooks {
 			'SMW::RevisionGuard::ChangeRevisionID' => [ $this, 'onOverrideRevisionID' ],
 			'SMW::RevisionGuard::ChangeFile' => [ $this, 'onChangeFile' ],
 			'SMW::Property::initProperties' => [ $this, 'onInitProperties' ],
-			'SMWStore::updateDataBefore' => [ $this, 'onUpdateDataBefore' ],
+			'SMW::Store::BeforeDataUpdateComplete' => [ $this, 'onUpdateDataBefore' ],
 		];
 	}
 
