@@ -7,7 +7,8 @@
 Semantic Approved Revs (a.k.a. SAR) is a [Semantic MediaWiki][smw] extension and a complement to the Approved Revs extension to help store data related to an approved revision. The extension provides:
 
 - Control over Semantic MediaWiki related updates to only store data for an approved revision (managed by extension Approved Revs)
-- Additional properties ("Approved by", "Approved date", "Approved revision" and "Approval status") to accompany the approval process
+
+The properties "Approved by", "Approved date", "Approved revision" and "Approval status" are no longer provided by this extension. Enable them via `$sespgEnabledPropertyList` (`_APPROVEDBY`, `_APPROVEDDATE`, `_APPROVED` and `_APPROVEDSTATUS`) of [Semantic Extra Special Properties][sesp] instead.
 
 This short [video](https://youtu.be/cl9XmzKQ2Ec) demonstrates the interaction between the Semantic MediaWiki, Semantic Approved Revs, and the Approved Revs extension.
 
@@ -98,3 +99,4 @@ but can also be executed using `composer test` from the extension base directory
 [mw-localsettings]: https://www.mediawiki.org/wiki/Localsettings
 [contributors]: https://github.com/SemanticMediaWiki/SemanticApprovedRevs/graphs/contributors
 [semver]: http://semver.org/
+[sesp]: https://github.com/SemanticMediaWiki/SemanticExtraSpecialProperties
