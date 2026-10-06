@@ -74,6 +74,9 @@ class ApprovedRevPropertyAnnotator {
 		}
 	}
 
+	/**
+	 * @return DINumber
+	 */
 	private function newDINumber() {
 		return new DINumber( $this->approvedRev );
 	}

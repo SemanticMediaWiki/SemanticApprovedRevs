@@ -74,6 +74,9 @@ class ApprovedByPropertyAnnotator {
 		}
 	}
 
+	/**
+	 * @return DIWikiPage|null
+	 */
 	private function newDIWikiPage() {
 		if ( !$this->approvedBy instanceof UserIdentity ) {
 			return;

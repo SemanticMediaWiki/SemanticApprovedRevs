@@ -73,6 +73,9 @@ class ApprovedDatePropertyAnnotator {
 		}
 	}
 
+	/**
+	 * @return DITime|null
+	 */
 	private function newDITime() {
 		if ( $this->approvedDate === null || is_bool( $this->approvedDate ) ) {
 			return;
