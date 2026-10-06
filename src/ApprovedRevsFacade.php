@@ -24,8 +24,13 @@ class ApprovedRevsFacade {
 	 *
 	 * @return int|null
 	 */
-	public function getApprovedRevID( Title $title ) {
-		return ApprovedRevs::getApprovedRevID( $title );
+	public function getApprovedRevID( Title $title ): ?int {
+		// Depending on the ApprovedRevs version the value comes unconverted
+		// from the database (numeric string, false for no row) or as 0 for a
+		// page without an approved revision
+		$revID = (int)ApprovedRevs::getApprovedRevID( $title );
+
+		return $revID > 0 ? $revID : null;
 	}
 
 	/**
