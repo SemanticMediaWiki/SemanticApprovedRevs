@@ -18,7 +18,7 @@ class PropertyRegistry {
 	/**
 	 * @since 1.0
 	 *
-	 * @param PropertyRegistry $propertyRegistry
+	 * @param \SMW\PropertyRegistry $propertyRegistry
 	 */
 	public function register( $propertyRegistry ) {
 		$defs = [

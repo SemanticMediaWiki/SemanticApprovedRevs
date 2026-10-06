@@ -11,17 +11,15 @@ return [
 	// # Issue statistics:
 	// PhanTypeMismatchProperty : 8 occurrences
 	// PhanNonClassMethodCall : 5 occurrences
-	// PhanUndeclaredMethod : 5 occurrences
-	// PhanUndeclaredTypeParameter : 5 occurrences
-	// PhanTypeMismatchArgument : 2 occurrences
 	// PhanImpossibleCondition : 1 occurrence
 	// PhanTypeMismatchArgumentNullable : 1 occurrence
 	// PhanTypeMismatchArgumentNullableInternal : 1 occurrence
 	// PhanTypeMismatchArgumentProbablyReal : 1 occurrence
 	// PhanUndeclaredClassMethod : 1 occurrence
+	// PhanUndeclaredMethod : 1 occurrence
 	// PhanUndeclaredProperty : 1 occurrence
+	// PhanUndeclaredTypeParameter : 1 occurrence
 	// PhanUndeclaredTypeProperty : 1 occurrence
-	// PhanUnusedPrivateMethodParameter : 1 occurrence
 
 	'file_suppressions' => [
 		'src/ApprovedRevsHandler.php' => [
@@ -29,13 +27,11 @@ return [
 		],
 		'src/Hooks.php' => [
 			'PhanImpossibleCondition' => ['\\SMW\\ApprovedRevs\\Hooks::initExtension'],
-			'PhanTypeMismatchArgument' => ['\\SMW\\ApprovedRevs\\Hooks::onChangeFile', '\\SMW\\ApprovedRevs\\Hooks::onInitProperties'],
 			'PhanTypeMismatchArgumentNullableInternal' => ['\\SMW\\ApprovedRevs\\Hooks::onExtensionFunction'],
 			'PhanUndeclaredClassMethod' => ['\\SMW\\ApprovedRevs\\Hooks::saveToCache'],
 			'PhanUndeclaredMethod' => ['\\SMW\\ApprovedRevs\\Hooks::saveToCache'],
-			'PhanUndeclaredTypeParameter' => ['\\SMW\\ApprovedRevs\\Hooks::onApprovedRevsFileRevisionApproved', '\\SMW\\ApprovedRevs\\Hooks::onApprovedRevsRevisionApproved', '\\SMW\\ApprovedRevs\\Hooks::onChangeFile', '\\SMW\\ApprovedRevs\\Hooks::onInitProperties', '\\SMW\\ApprovedRevs\\Hooks::setCache'],
-			'PhanUndeclaredTypeProperty' => ['\\SMW\\ApprovedRevs\\Hooks'],
-			'PhanUnusedPrivateMethodParameter' => ['\\SMW\\ApprovedRevs\\Hooks::registerHandlers']
+			'PhanUndeclaredTypeParameter' => ['\\SMW\\ApprovedRevs\\Hooks::setCache'],
+			'PhanUndeclaredTypeProperty' => ['\\SMW\\ApprovedRevs\\Hooks']
 		],
 		'src/PropertyAnnotator.php' => [
 			'PhanTypeMismatchArgumentProbablyReal' => ['\\SMW\\ApprovedRevs\\PropertyAnnotator::addAnnotation'],
@@ -52,9 +48,6 @@ return [
 		],
 		'src/PropertyAnnotators/ApprovedStatusPropertyAnnotator.php' => [
 			'PhanTypeMismatchProperty' => ['\\SMW\\ApprovedRevs\\PropertyAnnotators\\ApprovedStatusPropertyAnnotator::addAnnotation', '\\SMW\\ApprovedRevs\\PropertyAnnotators\\ApprovedStatusPropertyAnnotator::setApprovedStatus']
-		],
-		'src/PropertyRegistry.php' => [
-			'PhanUndeclaredMethod' => ['\\SMW\\ApprovedRevs\\PropertyRegistry::register']
 		],
 		'src/ServicesFactory.php' => [
 			'PhanTypeMismatchProperty' => ['\\SMW\\ApprovedRevs\\ServicesFactory::getConnection']

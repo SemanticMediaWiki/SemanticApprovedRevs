@@ -2,8 +2,11 @@
 
 namespace SMW\ApprovedRevs;
 
+use File;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Parser\Parser;
+use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Revision\RevisionStoreRecord;
 use MediaWiki\Title\Title;
 use SMW\SemanticData;
@@ -35,7 +38,7 @@ class Hooks {
 	 * @param array $config
 	 */
 	public function __construct( $config = [] ) {
-		$this->registerHandlers( $config );
+		$this->registerHandlers();
 	}
 
 	/**
@@ -205,7 +208,7 @@ class Hooks {
 	 *
 	 * @since 1.0
 	 *
-	 * @param ProertyRegistry $registry
+	 * @param \SMW\PropertyRegistry $registry
 	 *
 	 * @return bool
 	 */
@@ -332,10 +335,7 @@ class Hooks {
 		}
 	}
 
-	/**
-	 * @param array $config
-	 */
-	private function registerHandlers( $config ) {
+	private function registerHandlers() {
 		$this->handlers = [
 			'ApprovedRevsRevisionApproved' => [ $this, 'onApprovedRevsRevisionApproved' ],
 			'ApprovedRevsFileRevisionApproved' => [ $this, 'onApprovedRevsFileRevisionApproved' ],
