@@ -2,7 +2,7 @@ These are the release notes for the [Semantic Approved Revs](https://github.com/
 
 ## SAR 1.0.0
 
-Released on TBD.
+Released on 2026-10-06.
 
 ### Breaking Changes
 
@@ -13,9 +13,11 @@ Released on TBD.
 
 * Added support for Semantic MediaWiki 7 (tested with 7.3.1) by using its BagOStuff cache and MediaWiki's logger factory instead of the removed `ServicesFactory::getCache()` and `getMediaWikiLogger()`; SMW 5 and 6 keep working
 * Restored MediaWiki 1.39 as the supported minimum (with Semantic MediaWiki 5.0 or later and ApprovedRevs 2.1.2 or later)
-* Replaced deprecated MediaWiki APIs (`RepoGroup::singleton()`, `HookContainer::getHandlerCallbacks()` and direct `$wgHooks` access in the hook registration helpers)
+* Replaced deprecated MediaWiki APIs (`RepoGroup::singleton()`, `HookContainer::getHandlerCallbacks()` and direct `$wgHooks` access in the hook registration helpers) (#32, #33)
 
 ### Bug Fixes
 
 * Fixed approving a revision failing on Semantic MediaWiki 7
 * Fixed `SMW_APPROVED_REVS_VERSION` always being `UNKNOWN` instead of the version from `extension.json`
+* Fixed annotations being created for pages without a valid title or approved revision
+* Fixed the import of the property group definition using an outdated schema format
