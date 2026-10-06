@@ -14,5 +14,6 @@
 	"semantic-approvedrevs-property-approved-date": "Approved date",
 	"semantic-approvedrevs-property-approved-date-desc": "\"$1\" identifies the time when the approval status of the page was set and is provided by the [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] extension.",
 	"semantic-approvedrevs-property-approved-status": "Approval status",
-	"semantic-approvedrevs-property-approved-status-desc": "\"$1\" identifies the approval status of a page and is provided by the [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] extension."
+	"semantic-approvedrevs-property-approved-status-desc": "\"$1\" identifies the approval status of a page and is provided by the [https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Approved_Revs Semantic Approved Revs] extension.",
+	"sar-property-group-label-approved-revs-group": "Approval status"
 }

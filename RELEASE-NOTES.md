@@ -15,3 +15,4 @@ Released on TBD.
 * Fixed the approved-by property never being set on MediaWiki 1.39
 * Fixed the approved-by, approved-date, approved-status and approved-rev properties not being stored on Semantic MediaWiki 7, which removed the `SMWStore::updateDataBefore` hook
 * Fixed approving a revision failing on Semantic MediaWiki 7
+* Fixed the property group import (`sar.group.json`) being rejected by the Semantic MediaWiki schema validation, so the approved-by, approved-date, approved-status and approved-rev properties are grouped again
