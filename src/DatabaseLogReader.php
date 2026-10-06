@@ -4,8 +4,9 @@ namespace SMW\ApprovedRevs;
 
 use ArrayIterator;
 use DatabaseLogEntry;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
-use MediaWiki\User\User;
+use MediaWiki\User\UserIdentity;
 use MWTimestamp;
 use Wikimedia\Rdbms\IDatabase;
 
@@ -78,14 +79,14 @@ class DatabaseLogReader {
 	 * @param Title|null $title
 	 * @param string $type
 	 *
-	 * @return User
+	 * @return UserIdentity|null
 	 */
 	public function getUserForLogEntry( ?Title $title = null, $type = 'approval' ) {
 		$this->init( $title, $type );
 		$logLine = $this->getLog()->current();
 
 		if ( $logLine && $logLine->user_id ) {
-			return User::newFromID( $logLine->user_id );
+			return MediaWikiServices::getInstance()->getUserFactory()->newFromId( (int)$logLine->user_id );
 		}
 	}
 

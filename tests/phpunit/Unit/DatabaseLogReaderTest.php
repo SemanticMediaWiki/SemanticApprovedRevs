@@ -2,8 +2,8 @@
 
 namespace SMW\ApprovedRevs\Tests;
 
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
-use MediaWiki\User\User;
 use SMW\ApprovedRevs\DatabaseLogReader;
 use SMW\ApprovedRevs\ServicesFactory;
 
@@ -98,7 +98,7 @@ class DatabaseLogReaderTest extends \PHPUnit\Framework\TestCase {
 		$log = $this->servicesFactory->newDatabaseLogReader();
 
 		$this->assertEquals(
-			User::newFromID( 1 ),
+			MediaWikiServices::getInstance()->getUserFactory()->newFromId( 1 ),
 			$log->getUserForLogEntry( $title )
 		);
 
@@ -140,13 +140,13 @@ class DatabaseLogReaderTest extends \PHPUnit\Framework\TestCase {
 		$log->clearCache();
 
 		$this->assertEquals(
-			User::newFromID( 1 ),
+			MediaWikiServices::getInstance()->getUserFactory()->newFromId( 1 ),
 			$log->getUserForLogEntry( $title )
 		);
 
 		// Second call on same title instance should be made from cache
 		$this->assertEquals(
-			User::newFromID( 1 ),
+			MediaWikiServices::getInstance()->getUserFactory()->newFromId( 1 ),
 			$log->getUserForLogEntry( $title )
 		);
 	}

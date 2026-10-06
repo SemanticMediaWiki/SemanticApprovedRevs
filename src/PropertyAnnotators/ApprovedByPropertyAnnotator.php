@@ -3,7 +3,7 @@
 namespace SMW\ApprovedRevs\PropertyAnnotators;
 
 use MediaWiki\Title\Title;
-use MediaWiki\User\User;
+use MediaWiki\User\UserIdentity;
 use SMW\ApprovedRevs\DatabaseLogReader;
 use SMW\ApprovedRevs\PropertyRegistry;
 use SMW\DIProperty;
@@ -75,11 +75,11 @@ class ApprovedByPropertyAnnotator {
 	}
 
 	private function newDIWikiPage() {
-		if ( !$this->approvedBy instanceof User ) {
+		if ( !$this->approvedBy instanceof UserIdentity ) {
 			return;
 		}
 
-		$userPage = $this->approvedBy->getUserPage();
+		$userPage = Title::makeTitle( NS_USER, $this->approvedBy->getName() );
 
 		if ( $userPage instanceof Title ) {
 			return DIWikiPage::newFromTitle( $userPage );
