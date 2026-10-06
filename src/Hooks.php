@@ -330,6 +330,9 @@ class Hooks {
 		}
 	}
 
+	/**
+	 * @param array $config
+	 */
 	private function registerHandlers( $config ) {
 		$this->handlers = [
 			'ApprovedRevsRevisionApproved' => [ $this, 'onApprovedRevsRevisionApproved' ],

@@ -62,6 +62,11 @@ class PropertyAnnotator {
 		);
 	}
 
+	/**
+	 * @param \SMW\DIWikiPage|null $subject
+	 *
+	 * @return bool
+	 */
 	private function canAnnotate( $subject ) {
 		if ( $subject === null || $subject->getTitle() === null || $subject->getTitle()->isSpecialPage() ) {
 			return false;
