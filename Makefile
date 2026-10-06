@@ -37,11 +37,5 @@ include build/Makefile
 composer-phan: .init ## Run Phan static analysis
 	$(compose-exec-wiki) bash -c "cd $(EXTENSION_FOLDER) && composer phan $(COMPOSER_PARAMS)"
 
-.PHONY: composer-phan-update-baseline
-composer-phan-update-baseline: .init ## Re-generate baseline and fix indentation for PHPCS
-	-$(compose-exec-wiki) bash -c "cd $(EXTENSION_FOLDER) && composer phan -- --save-baseline=.phan/baseline.php"
-	$(compose) cp wiki:$(EXTENSION_FOLDER)/.phan/baseline.php .phan/baseline.php
-	unexpand --first-only -t 4 .phan/baseline.php > /tmp/baseline.php && mv /tmp/baseline.php .phan/baseline.php
-
-# Phan runs on the coverage row only, to avoid baseline mismatches across MW versions
+# Phan runs on the coverage row only, as its findings depend on the MediaWiki version
 ci-coverage: composer-phan

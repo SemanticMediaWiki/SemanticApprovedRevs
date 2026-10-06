@@ -2,8 +2,6 @@
 
 $cfg = require __DIR__ . '/../vendor/mediawiki/mediawiki-phan-config/src/config.php';
 
-$cfg['baseline_path'] = __DIR__ . '/baseline.php';
-
 $IP = getenv( 'MW_INSTALL_PATH' ) !== false
 	? str_replace( '\\', '/', getenv( 'MW_INSTALL_PATH' ) )
 	: '../..';
