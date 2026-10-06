@@ -49,6 +49,8 @@ class Hooks {
 
 	/**
 	 * @since  1.0
+	 *
+	 * @return string|false
 	 */
 	public static function hasPropertyCollisions( $var ) {
 		if ( !isset( $var['sespgEnabledPropertyList'] ) ) {
@@ -149,6 +151,8 @@ class Hooks {
 	 *
 	 * @param Title $title
 	 * @param int $latestRevID
+	 *
+	 * @return bool
 	 */
 	public function onIsApprovedRevision( $title, $latestRevID ) {
 		$approvedRevsHandler = new ApprovedRevsHandler(
@@ -163,6 +167,8 @@ class Hooks {
 	 *
 	 * @param Title $title
 	 * @param ?RevisionStoreRecord $record
+	 *
+	 * @return bool
 	 */
 	public function onChangeRevision( $title, ?RevisionStoreRecord $record ) {
 		$approvedRevsHandler = new ApprovedRevsHandler(
@@ -179,6 +185,8 @@ class Hooks {
 	 *
 	 * @param Title $title
 	 * @param int &$latestRevID
+	 *
+	 * @return bool
 	 */
 	public function onOverrideRevisionID( $title, &$latestRevID ) {
 		$approvedRevsHandler = new ApprovedRevsHandler(
@@ -196,6 +204,8 @@ class Hooks {
 	 * @since 1.0
 	 *
 	 * @param ProertyRegistry $registry
+	 *
+	 * @return bool
 	 */
 	public function onInitProperties( $registry ) {
 		$propertyRegistry = new PropertyRegistry();
@@ -211,6 +221,8 @@ class Hooks {
 	 *
 	 * @param Store $store
 	 * @param SemanticData $semanticData
+	 *
+	 * @return bool
 	 */
 	public function onUpdateDataBefore( $store, $semanticData ) {
 		$propertyAnnotator = new PropertyAnnotator(
@@ -235,6 +247,8 @@ class Hooks {
 	 * @param Title $title
 	 * @param int $rev_id
 	 * @param string $content
+	 *
+	 * @return bool
 	 */
 	public function onApprovedRevsRevisionApproved( $output, $title, $rev_id, $content ) {
 		$ttl = 60 * 60; // 1hr
@@ -259,6 +273,8 @@ class Hooks {
 	 * @param Title $title
 	 * @param int $timestamp
 	 * @param string $sha1
+	 *
+	 * @return bool
 	 */
 	public function onApprovedRevsFileRevisionApproved( $parser, $title, $timestamp, $sha1 ) {
 		$ttl = 60 * 60; // 1hr
@@ -277,6 +293,8 @@ class Hooks {
 	 *
 	 * @param Title $title
 	 * @param File &$file
+	 *
+	 * @return bool
 	 */
 	public function onChangeFile( $title, &$file ) {
 		$approvedRevsHandler = new ApprovedRevsHandler(

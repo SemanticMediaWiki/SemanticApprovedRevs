@@ -93,6 +93,8 @@ class ApprovedRevsHandler {
 	 *
 	 * @param Title $title
 	 * @param File &$file
+	 *
+	 * @return true|null
 	 */
 	public function doChangeFile( Title $title, &$file ) {
 		// It has been observed that when running `runJobs.php` with `--wait`

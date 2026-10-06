@@ -46,6 +46,8 @@ class HooksTest extends \PHPUnit\Framework\TestCase {
 
 	/**
 	 * SMW 7 replaced the Onoi cache with a MediaWiki BagOStuff.
+	 *
+	 * @return \PHPUnit\Framework\MockObject\MockObject
 	 */
 	private function newCacheMock() {
 		$isOnoi = interface_exists( '\Onoi\Cache\Cache' );
