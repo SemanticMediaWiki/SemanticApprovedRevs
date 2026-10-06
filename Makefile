@@ -17,7 +17,7 @@ DB_TYPE?=mysql
 DB_IMAGE?="mariadb:10"
 
 # extensions
-SMW_VERSION?=dev-master
+SMW_VERSION?=7.3.1
 AR_VERSION ?= master
 
 # composer

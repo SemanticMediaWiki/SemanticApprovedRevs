@@ -32,7 +32,7 @@ jobs:
             coverage: false
             experimental: true
           - mediawiki_version: '1.43'
-            smw_version: dev-master
+            smw_version: 7.3.1
             ar_version: master
             php_version: 8.1
             database_type: mysql
@@ -40,7 +40,7 @@ jobs:
             coverage: false
             experimental: false
           - mediawiki_version: '1.43'
-            smw_version: dev-master
+            smw_version: 7.3.1
             ar_version: master
             php_version: 8.2
             database_type: mysql
@@ -48,7 +48,7 @@ jobs:
             coverage: true
             experimental: false
           - mediawiki_version: '1.44'
-            smw_version: dev-master
+            smw_version: 7.3.1
             ar_version: master
             php_version: 8.3
             database_type: mysql
@@ -56,7 +56,7 @@ jobs:
             coverage: false
             experimental: false
           - mediawiki_version: '1.45'
-            smw_version: dev-master
+            smw_version: 7.3.1
             ar_version: master
             php_version: 8.4
             database_type: mysql
@@ -64,7 +64,7 @@ jobs:
             coverage: false
             experimental: false
           - mediawiki_version: '1.46'
-            smw_version: dev-master
+            smw_version: 7.3.1
             ar_version: master
             php_version: 8.4
             database_type: mysql
