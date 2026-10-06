@@ -152,6 +152,8 @@ class DatabaseLogReaderTest extends \PHPUnit\Framework\TestCase {
 		);
 
 		// Second call on same title instance should be made from cache
+		// The same call is repeated on purpose to assert that the second one is served from the cache
+		// @phan-suppress-next-line PhanPluginDuplicateAdjacentStatement
 		$this->assertEquals(
 			MediaWikiServices::getInstance()->getUserFactory()->newFromId( 1 ),
 			$log->getUserForLogEntry( $title )

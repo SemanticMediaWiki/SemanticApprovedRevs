@@ -47,7 +47,7 @@ class HooksTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * SMW 7 replaced the Onoi cache with a MediaWiki BagOStuff.
 	 *
-	 * @return \PHPUnit\Framework\MockObject\MockObject
+	 * @return \PHPUnit\Framework\MockObject\MockObject&BagOStuff
 	 */
 	private function newCacheMock() {
 		$isOnoi = interface_exists( '\Onoi\Cache\Cache' );
@@ -58,8 +58,10 @@ class HooksTest extends \PHPUnit\Framework\TestCase {
 
 		$cache->expects( $this->once() )
 			->method( $isOnoi ? 'save' : 'set' )
+			// @phan-suppress-next-line PhanTypeMismatchArgumentProbablyReal PHPUnit with() typing
 			->with( $this->stringContains( 'smw:parseraftertidy' ) );
 
+		// @phan-suppress-next-line PhanTypeMismatchReturn The mocked class depends on the SMW version
 		return $cache;
 	}
 

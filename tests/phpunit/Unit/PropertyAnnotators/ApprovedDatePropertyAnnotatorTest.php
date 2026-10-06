@@ -57,7 +57,9 @@ class ApprovedDatePropertyAnnotatorTest extends \PHPUnit\Framework\TestCase {
 		$semanticData->expects( $this->once() )
 			->method( 'addPropertyObjectValue' )
 			->with(
+				// @phan-suppress-next-line PhanTypeMismatchArgumentProbablyReal PHPUnit with() typing
 				$this->anyThing(),
+				// @phan-suppress-next-line PhanTypeMismatchArgument PHPUnit with() typing
 				$time
 			);
 

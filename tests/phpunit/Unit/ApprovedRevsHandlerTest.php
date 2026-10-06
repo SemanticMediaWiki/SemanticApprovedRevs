@@ -203,6 +203,7 @@ class ApprovedRevsHandlerTest extends \PHPUnit\Framework\TestCase {
 
 		$localRepo->expects( $this->once() )
 			->method( 'findBySha1' )
+			// @phan-suppress-next-line PhanTypeMismatchArgumentProbablyReal PHPUnit with() typing
 			->with( '2fd4e1c67a2d28fced849ee1bb76e7391b93eb12' )
 			->willReturn( [ $file ] );
 
