@@ -61,7 +61,7 @@ class PropertyAnnotator {
 		}
 
 		$this->logger->info(
-			[ 'SemanticApprovedRevs', 'procTime:{procTime}' ],
+			'SemanticApprovedRevs procTime:{procTime}',
 			[ 'procTime' => round( ( microtime( true ) - $time ), 5 ) ]
 		);
 	}

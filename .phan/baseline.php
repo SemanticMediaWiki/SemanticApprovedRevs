@@ -11,7 +11,6 @@ return [
 	// # Issue statistics:
 	// PhanTypeMismatchArgumentNullable : 1 occurrence
 	// PhanTypeMismatchArgumentNullableInternal : 1 occurrence
-	// PhanTypeMismatchArgumentProbablyReal : 1 occurrence
 	// PhanUndeclaredClassMethod : 1 occurrence
 	// PhanUndeclaredMethod : 1 occurrence
 	// PhanUndeclaredProperty : 1 occurrence
@@ -28,9 +27,6 @@ return [
 			'PhanUndeclaredMethod' => ['\\SMW\\ApprovedRevs\\Hooks::saveToCache'],
 			'PhanUndeclaredTypeParameter' => ['\\SMW\\ApprovedRevs\\Hooks::setCache'],
 			'PhanUndeclaredTypeProperty' => ['\\SMW\\ApprovedRevs\\Hooks']
-		],
-		'src/PropertyAnnotator.php' => [
-			'PhanTypeMismatchArgumentProbablyReal' => ['\\SMW\\ApprovedRevs\\PropertyAnnotator::addAnnotation']
 		],
 		'src/PropertyAnnotators/ApprovedRevPropertyAnnotator.php' => [
 			'PhanTypeMismatchArgumentNullable' => ['\\SMW\\ApprovedRevs\\PropertyAnnotators\\ApprovedRevPropertyAnnotator::addAnnotation']
