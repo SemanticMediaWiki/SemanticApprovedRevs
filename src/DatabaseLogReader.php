@@ -126,6 +126,9 @@ class DatabaseLogReader {
 
 	/**
 	 * Take care of loading from the cache or filling the query.
+	 *
+	 * @param Title|null $title
+	 * @param string $type
 	 */
 	private function init( $title, $type ) {
 		$this->dbKey = $title instanceof Title ? $title->getDBkey() : null;

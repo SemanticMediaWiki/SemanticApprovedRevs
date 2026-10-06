@@ -50,6 +50,8 @@ class Hooks {
 	/**
 	 * @since  1.0
 	 *
+	 * @param array $var
+	 *
 	 * @return string|false
 	 */
 	public static function hasPropertyCollisions( $var ) {
@@ -310,6 +312,10 @@ class Hooks {
 	 * SMW 7 dropped onoi/cache in favour of a MediaWiki BagOStuff; SMW 5 and 6
 	 * only provide the Onoi cache. Remove the fallback when support for SMW < 7
 	 * is dropped.
+	 *
+	 * @param string $key
+	 * @param mixed $value
+	 * @param int $ttl
 	 */
 	private function saveToCache( string $key, $value, int $ttl ): void {
 		if ( $this->cache === null ) {
