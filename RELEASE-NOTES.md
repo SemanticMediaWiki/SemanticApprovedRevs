@@ -1,6 +1,6 @@
 These are the release notes for the [Semantic Approved Revs](https://github.com/SemanticMediaWiki/SemanticApprovedRevs) (a.k.a SAR) MediaWiki extension.
 
-## SAR 0.10.0
+## SAR 1.0.0
 
 Released on TBD.
 
