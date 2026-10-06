@@ -9,6 +9,7 @@ use SMW\ApprovedRevs\PropertyAnnotators\ApprovedDatePropertyAnnotator;
 use SMW\ApprovedRevs\PropertyAnnotators\ApprovedRevPropertyAnnotator;
 use SMW\ApprovedRevs\PropertyAnnotators\ApprovedStatusPropertyAnnotator;
 use Wikimedia\Rdbms\Database;
+use Wikimedia\Rdbms\IDatabase;
 
 /**
  * @license GPL-2.0-or-later
@@ -19,7 +20,7 @@ use Wikimedia\Rdbms\Database;
 class ServicesFactory {
 
 	/**
-	 * @var Database
+	 * @var IDatabase|null
 	 */
 	private $connection;
 
@@ -33,7 +34,7 @@ class ServicesFactory {
 	/**
 	 * @since 1.3
 	 *
-	 * @return Database
+	 * @return IDatabase
 	 */
 	public function getConnection() {
 		if ( $this->connection === null ) {

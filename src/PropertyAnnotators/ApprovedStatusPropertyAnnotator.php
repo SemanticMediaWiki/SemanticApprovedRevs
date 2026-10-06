@@ -21,7 +21,7 @@ class ApprovedStatusPropertyAnnotator {
 	private $databaseLogReader;
 
 	/**
-	 * @var int|null
+	 * @var string|false|null
 	 */
 	private $approvedStatus;
 
@@ -35,7 +35,7 @@ class ApprovedStatusPropertyAnnotator {
 	/**
 	 * @since 1.0
 	 *
-	 * @param string $approvedStatus
+	 * @param string|false|null $approvedStatus
 	 */
 	public function setApprovedStatus( $approvedStatus ) {
 		$this->approvedStatus = $approvedStatus;

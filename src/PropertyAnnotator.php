@@ -3,6 +3,10 @@
 namespace SMW\ApprovedRevs;
 
 use Psr\Log\LoggerAwareTrait;
+use SMW\ApprovedRevs\PropertyAnnotators\ApprovedByPropertyAnnotator;
+use SMW\ApprovedRevs\PropertyAnnotators\ApprovedDatePropertyAnnotator;
+use SMW\ApprovedRevs\PropertyAnnotators\ApprovedRevPropertyAnnotator;
+use SMW\ApprovedRevs\PropertyAnnotators\ApprovedStatusPropertyAnnotator;
 use SMW\SemanticData;
 
 /**
@@ -23,7 +27,7 @@ class PropertyAnnotator {
 	private $servicesFactory;
 
 	/**
-	 * @var PropertyAnnotator[]
+	 * @var (ApprovedByPropertyAnnotator|ApprovedStatusPropertyAnnotator|ApprovedDatePropertyAnnotator|ApprovedRevPropertyAnnotator)[]
 	 */
 	private $propertyAnnotators = [];
 

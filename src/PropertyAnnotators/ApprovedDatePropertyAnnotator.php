@@ -2,6 +2,7 @@
 
 namespace SMW\ApprovedRevs\PropertyAnnotators;
 
+use MWTimestamp;
 use SMW\ApprovedRevs\DatabaseLogReader;
 use SMW\ApprovedRevs\PropertyRegistry;
 use SMW\DIProperty;
@@ -21,7 +22,7 @@ class ApprovedDatePropertyAnnotator {
 	private $databaseLogReader;
 
 	/**
-	 * @var int|null
+	 * @var MWTimestamp|false|null
 	 */
 	private $approvedDate;
 
@@ -35,7 +36,7 @@ class ApprovedDatePropertyAnnotator {
 	/**
 	 * @since 1.0
 	 *
-	 * @param int $approvedDate
+	 * @param MWTimestamp|false|null $approvedDate
 	 */
 	public function setApprovedDate( $approvedDate ) {
 		$this->approvedDate = $approvedDate;

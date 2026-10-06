@@ -23,7 +23,7 @@ class ApprovedByPropertyAnnotator {
 	private $databaseLogReader;
 
 	/**
-	 * @var int|null
+	 * @var UserIdentity|false|null
 	 */
 	private $approvedBy;
 
@@ -37,7 +37,7 @@ class ApprovedByPropertyAnnotator {
 	/**
 	 * @since 1.0
 	 *
-	 * @param string $approvedBy
+	 * @param UserIdentity|false|null $approvedBy
 	 */
 	public function setApprovedBy( $approvedBy ) {
 		$this->approvedBy = $approvedBy;

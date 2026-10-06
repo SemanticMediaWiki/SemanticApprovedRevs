@@ -9,8 +9,6 @@
  */
 return [
 	// # Issue statistics:
-	// PhanTypeMismatchProperty : 8 occurrences
-	// PhanNonClassMethodCall : 5 occurrences
 	// PhanImpossibleCondition : 1 occurrence
 	// PhanTypeMismatchArgumentNullable : 1 occurrence
 	// PhanTypeMismatchArgumentNullableInternal : 1 occurrence
@@ -34,23 +32,10 @@ return [
 			'PhanUndeclaredTypeProperty' => ['\\SMW\\ApprovedRevs\\Hooks']
 		],
 		'src/PropertyAnnotator.php' => [
-			'PhanTypeMismatchArgumentProbablyReal' => ['\\SMW\\ApprovedRevs\\PropertyAnnotator::addAnnotation'],
-			'PhanTypeMismatchProperty' => ['\\SMW\\ApprovedRevs\\PropertyAnnotator::initPropertyAnnotators']
-		],
-		'src/PropertyAnnotators/ApprovedByPropertyAnnotator.php' => [
-			'PhanTypeMismatchProperty' => ['\\SMW\\ApprovedRevs\\PropertyAnnotators\\ApprovedByPropertyAnnotator::setApprovedBy']
-		],
-		'src/PropertyAnnotators/ApprovedDatePropertyAnnotator.php' => [
-			'PhanNonClassMethodCall' => ['\\SMW\\ApprovedRevs\\PropertyAnnotators\\ApprovedDatePropertyAnnotator::newDITime']
+			'PhanTypeMismatchArgumentProbablyReal' => ['\\SMW\\ApprovedRevs\\PropertyAnnotator::addAnnotation']
 		],
 		'src/PropertyAnnotators/ApprovedRevPropertyAnnotator.php' => [
 			'PhanTypeMismatchArgumentNullable' => ['\\SMW\\ApprovedRevs\\PropertyAnnotators\\ApprovedRevPropertyAnnotator::addAnnotation']
-		],
-		'src/PropertyAnnotators/ApprovedStatusPropertyAnnotator.php' => [
-			'PhanTypeMismatchProperty' => ['\\SMW\\ApprovedRevs\\PropertyAnnotators\\ApprovedStatusPropertyAnnotator::addAnnotation', '\\SMW\\ApprovedRevs\\PropertyAnnotators\\ApprovedStatusPropertyAnnotator::setApprovedStatus']
-		],
-		'src/ServicesFactory.php' => [
-			'PhanTypeMismatchProperty' => ['\\SMW\\ApprovedRevs\\ServicesFactory::getConnection']
 		],
 	],
 	// 'directory_suppressions' => ['src/directory_name' => ['PhanIssueName1', 'PhanIssueName2']] can be manually added if needed.
