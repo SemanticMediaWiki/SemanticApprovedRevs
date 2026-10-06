@@ -25,10 +25,10 @@ jobs:
           # Experimental until the code is compatible with MW 1.39.
           - mediawiki_version: '1.39'
             smw_version: 5.1.0
-            ar_version: REL1_39
+            ar_version: 2.1.2
             php_version: 8.1
             database_type: mysql
-            database_image: "mariadb:10"
+            database_image: "mariadb:11.8"
             coverage: false
             experimental: true
           - mediawiki_version: '1.43'
