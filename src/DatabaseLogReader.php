@@ -8,7 +8,9 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MWTimestamp;
+use Wikimedia\Rdbms\DBError;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IResultWrapper;
 
 class DatabaseLogReader {
 
@@ -18,22 +20,22 @@ class DatabaseLogReader {
 	private static $titleCache = [];
 
 	/**
-	 * @var DatabaseBase
+	 * @var IDatabase
 	 */
 	private $dbr;
 
 	/**
-	 * @var string
+	 * @var array
 	 */
 	private $query;
 
 	/**
-	 * @var string
+	 * @var IResultWrapper|ArrayIterator|null
 	 */
 	private $log;
 
 	/**
-	 * @var string
+	 * @var string|null
 	 */
 	private $dbKey;
 
@@ -45,7 +47,7 @@ class DatabaseLogReader {
 	/**
 	 * @since 1.0
 	 *
-	 * @param DatabaseaBase $dbr injected connection
+	 * @param IDatabase $dbr injected connection
 	 * @param Title|null $title
 	 * @param string $type of log (default: approval)
 	 */
@@ -96,7 +98,7 @@ class DatabaseLogReader {
 	 * @param Title|null $title
 	 * @param string $type
 	 *
-	 * @return Timestamp
+	 * @return MWTimestamp|null
 	 */
 	public function getDateOfLogEntry( ?Title $title = null, $type = 'approval' ) {
 		$this->init( $title, $type );
@@ -157,7 +159,7 @@ class DatabaseLogReader {
 	/**
 	 * Fetch the results using our conditions
 	 *
-	 * @return IResultWrapper
+	 * @return IResultWrapper|ArrayIterator
 	 * @throws DBError
 	 */
 	private function getLog() {

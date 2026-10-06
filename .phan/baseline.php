@@ -9,40 +9,23 @@
  */
 return [
 	// # Issue statistics:
-	// PhanTypeMismatchProperty : 10+ occurrences
+	// PhanTypeMismatchProperty : 8 occurrences
 	// PhanNonClassMethodCall : 5 occurrences
-	// PhanUndeclaredClassMethod : 5 occurrences
 	// PhanUndeclaredMethod : 5 occurrences
 	// PhanUndeclaredTypeParameter : 5 occurrences
-	// PhanTypeMismatchReturn : 4 occurrences
-	// PhanTypeMismatchPropertyProbablyReal : 3 occurrences
 	// PhanTypeMismatchArgument : 2 occurrences
-	// PhanTypeMismatchDimAssignment : 2 occurrences
-	// PhanUndeclaredTypeProperty : 2 occurrences
-	// PhanUndeclaredTypeReturnType : 2 occurrences
 	// PhanImpossibleCondition : 1 occurrence
 	// PhanTypeMismatchArgumentNullable : 1 occurrence
 	// PhanTypeMismatchArgumentNullableInternal : 1 occurrence
 	// PhanTypeMismatchArgumentProbablyReal : 1 occurrence
-	// PhanTypeMismatchDeclaredParam : 1 occurrence
+	// PhanUndeclaredClassMethod : 1 occurrence
 	// PhanUndeclaredProperty : 1 occurrence
-	// PhanUndeclaredTypeThrowsType : 1 occurrence
+	// PhanUndeclaredTypeProperty : 1 occurrence
 	// PhanUnusedPrivateMethodParameter : 1 occurrence
 
 	'file_suppressions' => [
 		'src/ApprovedRevsHandler.php' => [
 			'PhanUndeclaredProperty' => ['\\SMW\\ApprovedRevs\\ApprovedRevsHandler::doChangeFile']
-		],
-		'src/DatabaseLogReader.php' => [
-			'PhanTypeMismatchDeclaredParam' => ['\\SMW\\ApprovedRevs\\DatabaseLogReader::__construct'],
-			'PhanTypeMismatchDimAssignment' => ['\\SMW\\ApprovedRevs\\DatabaseLogReader::init'],
-			'PhanTypeMismatchProperty' => ['\\SMW\\ApprovedRevs\\DatabaseLogReader::__construct', '\\SMW\\ApprovedRevs\\DatabaseLogReader::init'],
-			'PhanTypeMismatchPropertyProbablyReal' => ['\\SMW\\ApprovedRevs\\DatabaseLogReader::getLog', '\\SMW\\ApprovedRevs\\DatabaseLogReader::init'],
-			'PhanTypeMismatchReturn' => ['\\SMW\\ApprovedRevs\\DatabaseLogReader::getDateOfLogEntry', '\\SMW\\ApprovedRevs\\DatabaseLogReader::getLog', '\\SMW\\ApprovedRevs\\DatabaseLogReader::getQuery'],
-			'PhanUndeclaredClassMethod' => ['\\SMW\\ApprovedRevs\\DatabaseLogReader::getDateOfLogEntry', '\\SMW\\ApprovedRevs\\DatabaseLogReader::getLog', '\\SMW\\ApprovedRevs\\DatabaseLogReader::getStatusOfLogEntry', '\\SMW\\ApprovedRevs\\DatabaseLogReader::getUserForLogEntry'],
-			'PhanUndeclaredTypeProperty' => ['\\SMW\\ApprovedRevs\\DatabaseLogReader'],
-			'PhanUndeclaredTypeReturnType' => ['\\SMW\\ApprovedRevs\\DatabaseLogReader::getDateOfLogEntry', '\\SMW\\ApprovedRevs\\DatabaseLogReader::getLog'],
-			'PhanUndeclaredTypeThrowsType' => ['\\SMW\\ApprovedRevs\\DatabaseLogReader::getLog']
 		],
 		'src/Hooks.php' => [
 			'PhanImpossibleCondition' => ['\\SMW\\ApprovedRevs\\Hooks::initExtension'],
@@ -62,8 +45,7 @@ return [
 			'PhanTypeMismatchProperty' => ['\\SMW\\ApprovedRevs\\PropertyAnnotators\\ApprovedByPropertyAnnotator::setApprovedBy']
 		],
 		'src/PropertyAnnotators/ApprovedDatePropertyAnnotator.php' => [
-			'PhanNonClassMethodCall' => ['\\SMW\\ApprovedRevs\\PropertyAnnotators\\ApprovedDatePropertyAnnotator::newDITime'],
-			'PhanTypeMismatchProperty' => ['\\SMW\\ApprovedRevs\\PropertyAnnotators\\ApprovedDatePropertyAnnotator::addAnnotation']
+			'PhanNonClassMethodCall' => ['\\SMW\\ApprovedRevs\\PropertyAnnotators\\ApprovedDatePropertyAnnotator::newDITime']
 		],
 		'src/PropertyAnnotators/ApprovedRevPropertyAnnotator.php' => [
 			'PhanTypeMismatchArgumentNullable' => ['\\SMW\\ApprovedRevs\\PropertyAnnotators\\ApprovedRevPropertyAnnotator::addAnnotation']
