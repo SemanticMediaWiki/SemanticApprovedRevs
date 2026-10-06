@@ -109,7 +109,7 @@ class ApprovedRevsHandler {
 		}
 
 		if ( $this->repoGroup === null ) {
-			$this->repoGroup = RepoGroup::singleton();
+			$this->repoGroup = MediaWikiServices::getInstance()->getRepoGroup();
 		}
 
 		$localRepo = $this->repoGroup->getLocalRepo();
