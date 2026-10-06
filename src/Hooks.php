@@ -28,7 +28,10 @@ class Hooks {
 	private $handlers = [];
 
 	/**
+	 * Onoi\Cache\Cache only exists up to SMW 6; remove it from the type when support for SMW < 7 is dropped.
+	 *
 	 * @var \Onoi\Cache\Cache|BagOStuff|null
+	 * @suppress PhanUndeclaredTypeProperty
 	 */
 	private $cache;
 
@@ -42,9 +45,12 @@ class Hooks {
 	}
 
 	/**
+	 * Onoi\Cache\Cache only exists up to SMW 6; remove it from the type when support for SMW < 7 is dropped.
+	 *
 	 * @since 1.0
 	 *
 	 * @param \Onoi\Cache\Cache|BagOStuff $cache
+	 * @suppress PhanUndeclaredTypeParameter
 	 */
 	public function setCache( $cache ) {
 		$this->cache = $cache;
@@ -321,6 +327,8 @@ class Hooks {
 	 * @param string $key
 	 * @param mixed $value
 	 * @param int $ttl
+	 * @suppress PhanUndeclaredMethod getCache() only exists up to SMW 6
+	 * @suppress PhanUndeclaredClassMethod Onoi\Cache\Cache only exists up to SMW 6
 	 */
 	private function saveToCache( string $key, $value, int $ttl ): void {
 		if ( $this->cache === null ) {

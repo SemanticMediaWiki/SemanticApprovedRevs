@@ -12,18 +12,8 @@ return [
 	// PhanTypeMismatchArgumentProbablyReal : 9 occurrences
 	// PhanTypeMismatchArgument : 6 occurrences
 	// PhanPluginDuplicateAdjacentStatement : 1 occurrence
-	// PhanUndeclaredClassMethod : 1 occurrence
-	// PhanUndeclaredMethod : 1 occurrence
-	// PhanUndeclaredTypeParameter : 1 occurrence
-	// PhanUndeclaredTypeProperty : 1 occurrence
 
 	'file_suppressions' => [
-		'src/Hooks.php' => [
-			'PhanUndeclaredClassMethod' => ['\\SMW\\ApprovedRevs\\Hooks::saveToCache'],
-			'PhanUndeclaredMethod' => ['\\SMW\\ApprovedRevs\\Hooks::saveToCache'],
-			'PhanUndeclaredTypeParameter' => ['\\SMW\\ApprovedRevs\\Hooks::setCache'],
-			'PhanUndeclaredTypeProperty' => ['\\SMW\\ApprovedRevs\\Hooks']
-		],
 		'tests/phpunit/Unit/ApprovedRevsHandlerTest.php' => [
 			'PhanTypeMismatchArgument' => ['\\SMW\\ApprovedRevs\\Tests\\ApprovedRevsHandlerTest::testDoChangeFile_FromLocalRepo', '\\SMW\\ApprovedRevs\\Tests\\ApprovedRevsHandlerTest::testDoChangeFile_NoSha1', '\\SMW\\ApprovedRevs\\Tests\\ApprovedRevsHandlerTest::testDoChangeRevisionID'],
 			'PhanTypeMismatchArgumentProbablyReal' => ['\\SMW\\ApprovedRevs\\Tests\\ApprovedRevsHandlerTest::testDoChangeFile_FromLocalRepo']
