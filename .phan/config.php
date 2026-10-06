@@ -12,11 +12,13 @@ $IP = getenv( 'MW_INSTALL_PATH' ) !== false
 $dependencyExtensions = [
 	$IP . '/extensions/SemanticMediaWiki',
 	$IP . '/extensions/ApprovedRevs',
+	// MediaWiki's test base classes (e.g. ApiTestCase) used by the integration tests
+	$IP . '/tests/phpunit',
 ];
 
 $cfg['directory_list'] = array_merge(
 	$cfg['directory_list'],
-	[ 'src' ],
+	[ 'src', 'tests' ],
 	$dependencyExtensions
 );
 
