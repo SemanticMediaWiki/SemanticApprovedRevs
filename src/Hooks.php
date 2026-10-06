@@ -3,15 +3,12 @@
 namespace SMW\ApprovedRevs;
 
 use File;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Revision\RevisionStoreRecord;
 use MediaWiki\Title\Title;
-use SMW\SemanticData;
 use SMW\Services\ServicesFactory as ApplicationFactory;
-use SMW\Store;
 use Wikimedia\ObjectCache\BagOStuff;
 
 /**
@@ -57,35 +54,6 @@ class Hooks {
 	}
 
 	/**
-	 * @since  1.0
-	 *
-	 * @param array $var
-	 *
-	 * @return string|false
-	 */
-	public static function hasPropertyCollisions( $var ) {
-		if ( !isset( $var['sespgEnabledPropertyList'] ) ) {
-			return false;
-		}
-
-		// SESP properties!
-		$list = [
-			'_APPROVED' => true,
-			'_APPROVEDBY' => true,
-			'_APPROVEDDATE' => true,
-			'_APPROVEDSTATUS' => true
-		];
-
-		foreach ( $var['sespgEnabledPropertyList'] as $key ) {
-			if ( isset( $list[$key] ) ) {
-				return $key;
-			}
-		}
-
-		return false;
-	}
-
-	/**
 	 * @since 1.0
 	 *
 	 * @param array $credits the extension credits as registered from `extension.json`
@@ -99,21 +67,6 @@ class Hooks {
 		}
 
 		define( 'SMW_APPROVED_REVS_VERSION', $version );
-
-		/**
-		 * @see https://www.semantic-mediawiki.org/wiki/Hooks#SMW::Config::BeforeCompletion
-		 *
-		 * @since 1.0
-		 *
-		 * @param array &$config
-		 */
-		$GLOBALS['wgHooks']['SMW::Config::BeforeCompletion'][] = static function ( &$config ) {
-			if ( isset( $config['smwgImportFileDirs'] ) ) {
-				$config['smwgImportFileDirs'] += [ 'sar' => __DIR__ . '/../data/import' ];
-			}
-
-			return true;
-		};
 	}
 
 	/**
@@ -205,46 +158,6 @@ class Hooks {
 		);
 
 		$approvedRevsHandler->doChangeRevisionID( $title, $latestRevID );
-
-		return true;
-	}
-
-	/**
-	 * @see https://www.semantic-mediawiki.org/wiki/Hooks#SMW::Property::initProperties
-	 *
-	 * @since 1.0
-	 *
-	 * @param \SMW\PropertyRegistry $registry
-	 *
-	 * @return bool
-	 */
-	public function onInitProperties( $registry ) {
-		$propertyRegistry = new PropertyRegistry();
-		$propertyRegistry->register( $registry );
-
-		return true;
-	}
-
-	/**
-	 * @see https://www.semantic-mediawiki.org/wiki/Hooks#SMW::Store::BeforeDataUpdateComplete
-	 *
-	 * @since 1.0
-	 *
-	 * @param Store $store
-	 * @param SemanticData $semanticData
-	 *
-	 * @return bool
-	 */
-	public function onUpdateDataBefore( $store, $semanticData ) {
-		$propertyAnnotator = new PropertyAnnotator(
-			new ServicesFactory()
-		);
-
-		$propertyAnnotator->setLogger(
-			LoggerFactory::getInstance( 'smw-approved-revs' )
-		);
-
-		$propertyAnnotator->addAnnotation( $semanticData );
 
 		return true;
 	}
@@ -351,8 +264,6 @@ class Hooks {
 			'SMW::RevisionGuard::ChangeRevision' => [ $this, 'onChangeRevision' ],
 			'SMW::RevisionGuard::ChangeRevisionID' => [ $this, 'onOverrideRevisionID' ],
 			'SMW::RevisionGuard::ChangeFile' => [ $this, 'onChangeFile' ],
-			'SMW::Property::initProperties' => [ $this, 'onInitProperties' ],
-			'SMW::Store::BeforeDataUpdateComplete' => [ $this, 'onUpdateDataBefore' ],
 		];
 	}
 
@@ -392,18 +303,6 @@ class Hooks {
 					'Semantic Approved Revs</a> extension' .
 					' requires the <a href="https://www.mediawiki.org/wiki/Extension:Approved_Revs">' .
 					'Approved Revs</a> extension to be installed and enabled.<br />'
-				);
-			}
-		}
-
-		if ( defined( 'SESP_VERSION' ) && version_compare( (string)SESP_VERSION, '2.1.0', '<' ) ) {
-			$prop = self::hasPropertyCollisions( $GLOBALS );
-
-			if ( $prop !== false ) {
-				die(
-					"\nPlease remove the `$prop` property (defined by the SemanticExtraSpecialProperties extension)" .
-					" and switch to the new SESP version 2.1" .
-					" to avoid collision with the 'Semantic Approved Revs' list of properties.\n"
 				);
 			}
 		}

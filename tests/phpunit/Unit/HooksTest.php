@@ -2,7 +2,6 @@
 
 namespace SMW\ApprovedRevs\Tests;
 
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use SMW\ApprovedRevs\Hooks;
 use Wikimedia\ObjectCache\BagOStuff;
@@ -38,9 +37,6 @@ class HooksTest extends \PHPUnit\Framework\TestCase {
 		$this->callOnSMWRevisionGuardIsApprovedRevision( $instance );
 		$this->callOnSMWRevisionGuardChangeRevision( $instance );
 		$this->callOnSMWRevisionGuardChangeRevisionID( $instance );
-		$this->callOnSMWInitProperties( $instance );
-		$this->callOnSMWStoreUpdateDataBefore( $instance );
-		$this->callOnSMWConfigBeforeCompletion( $instance );
 		$this->callOnSMWRevisionGuardChangeFile( $instance );
 	}
 
@@ -169,67 +165,6 @@ class HooksTest extends \PHPUnit\Framework\TestCase {
 		$this->assertThatHookIsExcutable(
 			$instance->getHandlers( $handler ),
 			[ $title, &$latestRevID ]
-		);
-	}
-
-	public function callOnSMWInitProperties( $instance ) {
-		$handler = 'SMW::Property::initProperties';
-
-		$propertyRegistry = $this->getMockBuilder( '\SMW\PropertyRegistry' )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$this->assertTrue(
-			$instance->isRegistered( $handler )
-		);
-
-		$this->assertThatHookIsExcutable(
-			$instance->getHandlers( $handler ),
-			[ $propertyRegistry ]
-		);
-	}
-
-	public function callOnSMWStoreUpdateDataBefore( $instance ) {
-		$handler = 'SMW::Store::BeforeDataUpdateComplete';
-
-		$store = $this->getMockBuilder( '\SMW\Store' )
-			->disableOriginalConstructor()
-			->getMockForAbstractClass();
-
-		$semanticData = $this->getMockBuilder( '\SMW\SemanticData' )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$this->assertTrue(
-			$instance->isRegistered( $handler )
-		);
-
-		$this->assertThatHookIsExcutable(
-			$instance->getHandlers( $handler ),
-			[ $store, $semanticData ]
-		);
-	}
-
-	public function callOnSMWConfigBeforeCompletion( $instance ) {
-		$handler = 'SMW::Config::BeforeCompletion';
-
-		$this->assertTrue(
-			$instance->isRegistered( $handler )
-		);
-
-		$config = [
-			'smwgImportFileDirs' => []
-		];
-
-		// Registered via `wgHooks` in `Hooks::initExtension`, hence run it through
-		// the container instead of `Hooks::getHandlers`
-		$this->assertTrue(
-			MediaWikiServices::getInstance()->getHookContainer()->run( $handler, [ &$config ] )
-		);
-
-		$this->assertArrayHasKey(
-			'sar',
-			$config['smwgImportFileDirs']
 		);
 	}
 
