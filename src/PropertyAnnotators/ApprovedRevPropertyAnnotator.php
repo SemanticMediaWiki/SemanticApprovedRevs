@@ -57,10 +57,12 @@ class ApprovedRevPropertyAnnotator {
 	 * @param SemanticData $semanticData
 	 */
 	public function addAnnotation( SemanticData $semanticData ) {
-		$title = $semanticData->getSubject()->getTitle();
+		if ( $this->approvedRev === null ) {
+			$title = $semanticData->getSubject()->getTitle();
 
-		if ( $this->approvedRev === null && $title instanceof Title ) {
-			$this->approvedRev = $this->approvedRevsFacade->getApprovedRevID( $title );
+			if ( $title instanceof Title ) {
+				$this->approvedRev = $this->approvedRevsFacade->getApprovedRevID( $title );
+			}
 		}
 
 		$property = $this->newDIProperty();
