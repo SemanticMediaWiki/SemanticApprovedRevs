@@ -2,6 +2,7 @@
 
 namespace SMW\ApprovedRevs\PropertyAnnotators;
 
+use MediaWiki\Title\Title;
 use SMW\ApprovedRevs\ApprovedRevsFacade;
 use SMW\ApprovedRevs\PropertyRegistry;
 use SMW\DIProperty;
@@ -56,10 +57,10 @@ class ApprovedRevPropertyAnnotator {
 	 * @param SemanticData $semanticData
 	 */
 	public function addAnnotation( SemanticData $semanticData ) {
-		if ( $this->approvedRev === null ) {
-			$this->approvedRev = $this->approvedRevsFacade->getApprovedRevID(
-				$semanticData->getSubject()->getTitle()
-			);
+		$title = $semanticData->getSubject()->getTitle();
+
+		if ( $this->approvedRev === null && $title instanceof Title ) {
+			$this->approvedRev = $this->approvedRevsFacade->getApprovedRevID( $title );
 		}
 
 		$property = $this->newDIProperty();

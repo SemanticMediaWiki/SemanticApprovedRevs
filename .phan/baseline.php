@@ -9,7 +9,6 @@
  */
 return [
 	// # Issue statistics:
-	// PhanTypeMismatchArgumentNullable : 1 occurrence
 	// PhanTypeMismatchArgumentNullableInternal : 1 occurrence
 	// PhanUndeclaredClassMethod : 1 occurrence
 	// PhanUndeclaredMethod : 1 occurrence
@@ -27,9 +26,6 @@ return [
 			'PhanUndeclaredMethod' => ['\\SMW\\ApprovedRevs\\Hooks::saveToCache'],
 			'PhanUndeclaredTypeParameter' => ['\\SMW\\ApprovedRevs\\Hooks::setCache'],
 			'PhanUndeclaredTypeProperty' => ['\\SMW\\ApprovedRevs\\Hooks']
-		],
-		'src/PropertyAnnotators/ApprovedRevPropertyAnnotator.php' => [
-			'PhanTypeMismatchArgumentNullable' => ['\\SMW\\ApprovedRevs\\PropertyAnnotators\\ApprovedRevPropertyAnnotator::addAnnotation']
 		],
 	],
 	// 'directory_suppressions' => ['src/directory_name' => ['PhanIssueName1', 'PhanIssueName2']] can be manually added if needed.
