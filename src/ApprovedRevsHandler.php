@@ -132,6 +132,8 @@ class ApprovedRevsHandler {
 		}
 
 		if ( $file instanceof File ) {
+			// file_sha1 is set ad hoc here and is not a declared property of File
+			// @phan-suppress-next-line PhanUndeclaredProperty
 			$file->file_sha1 = $file_sha1;
 		}
 	}

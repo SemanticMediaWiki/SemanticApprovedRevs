@@ -11,14 +11,10 @@ return [
 	// # Issue statistics:
 	// PhanUndeclaredClassMethod : 1 occurrence
 	// PhanUndeclaredMethod : 1 occurrence
-	// PhanUndeclaredProperty : 1 occurrence
 	// PhanUndeclaredTypeParameter : 1 occurrence
 	// PhanUndeclaredTypeProperty : 1 occurrence
 
 	'file_suppressions' => [
-		'src/ApprovedRevsHandler.php' => [
-			'PhanUndeclaredProperty' => ['\\SMW\\ApprovedRevs\\ApprovedRevsHandler::doChangeFile']
-		],
 		'src/Hooks.php' => [
 			'PhanUndeclaredClassMethod' => ['\\SMW\\ApprovedRevs\\Hooks::saveToCache'],
 			'PhanUndeclaredMethod' => ['\\SMW\\ApprovedRevs\\Hooks::saveToCache'],
