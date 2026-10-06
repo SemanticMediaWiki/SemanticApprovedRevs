@@ -98,7 +98,8 @@ class NewPageAnnotationsTest extends SMWIntegrationTestCase {
 	}
 
 	private function newTitle( string $text ): Title {
-		$title = MediaWikiServices::getInstance()->getTitleFactory()->newFromText( $text );
+		$title = MediaWikiServices::getInstance()->getTitleFactory()->newFromText( $text )
+			?? throw new \InvalidArgumentException( "Invalid title: $text" );
 		$this->titles[] = $title;
 
 		return $title;
