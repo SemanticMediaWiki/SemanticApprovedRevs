@@ -2,8 +2,10 @@
 
 namespace SMW\ApprovedRevs\Tests;
 
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use SMW\ApprovedRevs\Hooks;
+use Wikimedia\ObjectCache\BagOStuff;
 
 /**
  * @covers \SMW\ApprovedRevs\Hooks
@@ -42,6 +44,23 @@ class HooksTest extends \PHPUnit\Framework\TestCase {
 		$this->callOnSMWRevisionGuardChangeFile( $instance );
 	}
 
+	/**
+	 * SMW 7 replaced the Onoi cache with a MediaWiki BagOStuff.
+	 */
+	private function newCacheMock() {
+		$isOnoi = interface_exists( '\Onoi\Cache\Cache' );
+
+		$cache = $this->getMockBuilder( $isOnoi ? '\Onoi\Cache\Cache' : BagOStuff::class )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$cache->expects( $this->once() )
+			->method( $isOnoi ? 'save' : 'set' )
+			->with( $this->stringContains( 'smw:parseraftertidy' ) );
+
+		return $cache;
+	}
+
 	public function callOnApprovedRevsRevisionApproved( $instance ) {
 		$handler = 'ApprovedRevsRevisionApproved';
 
@@ -49,13 +68,7 @@ class HooksTest extends \PHPUnit\Framework\TestCase {
 			->disableOriginalConstructor()
 			->getMock();
 
-		$cache = $this->getMockBuilder( '\Onoi\Cache\Cache' )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$cache->expects( $this->once() )
-			->method( 'save' )
-			->with( $this->stringContains( 'smw:parseraftertidy' ) );
+		$cache = $this->newCacheMock();
 
 		$instance->setCache( $cache );
 
@@ -80,13 +93,7 @@ class HooksTest extends \PHPUnit\Framework\TestCase {
 			->disableOriginalConstructor()
 			->getMock();
 
-		$cache = $this->getMockBuilder( '\Onoi\Cache\Cache' )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$cache->expects( $this->once() )
-			->method( 'save' )
-			->with( $this->stringContains( 'smw:parseraftertidy' ) );
+		$cache = $this->newCacheMock();
 
 		$instance->setCache( $cache );
 
@@ -210,9 +217,10 @@ class HooksTest extends \PHPUnit\Framework\TestCase {
 			'smwgImportFileDirs' => []
 		];
 
-		$this->assertThatHookIsExcutable(
-			$instance->getHandlers( $handler ),
-			[ &$config ]
+		// Registered via `wgHooks` in `Hooks::initExtension`, hence run it through
+		// the container instead of `Hooks::getHandlers`
+		$this->assertTrue(
+			MediaWikiServices::getInstance()->getHookContainer()->run( $handler, [ &$config ] )
 		);
 
 		$this->assertArrayHasKey(

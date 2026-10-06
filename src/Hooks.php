@@ -2,13 +2,14 @@
 
 namespace SMW\ApprovedRevs;
 
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionStoreRecord;
 use MediaWiki\Title\Title;
-use Onoi\Cache\Cache;
 use SMW\SemanticData;
 use SMW\Services\ServicesFactory as ApplicationFactory;
 use SMW\Store;
+use Wikimedia\ObjectCache\BagOStuff;
 
 /**
  * @license GPL-2.0-or-later
@@ -24,7 +25,7 @@ class Hooks {
 	private $handlers = [];
 
 	/**
-	 * @var Cache
+	 * @var \Onoi\Cache\Cache|BagOStuff|null
 	 */
 	private $cache;
 
@@ -40,9 +41,9 @@ class Hooks {
 	/**
 	 * @since 1.0
 	 *
-	 * @param Cache $cache
+	 * @param \Onoi\Cache\Cache|BagOStuff $cache
 	 */
-	public function setCache( Cache $cache ) {
+	public function setCache( $cache ) {
 		$this->cache = $cache;
 	}
 
@@ -118,12 +119,6 @@ class Hooks {
 	public function deregister() {
 		foreach ( array_keys( $this->handlers ) as $name ) {
 			MediaWikiServices::getInstance()->getHookContainer()->clear( $name );
-
-			// Remove registered `wgHooks` hooks that are not cleared by the
-			// previous call
-			if ( isset( $GLOBALS['wgHooks'][$name] ) ) {
-				unset( $GLOBALS['wgHooks'][$name] );
-			}
 		}
 	}
 
@@ -146,10 +141,7 @@ class Hooks {
 	 * @return array
 	 */
 	public function getHandlers( $name ) {
-		$container = MediaWikiServices::getInstance()->getHookContainer();
-		return method_exists( $container, 'getHandlerCallbacks' )
-			? $container->getHandlerCallbacks( $name )
-			: \Hooks::getHandlers( $name );
+		return isset( $this->handlers[$name] ) ? [ $this->handlers[$name] ] : [];
 	}
 
 	/**
@@ -226,7 +218,7 @@ class Hooks {
 		);
 
 		$propertyAnnotator->setLogger(
-			ApplicationFactory::getInstance()->getMediaWikiLogger( 'smw-approved-revs' )
+			LoggerFactory::getInstance( 'smw-approved-revs' )
 		);
 
 		$propertyAnnotator->addAnnotation( $semanticData );
@@ -247,17 +239,13 @@ class Hooks {
 	public function onApprovedRevsRevisionApproved( $output, $title, $rev_id, $content ) {
 		$ttl = 60 * 60; // 1hr
 
-		if ( $this->cache === null ) {
-			$this->cache = ApplicationFactory::getInstance()->getCache();
-		}
-
 		// Send an event to ParserAfterTidy and allow it to pass the preliminary
 		// test even in cases where the content doesn't contain any SMW related
 		// annotations. It is to ensure that when an agent switches to a blank
 		// version (no SMW related annotations or categories) the update is carried
 		// out and the store is able to remove any remaining annotations.
 		$key = smwfCacheKey( 'smw:parseraftertidy', $title->getPrefixedDBKey() );
-		$this->cache->save( $key, $rev_id, $ttl );
+		$this->saveToCache( $key, $rev_id, $ttl );
 
 		return true;
 	}
@@ -275,13 +263,9 @@ class Hooks {
 	public function onApprovedRevsFileRevisionApproved( $parser, $title, $timestamp, $sha1 ) {
 		$ttl = 60 * 60; // 1hr
 
-		if ( $this->cache === null ) {
-			$this->cache = ApplicationFactory::getInstance()->getCache();
-		}
-
 		// @see onApprovedRevsRevisionApproved for the same reason
 		$key = smwfCacheKey( 'smw:parseraftertidy', $title->getPrefixedDBKey() );
-		$this->cache->save( $key, $sha1, $ttl );
+		$this->saveToCache( $key, $sha1, $ttl );
 
 		return true;
 	}
@@ -302,6 +286,24 @@ class Hooks {
 		$approvedRevsHandler->doChangeFile( $title, $file );
 
 		return true;
+	}
+
+	/**
+	 * SMW 7 dropped onoi/cache in favour of a MediaWiki BagOStuff; SMW 5 and 6
+	 * only provide the Onoi cache. Remove the fallback when support for SMW < 7
+	 * is dropped.
+	 */
+	private function saveToCache( string $key, $value, int $ttl ): void {
+		if ( $this->cache === null ) {
+			$smw = ApplicationFactory::getInstance();
+			$this->cache = method_exists( $smw, 'getObjectCache' ) ? $smw->getObjectCache() : $smw->getCache();
+		}
+
+		if ( $this->cache instanceof BagOStuff ) {
+			$this->cache->set( $key, $value, $ttl );
+		} else {
+			$this->cache->save( $key, $value, $ttl );
+		}
 	}
 
 	private function registerHandlers( $config ) {
