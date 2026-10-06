@@ -354,11 +354,16 @@ class Hooks {
 	public static function onExtensionFunction() {
 		if ( !defined( 'SMW_VERSION' ) ) {
 			if ( PHP_SAPI === 'cli' || PHP_SAPI === 'phpdbg' ) {
-				die( "\nThe 'Semantic Approved Revs' extension requires the 'Semantic MediaWiki' extension to be installed and enabled.\n" );
+				die(
+					"\nThe 'Semantic Approved Revs' extension requires the 'Semantic MediaWiki' extension" .
+					" to be installed and enabled.\n"
+				);
 			} else {
 				die(
-					'<b>Error:</b> The <a href="https://github.com/SemanticMediaWiki/SemanticApprovedRevs/">Semantic Approved Revs</a> extension' .
-					' requires the <a href="https://www.semantic-mediawiki.org/wiki/Semantic_MediaWiki">Semantic MediaWiki</a> extension to be installed and enabled.<br />'
+					'<b>Error:</b> The <a href="https://github.com/SemanticMediaWiki/SemanticApprovedRevs/">' .
+					'Semantic Approved Revs</a> extension' .
+					' requires the <a href="https://www.semantic-mediawiki.org/wiki/Semantic_MediaWiki">' .
+					'Semantic MediaWiki</a> extension to be installed and enabled.<br />'
 				);
 			}
 		}
@@ -369,11 +374,16 @@ class Hooks {
 		// extension is enabled or not!
 		if ( !class_exists( 'ApprovedRevs' ) ) {
 			if ( PHP_SAPI === 'cli' || PHP_SAPI === 'phpdbg' ) {
-				die( "\nThe 'Semantic Approved Revs' extension requires the 'Approved Revs' extension to be installed and enabled.\n" );
+				die(
+					"\nThe 'Semantic Approved Revs' extension requires the 'Approved Revs' extension" .
+					" to be installed and enabled.\n"
+				);
 			} else {
 				die(
-					'<b>Error:</b> The <a href="https://github.com/SemanticMediaWiki/SemanticApprovedRevs/">Semantic Approved Revs</a> extension' .
-					' requires the <a href="https://www.mediawiki.org/wiki/Extension:Approved_Revs">Approved Revs</a> extension to be installed and enabled.<br />'
+					'<b>Error:</b> The <a href="https://github.com/SemanticMediaWiki/SemanticApprovedRevs/">' .
+					'Semantic Approved Revs</a> extension' .
+					' requires the <a href="https://www.mediawiki.org/wiki/Extension:Approved_Revs">' .
+					'Approved Revs</a> extension to be installed and enabled.<br />'
 				);
 			}
 		}
@@ -383,7 +393,8 @@ class Hooks {
 
 			if ( $prop !== false ) {
 				die(
-					"\nPlease remove the `$prop` property (defined by the SemanticExtraSpecialProperties extension) and switch to the new SESP version 2.1" .
+					"\nPlease remove the `$prop` property (defined by the SemanticExtraSpecialProperties extension)" .
+					" and switch to the new SESP version 2.1" .
 					" to avoid collision with the 'Semantic Approved Revs' list of properties.\n"
 				);
 			}

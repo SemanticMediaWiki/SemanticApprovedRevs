@@ -3,6 +3,10 @@
 namespace SMW\ApprovedRevs\Tests;
 
 use SMW\ApprovedRevs\PropertyAnnotator;
+use SMW\ApprovedRevs\PropertyAnnotators\ApprovedByPropertyAnnotator;
+use SMW\ApprovedRevs\PropertyAnnotators\ApprovedDatePropertyAnnotator;
+use SMW\ApprovedRevs\PropertyAnnotators\ApprovedRevPropertyAnnotator;
+use SMW\ApprovedRevs\PropertyAnnotators\ApprovedStatusPropertyAnnotator;
 use SMW\DIWikiPage;
 
 /**
@@ -27,19 +31,19 @@ class PropertyAnnotatorTest extends \PHPUnit\Framework\TestCase {
 	protected function setUp(): void {
 		parent::setUp();
 
-		$approvedByPropertyAnnotator = $this->getMockBuilder( '\SMW\ApprovedRevs\PropertyAnnotators\ApprovedByPropertyAnnotator' )
+		$approvedByPropertyAnnotator = $this->getMockBuilder( ApprovedByPropertyAnnotator::class )
 			->disableOriginalConstructor()
 			->getMock();
 
-		$approvedStatusPropertyAnnotator = $this->getMockBuilder( '\SMW\ApprovedRevs\PropertyAnnotators\ApprovedStatusPropertyAnnotator' )
+		$approvedStatusPropertyAnnotator = $this->getMockBuilder( ApprovedStatusPropertyAnnotator::class )
 			->disableOriginalConstructor()
 			->getMock();
 
-		$approvedDatePropertyAnnotator = $this->getMockBuilder( '\SMW\ApprovedRevs\PropertyAnnotators\ApprovedDatePropertyAnnotator' )
+		$approvedDatePropertyAnnotator = $this->getMockBuilder( ApprovedDatePropertyAnnotator::class )
 			->disableOriginalConstructor()
 			->getMock();
 
-		$approvedRevPropertyAnnotator = $this->getMockBuilder( '\SMW\ApprovedRevs\PropertyAnnotators\ApprovedRevPropertyAnnotator' )
+		$approvedRevPropertyAnnotator = $this->getMockBuilder( ApprovedRevPropertyAnnotator::class )
 			->disableOriginalConstructor()
 			->getMock();
 
