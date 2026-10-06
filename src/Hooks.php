@@ -388,7 +388,7 @@ class Hooks {
 			}
 		}
 
-		if ( defined( 'SESP_VERSION' ) && version_compare( SESP_VERSION, '2.1.0', '<' ) ) {
+		if ( defined( 'SESP_VERSION' ) && version_compare( (string)SESP_VERSION, '2.1.0', '<' ) ) {
 			$prop = self::hasPropertyCollisions( $GLOBALS );
 
 			if ( $prop !== false ) {

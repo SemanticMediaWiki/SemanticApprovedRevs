@@ -9,7 +9,6 @@
  */
 return [
 	// # Issue statistics:
-	// PhanTypeMismatchArgumentNullableInternal : 1 occurrence
 	// PhanUndeclaredClassMethod : 1 occurrence
 	// PhanUndeclaredMethod : 1 occurrence
 	// PhanUndeclaredProperty : 1 occurrence
@@ -21,7 +20,6 @@ return [
 			'PhanUndeclaredProperty' => ['\\SMW\\ApprovedRevs\\ApprovedRevsHandler::doChangeFile']
 		],
 		'src/Hooks.php' => [
-			'PhanTypeMismatchArgumentNullableInternal' => ['\\SMW\\ApprovedRevs\\Hooks::onExtensionFunction'],
 			'PhanUndeclaredClassMethod' => ['\\SMW\\ApprovedRevs\\Hooks::saveToCache'],
 			'PhanUndeclaredMethod' => ['\\SMW\\ApprovedRevs\\Hooks::saveToCache'],
 			'PhanUndeclaredTypeParameter' => ['\\SMW\\ApprovedRevs\\Hooks::setCache'],
