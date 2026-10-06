@@ -82,9 +82,9 @@ class Hooks {
 	/**
 	 * @since 1.0
 	 *
-	 * @param array &$vars
+	 * @param array $credits the extension credits as registered from `extension.json`
 	 */
-	public static function initExtension( &$vars ) {
+	public static function initExtension( array $credits ) {
 		$version = 'UNKNOWN';
 
 		// See https://phabricator.wikimedia.org/T151136
