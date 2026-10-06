@@ -25,8 +25,12 @@ class NewPageAnnotationsTest extends SMWIntegrationTestCase {
 
 	private const PROPERTY = 'SarNewPageProperty';
 
+	/** @var \SMW\Tests\Utils\PageCreator */
 	private $pageCreator;
+
+	/** @var \SMW\Tests\Utils\PageDeleter */
 	private $pageDeleter;
+
 	private array $titles = [];
 
 	protected function setUp(): void {
@@ -57,7 +61,7 @@ class NewPageAnnotationsTest extends SMWIntegrationTestCase {
 	public function testAnnotationsOfNewPageAreStoredBeforeApproval() {
 		$title = $this->createPageWithAnnotation( 'NewPageUnapproved', 'First' );
 
-		$this->assertEmpty( ApprovedRevs::getApprovedRevID( $title ) );
+		$this->assertFalse( ApprovedRevs::hasApprovedRevision( $title ) );
 
 		$this->assertSame(
 			[ 'First' ],
